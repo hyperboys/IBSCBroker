@@ -1,0 +1,15 @@
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\bin\Debug\IBSC.WindowApp.exe.config
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\bin\Debug\IBSC.WindowApp.exe
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\bin\Debug\IBSC.WindowApp.pdb
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\MainWindow.baml
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\MainWindow.g.cs
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\App.g.cs
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\IBSC.WindowApp_MarkupCompile.cache
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\IBSC.WindowApp.g.resources
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\IBSC.WindowApp.Properties.Resources.resources
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\IBSC.WindowApp.csproj.GenerateResource.Cache
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\IBSC.WindowApp.exe
+c:\users\isaraboo\documents\visual studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\IBSC.WindowApp.pdb
+C:\Users\isaraboo\Documents\Visual Studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\Login.baml
+C:\Users\isaraboo\Documents\Visual Studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\Login.g.cs
+C:\Users\isaraboo\Documents\Visual Studio 2012\Projects\IBSC.WindowApp\IBSC.WindowApp\obj\Debug\IBSC.WindowApp.csprojResolveAssemblyReference.cache
