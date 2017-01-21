@@ -102,10 +102,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\IBSC.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Image\key_PNG1174.png" />
+    <Resource Include="Image\admin.png" />
+    <Resource Include="Image\Car.ico" />
+    <Resource Include="Image\Icon.jpg" />
+    <Resource Include="Image\Insurance.png" />
+    <Resource Include="Image\InsuranceCompany.png" />
+    <Resource Include="Image\Key.png" />
+    <Resource Include="Image\Search.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
