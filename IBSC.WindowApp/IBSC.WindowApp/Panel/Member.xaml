@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="IBSC.WindowApp.Panel.Member"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="534" d:DesignWidth="833">
+    <Grid Loaded="Grid_Loaded">
+        <DataGrid Name="grdMember" HorizontalAlignment="Left" Margin="56,108,0,0" VerticalAlignment="Top" Height="367" Width="720" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click">Show/Hide</Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

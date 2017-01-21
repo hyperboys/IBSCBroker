@@ -1,7 +1,9 @@
 ﻿<Window x:Class="IBSC.WindowApp.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="718.5" Width="1084" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing" Icon="Image/Icon.jpg">
+        Title="MainWindow" Height="718.5" Width="1084" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closing="Window_Closing" Icon="Image/Icon.jpg"
+        xmlns:myControls="clr-namespace:IBSC.WindowApp.Panel"
+        >
     <Grid Margin="0,0,0,-3" Height="693" VerticalAlignment="Top">
         <Image HorizontalAlignment="Left" Height="79" Margin="32,14,0,0" VerticalAlignment="Top" Width="90" Source="Image/Icon.jpg"/>
         <Label Name="dateText" Content="เวลา" HorizontalAlignment="Left" Margin="972,14,0,0" VerticalAlignment="Top" FontSize="20"/>
@@ -9,8 +11,8 @@
         <Label Content="อิสรา บุญประเสริฐ" HorizontalAlignment="Left" Margin="244,25,0,0" VerticalAlignment="Top"/>
         <Label Content="Username     :" HorizontalAlignment="Left" Margin="159,55,0,0" VerticalAlignment="Top"/>
         <Label Content="IsaraBoo" HorizontalAlignment="Left" Margin="244,55,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="30" Margin="903,14,0,0" VerticalAlignment="Top" Width="32" Source="Image/Key.png" TouchDown="Image_TouchDown" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-        <Button Width="Auto" Margin="34,129,924,488">
+        <Image HorizontalAlignment="Left" Height="30" Margin="903,14,0,0" VerticalAlignment="Top" Width="32" Source="Image/Key.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+        <Button Width="Auto" Margin="34,129,924,488" Click="Button_Click">
             <StackPanel Orientation="Vertical">
                 <Image Source="Image/Search.png" Width="70" Height="36"/>
                 <Label Content="เช็คเบี้ยประกันรถยนต์" Height="26" />
@@ -34,12 +36,14 @@
                 <Label Content="ข้อมูลบริษัทประกันภัย" Height="26" />
             </StackPanel>
         </Button>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="534" Margin="201,129,0,-87" VerticalAlignment="Top" Width="833"/>
         <Button Width="Auto" Margin="34,238,924,379">
             <StackPanel Orientation="Vertical">
                 <Image Source="Image/Insurance.png" Width="70" Height="36"/>
                 <Label Content="ข้อมูลประกันภัย" Height="26" />
             </StackPanel>
         </Button>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="534" Margin="201,129,0,-87" VerticalAlignment="Top" Width="833">
+            <myControls:Member x:Name="member" Visibility="Hidden"></myControls:Member>
+        </Border>
     </Grid>
 </Window>

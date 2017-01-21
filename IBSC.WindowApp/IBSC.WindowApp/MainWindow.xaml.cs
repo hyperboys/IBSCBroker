@@ -34,20 +34,20 @@ namespace IBSC.WindowApp
 
         }
 
+        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Login l = new Login();
             l.Show();
         }
 
-        private void Image_TouchDown(object sender, TouchEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
+            this.member.Visibility = System.Windows.Visibility.Visible;
         }
     }
 }
