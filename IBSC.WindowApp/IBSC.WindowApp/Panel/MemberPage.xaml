@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="534" d:DesignWidth="833">
     <Grid Loaded="Grid_Loaded">
-        <DataGrid Name="grdMember" HorizontalAlignment="Left" Margin="56,108,0,0" VerticalAlignment="Top" Height="367" Width="720" IsReadOnly="True">
+        <DataGrid Name="grdMember" HorizontalAlignment="Left" Margin="56,108,0,0" VerticalAlignment="Top" Height="367" Width="720" IsReadOnly="True" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
@@ -15,6 +15,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+                <DataGridTextColumn Header="ชื่อ" MinWidth="50"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

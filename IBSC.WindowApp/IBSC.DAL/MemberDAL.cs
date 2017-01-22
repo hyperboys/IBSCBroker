@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -49,6 +50,7 @@ namespace IBSC.DAL
                     member.MEMBER_USER = reader.GetString("MEMBER_USER");
                     member.MEMBER_PASSWORD = reader.GetString("MEMBER_PASSWORD");
                     member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
+                    reader.Close();
                     return member;
                 }
                 else
@@ -76,6 +78,28 @@ namespace IBSC.DAL
                 sql.Append(" WHERE MEMBER_USER = '" + item.MEMBER_USER + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetAllMember()
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_STATUS FROM member_winapp";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dataTable = new DataTable();
+                ds.Tables.Add(dataTable);
+                ds.EnforceConstraints = false;
+                dataTable.Load(reader);
+                reader.Close();
+                return dataTable;
             }
             catch (Exception ex)
             {
