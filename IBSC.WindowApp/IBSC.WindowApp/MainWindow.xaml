@@ -12,31 +12,31 @@
         <Label Content="Username     :" HorizontalAlignment="Left" Margin="159,55,0,0" VerticalAlignment="Top"/>
         <Label Name="lblUsername" Content="xxxxxxxx" HorizontalAlignment="Left" Margin="244,55,0,0" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="30" Margin="903,14,0,0" VerticalAlignment="Top" Width="32" Source="Image/Key.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-        <Button Width="Auto" Margin="34,129,924,488" Click="Button_Click">
+        <Button x:Name="btnCheck" Width="Auto" Margin="34,129,924,488" Click="btnCheck_Click">
             <StackPanel Orientation="Vertical">
                 <Image Source="Image/Search.png" Width="70" Height="36"/>
                 <Label Content="เช็คเบี้ยประกันรถยนต์" Height="26" />
             </StackPanel>
         </Button>
-        <Button Width="Auto" Margin="36,575,922,42">
+        <Button x:Name="btnMember" Width="Auto" Margin="36,575,922,42" Click="btnMember_Click">
             <StackPanel Orientation="Vertical">
                 <Image Source="Image/admin.png" Width="70" Height="36"/>
                 <Label Content="ระบบสมาชิก" Height="26" />
             </StackPanel>
         </Button>
-        <Button Width="Auto" Margin="34,348,924,269">
+        <Button x:Name="btnCar" Width="Auto" Margin="34,348,924,269" Click="btnCar_Click">
             <StackPanel Orientation="Vertical">
                 <Image Source="Image/Car.ico" Width="70" Height="36"/>
                 <Label Content="ข้อมูลรถยนต์" Height="26" />
             </StackPanel>
         </Button>
-        <Button Width="Auto" Margin="34,463,922,154">
+        <Button x:Name="btnInsureCompany" Width="Auto" Margin="34,463,922,154" Click="btnInsureCompany_Click">
             <StackPanel Orientation="Vertical">
                 <Image Source="Image/InsuranceCompany.png" Width="70" Height="36"/>
                 <Label Content="ข้อมูลบริษัทประกันภัย" Height="26" />
             </StackPanel>
         </Button>
-        <Button Width="Auto" Margin="34,238,924,379">
+        <Button x:Name="btnInsure" Width="Auto" Margin="34,238,924,379" Click="btnInsure_Click">
             <StackPanel Orientation="Vertical">
                 <Image Source="Image/Insurance.png" Width="70" Height="36"/>
                 <Label Content="ข้อมูลประกันภัย" Height="26" />

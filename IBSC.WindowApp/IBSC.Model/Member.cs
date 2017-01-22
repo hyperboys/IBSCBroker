@@ -42,5 +42,12 @@ namespace IBSC.Model
             get { return _memberStatus; }
             set { _memberStatus = value; }
         }
+
+        private string _memberRole;
+        public string MEMBER_ROLE
+        {
+            get { return _memberRole; }
+            set { _memberRole = value; }
+        }
     }
 }

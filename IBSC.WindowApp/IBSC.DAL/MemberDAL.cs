@@ -39,7 +39,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS FROM member_winapp WHERE MEMBER_USER = '" + user + "' AND MEMBER_PASSWORD = '" + pass + "'";
+                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS,MEMBER_ROLE FROM member_winapp WHERE MEMBER_USER = '" + user + "' AND MEMBER_PASSWORD = '" + pass + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -50,6 +50,7 @@ namespace IBSC.DAL
                     member.MEMBER_USER = reader.GetString("MEMBER_USER");
                     member.MEMBER_PASSWORD = reader.GetString("MEMBER_PASSWORD");
                     member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
+                    member.MEMBER_ROLE = reader.GetString("MEMBER_ROLE");
                     reader.Close();
                     return member;
                 }
@@ -74,6 +75,7 @@ namespace IBSC.DAL
                 sql.Append(" MEMBER_SURENAME = '" + item.MEMBER_SURENAME + "',");
                 sql.Append(" MEMBER_USER = '" + item.MEMBER_USER + "',");
                 sql.Append(" MEMBER_PASSWORD = '" + item.MEMBER_PASSWORD + "',");
+                sql.Append(" MEMBER_ROLE = '" + item.MEMBER_ROLE + "',");
                 sql.Append(" MEMBER_STATUS = '" + item.MEMBER_STATUS + "'");
                 sql.Append(" WHERE MEMBER_USER = '" + item.MEMBER_USER + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
@@ -90,7 +92,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_STATUS FROM member_winapp";
+                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_STATUS,MEMBER_ROLE FROM member_winapp";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();

@@ -6,16 +6,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="534" d:DesignWidth="833">
     <Grid Loaded="Grid_Loaded">
-        <DataGrid Name="grdMember" HorizontalAlignment="Left" Margin="56,108,0,0" VerticalAlignment="Top" Height="367" Width="720" IsReadOnly="True" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False">
+        <DataGrid Name="grdMember" HorizontalAlignment="Left" Margin="56,108,0,0" VerticalAlignment="Top" Height="367" Width="720"
+                  IsReadOnly="True" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False"
+                  AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Click="Button_Click">Show/Hide</Button>
+                            <Button Click="Button_Click">Show</Button>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Header="ชื่อ" MinWidth="50"/>
+                <DataGridTextColumn Binding="{Binding MEMBER_NAME}" MinWidth="100" Header="ชื่อ"/>
+                <DataGridTextColumn Binding="{Binding MEMBER_SURENAME}" MinWidth="100" Header="นามสกุล"/>
+                <DataGridTextColumn Binding="{Binding MEMBER_USER}" MinWidth="100" Header="UserName"/>
+                <DataGridTextColumn Binding="{Binding MEMBER_ROLE}" MinWidth="50" Header="Role"/>
+                <DataGridTextColumn Binding="{Binding MEMBER_STATUS}" MinWidth="50" Header="สถานะ"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

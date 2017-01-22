@@ -30,35 +30,14 @@ namespace IBSC.WindowApp.Panel
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            //DataContext = new List<Person>
-            //{
-            //    new Person{Name = "Tom", Age = 10},
-            //    new Person{Name = "Ken", Age = 20},
-            //    new Person{Name = "Jen", Age = 30}
-            //};
-            //grdMember.Items.Add(new Person { Name = "Tom", Age = 10 });
-            //grdMember.Items.Add(new Person { Name = "Ken", Age = 20 });
-            //grdMember.Items.Add(new Person { Name = "Jen", Age = 30 });
-            //grdMember.Columns.Add(new DataGridTextColumn { Header = "Name", Binding = new Binding("Name") });
-            //grdMember.Columns.Add(new DataGridTextColumn { Header = "Age", Binding = new Binding("Age") });
-            //grdMember.Columns[0].Width = 100;
-
-
             DataTable listMember = new MemberDAL().GetAllMember();
-            grdMember.DataContext = listMember.DefaultView;          
+            grdMember.ItemsSource = listMember.DefaultView;          
             DataCommon.Set("LIST_MEMBER", listMember);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PopupUser p = new PopupUser();
-            p.ShowDialog();
+            MessageBox.Show("Index : " + grdMember.SelectedIndex);
         }
     }
-
-    //public class Person
-    //{
-    //    public string Name { set; get; }
-    //    public int Age { set; get; }
-    //}
 }

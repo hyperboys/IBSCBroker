@@ -34,6 +34,13 @@ namespace IBSC.WindowApp
             member = (Member)DataCommon.Get("DATA.MEMBER");
             lblName.Content = member.MEMBER_NAME + " " + member.MEMBER_SURENAME;
             lblUsername.Content = member.MEMBER_USER;
+
+            if (!member.MEMBER_ROLE.Equals("admin")) 
+            {
+                btnMember.Visibility = System.Windows.Visibility.Hidden;
+                btnInsureCompany.Visibility = System.Windows.Visibility.Hidden;
+                btnCar.Visibility = System.Windows.Visibility.Hidden;
+            }
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -48,9 +55,29 @@ namespace IBSC.WindowApp
             l.Show();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnMember_Click(object sender, RoutedEventArgs e)
         {
             this.pageMember.Visibility = System.Windows.Visibility.Visible;
+        }
+
+        private void btnInsureCompany_Click(object sender, RoutedEventArgs e)
+        {
+            this.pageMember.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnCar_Click(object sender, RoutedEventArgs e)
+        {
+            this.pageMember.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnInsure_Click(object sender, RoutedEventArgs e)
+        {
+            this.pageMember.Visibility = System.Windows.Visibility.Hidden;
+        }
+
+        private void btnCheck_Click(object sender, RoutedEventArgs e)
+        {
+            this.pageMember.Visibility = System.Windows.Visibility.Hidden;
         }
     }
 }
