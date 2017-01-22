@@ -72,7 +72,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Panel\Member.xaml">
+    <Page Include="Panel\MemberPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -85,8 +85,8 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Panel\Member.xaml.cs">
-      <DependentUpon>Member.xaml</DependentUpon>
+    <Compile Include="Panel\MemberPage.xaml.cs">
+      <DependentUpon>MemberPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popup\PopupUser.xaml.cs">
       <DependentUpon>PopupUser.xaml</DependentUpon>
@@ -125,6 +125,20 @@
     <Resource Include="Image\InsuranceCompany.png" />
     <Resource Include="Image\Key.png" />
     <Resource Include="Image\Search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IBSC.Common\IBSC.Common.csproj">
+      <Project>{bb167141-e9b8-4d63-9e18-c6ec4bd9e7ae}</Project>
+      <Name>IBSC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBSC.DAL\IBSC.DAL.csproj">
+      <Project>{1aae857c-fe70-426d-968a-04411a7802e8}</Project>
+      <Name>IBSC.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBSC.Model\IBSC.Model.csproj">
+      <Project>{9365fd6f-b932-4e4f-8166-b2bda800e630}</Project>
+      <Name>IBSC.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

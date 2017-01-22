@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using IBSC.DAL;
+using IBSC.Model;
+using IBSC.Common;
 
 namespace IBSC.WindowApp
 {
@@ -27,10 +30,25 @@ namespace IBSC.WindowApp
 
         private void btnSignOn_Click(object sender, RoutedEventArgs e)
         {
-            Alert.Visibility = Visibility.Visible;
-            MainWindow m = new MainWindow();
-            m.Show();
-            this.Close();
+            try
+            {
+                Member member = new MemberDAL().GetMember(txtUser.Text, txtPass.Password);
+                if (member != null)
+                {
+                    DataCommon.Set("DATA.MEMBER", member);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    this.Close();
+                }
+                else
+                {
+                    Alert.Visibility = Visibility.Visible;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -41,7 +59,7 @@ namespace IBSC.WindowApp
 
         private void txtUser_KeyUp(object sender, KeyEventArgs e)
         {
-            FocusAdvancement.KeyUp(sender,e);
+            FocusAdvancement.KeyUp(sender, e);
         }
 
         private void txtPass_KeyUp(object sender, KeyEventArgs e)

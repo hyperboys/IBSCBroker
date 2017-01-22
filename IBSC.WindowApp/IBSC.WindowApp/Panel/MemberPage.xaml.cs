@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace IBSC.WindowApp.Panel
 {
     /// <summary>
-    /// Interaction logic for Member.xaml
+    /// Interaction logic for MemberPage.xaml
     /// </summary>
-    public partial class Member : UserControl
+    public partial class MemberPage : UserControl
     {
-        public Member()
+        public MemberPage()
         {
             InitializeComponent();
         }

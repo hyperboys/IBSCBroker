@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IBSC.Common;
+using IBSC.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,7 @@ namespace IBSC.WindowApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Member member;
         public MainWindow()
         {
             InitializeComponent();
@@ -27,16 +30,16 @@ namespace IBSC.WindowApp
             {
                 this.dateText.Content = DateTime.Now.ToString("HH:mm:ss");
             }, this.Dispatcher);
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
+            member = (Member)DataCommon.Get("DATA.MEMBER");
+            lblName.Content = member.MEMBER_NAME + " " + member.MEMBER_SURENAME;
+            lblUsername.Content = member.MEMBER_USER;
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            PopupUser popup = new PopupUser();
+            popup.ShowDialog();
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -47,7 +50,7 @@ namespace IBSC.WindowApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.member.Visibility = System.Windows.Visibility.Visible;
+            this.pageMember.Visibility = System.Windows.Visibility.Visible;
         }
     }
 }
