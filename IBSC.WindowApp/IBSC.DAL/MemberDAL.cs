@@ -34,6 +34,37 @@ namespace IBSC.DAL
             }
         }
 
+        public Member GetMember(string user)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS,MEMBER_ROLE FROM member_winapp WHERE MEMBER_USER = '" + user + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    Member member = new Member();
+                    member.MEMBER_NAME = reader.GetString("MEMBER_NAME");
+                    member.MEMBER_SURENAME = reader.GetString("MEMBER_SURENAME");
+                    member.MEMBER_USER = reader.GetString("MEMBER_USER");
+                    member.MEMBER_PASSWORD = reader.GetString("MEMBER_PASSWORD");
+                    member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
+                    member.MEMBER_ROLE = reader.GetString("MEMBER_ROLE");
+                    reader.Close();
+                    return member;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public Member GetMember(string user, string pass)
         {
             try
@@ -58,6 +89,28 @@ namespace IBSC.DAL
                 {
                     return null;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void InsertMember(Member item)
+        {
+            try
+            {
+                DBbase.Connect();
+                StringBuilder sql = new StringBuilder();
+                sql.Append("INSERT INTO member_winapp (MEMBER_USER,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_SURENAME,MEMBER_STATUS,MEMBER_ROLE) VALUES (");
+                sql.Append(" '" + item.MEMBER_USER + "',");
+                sql.Append(" '" + item.MEMBER_PASSWORD + "',");
+                sql.Append(" '" + item.MEMBER_NAME + "',");
+                sql.Append(" '" + item.MEMBER_SURENAME + "',");
+                sql.Append(" '" + item.MEMBER_STATUS + "',");
+                sql.Append(" '" + item.MEMBER_ROLE + "')");
+                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

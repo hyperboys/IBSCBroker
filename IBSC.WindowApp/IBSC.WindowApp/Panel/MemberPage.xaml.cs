@@ -1,5 +1,7 @@
 ﻿using IBSC.Common;
 using IBSC.DAL;
+using IBSC.Model;
+using IBSC.WindowApp.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -30,14 +32,39 @@ namespace IBSC.WindowApp.Panel
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            DataTable listMember = new MemberDAL().GetAllMember();
-            grdMember.ItemsSource = listMember.DefaultView;
-            DataCommon.Set("LIST_MEMBER", listMember);
+            ReloadData();
+        }
+
+        private void ReloadData() 
+        {
+            try
+            {
+                DataTable listMember = new MemberDAL().GetAllMember();
+                grdMember.ItemsSource = listMember.DefaultView;
+                DataCommon.Set("LIST_MEMBER", listMember);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Index : " + grdMember.SelectedIndex);
+            try
+            {
+                int index = grdMember.SelectedIndex;
+                string user = ((DataRowView)grdMember.SelectedItem).Row.ItemArray[2].ToString();
+                Member member = new MemberDAL().GetMember(user);
+                DataCommon.Set("MEMBER_EDIT", member);
+                PopupMember pop = new PopupMember();
+                pop.ShowDialog();
+                ReloadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -55,13 +82,13 @@ namespace IBSC.WindowApp.Panel
                 {
                     grdMember.ItemsSource = results.CopyToDataTable<DataRow>().DefaultView;
                 }
-                else 
+                else
                 {
                     grdMember.ItemsSource = null;
                 }
-                
+
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -69,7 +96,9 @@ namespace IBSC.WindowApp.Panel
 
         private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            PopupMember pop = new PopupMember();
+            pop.ShowDialog();
+            ReloadData();
         }
     }
 }

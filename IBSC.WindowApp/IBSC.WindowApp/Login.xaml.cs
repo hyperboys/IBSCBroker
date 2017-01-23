@@ -47,13 +47,22 @@ namespace IBSC.WindowApp
                 Member member = new MemberDAL().GetMember(txtUser.Text, txtPass.Password);
                 if (member != null)
                 {
-                    DataCommon.Set("DATA.MEMBER", member);
-                    MainWindow mainWindow = new MainWindow();
-                    mainWindow.Show();
-                    this.Close();
+                    if (member.MEMBER_STATUS != "I")
+                    {
+                        DataCommon.Set("DATA.MEMBER", member);
+                        MainWindow mainWindow = new MainWindow();
+                        mainWindow.Show();
+                        this.Close();
+                    }
+                    else 
+                    {
+                        Alert.Content = "Member นี้อยู่ในสถานะไม่ให้ใช้งาน";
+                        Alert.Visibility = Visibility.Visible;
+                    }
                 }
                 else
                 {
+                    Alert.Content = "Username หรือ Password ไม่ถูกต้อง";
                     Alert.Visibility = Visibility.Visible;
                 }
 #endif
