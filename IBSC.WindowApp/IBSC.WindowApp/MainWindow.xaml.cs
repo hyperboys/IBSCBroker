@@ -45,7 +45,7 @@ namespace IBSC.WindowApp
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            PopupUser popup = new PopupUser();
+            PopupChangePassword popup = new PopupChangePassword();
             popup.ShowDialog();
         }
 

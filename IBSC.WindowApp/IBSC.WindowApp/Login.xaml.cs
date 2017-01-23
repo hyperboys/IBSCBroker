@@ -32,6 +32,18 @@ namespace IBSC.WindowApp
         {
             try
             {
+#if DEBUG
+                Member member = new Member();
+                member.MEMBER_NAME = "Debug";
+                member.MEMBER_ROLE = "admin";
+                member.MEMBER_STATUS = "A";
+                member.MEMBER_SURENAME = "Debug";
+                member.MEMBER_USER = "Debug";
+                DataCommon.Set("DATA.MEMBER", member);
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+#else
                 Member member = new MemberDAL().GetMember(txtUser.Text, txtPass.Password);
                 if (member != null)
                 {
@@ -44,6 +56,9 @@ namespace IBSC.WindowApp
                 {
                     Alert.Visibility = Visibility.Visible;
                 }
+#endif
+
+
             }
             catch (Exception ex)
             {

@@ -76,7 +76,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Popup\PopupUser.xaml">
+    <Page Include="Popup\PopupChangePassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -88,8 +88,8 @@
     <Compile Include="Panel\MemberPage.xaml.cs">
       <DependentUpon>MemberPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Popup\PopupUser.xaml.cs">
-      <DependentUpon>PopupUser.xaml</DependentUpon>
+    <Compile Include="Popup\PopupChangePassword.xaml.cs">
+      <DependentUpon>PopupChangePassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -139,6 +139,9 @@
       <Project>{9365fd6f-b932-4e4f-8166-b2bda800e630}</Project>
       <Name>IBSC.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

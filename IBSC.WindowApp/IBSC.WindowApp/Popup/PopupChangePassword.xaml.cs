@@ -18,12 +18,12 @@ using System.Windows.Shapes;
 namespace IBSC.WindowApp
 {
     /// <summary>
-    /// Interaction logic for PopupUser.xaml
+    /// Interaction logic for PopupChangePassword.xaml
     /// </summary>
-    public partial class PopupUser : Window
+    public partial class PopupChangePassword : Window
     {
         private Member member;
-        public PopupUser()
+        public PopupChangePassword()
         {
             InitializeComponent();
             member = (Member)DataCommon.Get("DATA.MEMBER");
