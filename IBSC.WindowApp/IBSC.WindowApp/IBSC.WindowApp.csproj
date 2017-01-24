@@ -72,6 +72,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Panel\CheckInsurePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panel\InsureCarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panel\CarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Panel\InsurePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Panel\MemberPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -88,6 +104,18 @@
   <ItemGroup>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\CheckInsurePage.xaml.cs">
+      <DependentUpon>CheckInsurePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\InsureCarPage.xaml.cs">
+      <DependentUpon>InsureCarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\CarPage.xaml.cs">
+      <DependentUpon>CarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Panel\InsurePage.xaml.cs">
+      <DependentUpon>InsurePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Panel\MemberPage.xaml.cs">
       <DependentUpon>MemberPage.xaml</DependentUpon>

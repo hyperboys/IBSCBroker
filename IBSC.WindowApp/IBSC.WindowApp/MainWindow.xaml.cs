@@ -55,29 +55,50 @@ namespace IBSC.WindowApp
             l.Show();
         }
 
-        private void btnMember_Click(object sender, RoutedEventArgs e)
-        {
-            this.pageMember.Visibility = System.Windows.Visibility.Visible;
-        }
-
         private void btnInsureCompany_Click(object sender, RoutedEventArgs e)
         {
+            this.pageCar.Visibility = System.Windows.Visibility.Hidden;
+            this.pageCheckInsure.Visibility = System.Windows.Visibility.Hidden;
+            this.pageInsure.Visibility = System.Windows.Visibility.Visible;
+            this.pageInsureCar.Visibility = System.Windows.Visibility.Hidden;
             this.pageMember.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void btnCar_Click(object sender, RoutedEventArgs e)
         {
+            this.pageCar.Visibility = System.Windows.Visibility.Visible;
+            this.pageCheckInsure.Visibility = System.Windows.Visibility.Hidden;
+            this.pageInsure.Visibility = System.Windows.Visibility.Hidden;
+            this.pageInsureCar.Visibility = System.Windows.Visibility.Hidden;
             this.pageMember.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void btnInsure_Click(object sender, RoutedEventArgs e)
         {
+            this.pageCar.Visibility = System.Windows.Visibility.Hidden;
+            this.pageCheckInsure.Visibility = System.Windows.Visibility.Hidden;
+            this.pageInsure.Visibility = System.Windows.Visibility.Hidden;
+            this.pageInsureCar.Visibility = System.Windows.Visibility.Visible;
             this.pageMember.Visibility = System.Windows.Visibility.Hidden;
         }
 
         private void btnCheck_Click(object sender, RoutedEventArgs e)
         {
+            this.pageCar.Visibility = System.Windows.Visibility.Hidden;
+            this.pageCheckInsure.Visibility = System.Windows.Visibility.Visible;
+            this.pageInsure.Visibility = System.Windows.Visibility.Hidden;
+            this.pageInsureCar.Visibility = System.Windows.Visibility.Hidden;
             this.pageMember.Visibility = System.Windows.Visibility.Hidden;
         }
+
+        private void btnMember_Click(object sender, RoutedEventArgs e)
+        {
+            this.pageCar.Visibility = System.Windows.Visibility.Hidden;
+            this.pageCheckInsure.Visibility = System.Windows.Visibility.Hidden;
+            this.pageInsure.Visibility = System.Windows.Visibility.Hidden;
+            this.pageInsureCar.Visibility = System.Windows.Visibility.Hidden;
+            this.pageMember.Visibility = System.Windows.Visibility.Visible;
+        }
+
     }
 }

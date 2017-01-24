@@ -45,5 +45,17 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="534" Margin="201,129,0,-87" VerticalAlignment="Top" Width="833">
             <myControls:MemberPage x:Name="pageMember" Visibility="Hidden"></myControls:MemberPage>
         </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="534" Margin="201,129,0,-87" VerticalAlignment="Top" Width="833">
+            <myControls:CarPage x:Name="pageCar" Visibility="Hidden"></myControls:CarPage>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="534" Margin="201,129,0,-87" VerticalAlignment="Top" Width="833">
+            <myControls:CheckInsurePage x:Name="pageCheckInsure" Visibility="Hidden"></myControls:CheckInsurePage>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="534" Margin="201,129,0,-87" VerticalAlignment="Top" Width="833">
+            <myControls:InsureCarPage x:Name="pageInsureCar" Visibility="Hidden"></myControls:InsureCarPage>
+        </Border>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="534" Margin="201,129,0,-87" VerticalAlignment="Top" Width="833">
+            <myControls:InsurePage x:Name="pageInsure" Visibility="Hidden"></myControls:InsurePage>
+        </Border>
     </Grid>
 </Window>
