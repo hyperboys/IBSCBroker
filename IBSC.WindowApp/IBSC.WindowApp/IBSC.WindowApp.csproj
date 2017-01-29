@@ -92,6 +92,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Popup\PopupCar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Popup\PopupChangePassword.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +123,9 @@
     </Compile>
     <Compile Include="Panel\MemberPage.xaml.cs">
       <DependentUpon>MemberPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\PopupCar.xaml.cs">
+      <DependentUpon>PopupCar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popup\PopupChangePassword.xaml.cs">
       <DependentUpon>PopupChangePassword.xaml</DependentUpon>

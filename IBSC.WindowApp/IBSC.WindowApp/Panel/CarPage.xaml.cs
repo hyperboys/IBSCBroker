@@ -1,6 +1,7 @@
 ﻿using IBSC.Common;
 using IBSC.DAL;
 using IBSC.Model;
+using IBSC.WindowApp.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -56,8 +57,8 @@ namespace IBSC.WindowApp.Panel
                 string carCode = ((DataRowView)grdCar.SelectedItem).Row.ItemArray[0].ToString();
                 Car carItem = new CarDAL().GetItem(carCode);
                 DataCommon.Set("CAR_EDIT", carItem);
-                //PopupMember pop = new PopupMember();
-                //pop.ShowDialog();
+                PopupCar pop = new PopupCar();
+                pop.ShowDialog();
                 ReloadData();
             }
             catch (Exception ex)
@@ -95,9 +96,10 @@ namespace IBSC.WindowApp.Panel
 
         private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            //PopupMember pop = new PopupMember();
-            //pop.ShowDialog();
-            //ReloadData();
+            DataCommon.Remove("CAR_EDIT");
+            PopupCar pop = new PopupCar();
+            pop.ShowDialog();
+            ReloadData();
         }
     }
 }

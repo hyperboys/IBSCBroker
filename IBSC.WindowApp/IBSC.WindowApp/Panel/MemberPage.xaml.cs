@@ -96,6 +96,7 @@ namespace IBSC.WindowApp.Panel
 
         private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            DataCommon.Remove("MEMBER_EDIT");
             PopupMember pop = new PopupMember();
             pop.ShowDialog();
             ReloadData();
