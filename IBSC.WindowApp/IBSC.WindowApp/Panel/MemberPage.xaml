@@ -43,6 +43,6 @@
         <Label Content="Role" HorizontalAlignment="Left" Margin="388,57,0,0" VerticalAlignment="Top"/>
         <Label Content="สถานะ" HorizontalAlignment="Left" Margin="523,56,0,0" VerticalAlignment="Top"/>
         <Image HorizontalAlignment="Left" Height="42" Margin="680,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/Search.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-        <Image HorizontalAlignment="Left" Height="42" Margin="735,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/add.png" MouseLeftButtonDown="Add_MouseLeftButtonDown"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="735,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/addMember.png" MouseLeftButtonDown="Add_MouseLeftButtonDown"/>
     </Grid>
 </UserControl>

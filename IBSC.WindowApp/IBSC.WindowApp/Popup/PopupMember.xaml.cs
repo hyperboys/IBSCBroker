@@ -26,60 +26,79 @@ namespace IBSC.WindowApp.Popup
         private Member member;
         public PopupMember()
         {
-            InitializeComponent();
-            if (DataCommon.Exists("MEMBER_EDIT"))
+            try
             {
-                member = (Member)DataCommon.Get("MEMBER_EDIT");
-                txtName.Text = member.MEMBER_NAME;
-                txtSureName.Text = member.MEMBER_SURENAME;
-                txtUser.Text = member.MEMBER_USER;
-                cbbRole.SelectedIndex = member.MEMBER_ROLE.ToUpper() == "ADMIN" ? 1 : 2;
-                cbbStatus.SelectedIndex = member.MEMBER_STATUS == "A" ? 0 : 1;
+                InitializeComponent();
+                if (DataCommon.Exists("MEMBER_EDIT"))
+                {
+                    member = (Member)DataCommon.Get("MEMBER_EDIT");
+                    txtName.Text = member.MEMBER_NAME;
+                    txtSureName.Text = member.MEMBER_SURENAME;
+                    txtUser.Text = member.MEMBER_USER;
+                    cbbRole.SelectedIndex = member.MEMBER_ROLE.ToUpper() == "ADMIN" ? 1 : 2;
+                    cbbStatus.SelectedIndex = member.MEMBER_STATUS == "A" ? 0 : 1;
+                }
+                else
+                {
+                    txtUser.IsEnabled = true;
+                }
             }
-            else 
+            catch (Exception ex)
             {
-                txtUser.IsEnabled = true;
+                MessageBox.Show(ex.ToString());
             }
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            bool complete = false;
-            MemberDAL dal = new MemberDAL();
-            if (DataCommon.Exists("MEMBER_EDIT"))
+            try
             {
-                member = (Member)DataCommon.Get("MEMBER_EDIT");
-                member.MEMBER_NAME = txtName.Text;
-                member.MEMBER_ROLE = cbbRole.Text.ToLower();
-                member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
-                member.MEMBER_SURENAME = txtSureName.Text;
-                dal.UpdateMember(member);
-                DataCommon.Remove("MEMBER_EDIT");
-                complete = true;
-            }
-            else
-            {
-                if (dal.GetMember(txtUser.Text) == null)
+                bool complete = false;
+                MemberDAL dal = new MemberDAL();
+                if (cbbRole.Text.Equals("กรุณาเลือก"))
                 {
-                    member = new Member();
+                    MessageBox.Show("กรุณาเลือก Role ก่อนบันทึก");
+                    return;
+                }
+                if (DataCommon.Exists("MEMBER_EDIT"))
+                {
+                    member = (Member)DataCommon.Get("MEMBER_EDIT");
                     member.MEMBER_NAME = txtName.Text;
                     member.MEMBER_ROLE = cbbRole.Text.ToLower();
                     member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
                     member.MEMBER_SURENAME = txtSureName.Text;
-                    member.MEMBER_PASSWORD = txtUser.Text;
-                    member.MEMBER_USER = txtUser.Text;
-                    new MemberDAL().InsertMember(member);
+                    dal.UpdateMember(member);
+                    DataCommon.Remove("MEMBER_EDIT");
                     complete = true;
                 }
                 else
                 {
-                    MessageBox.Show("Username นี้ซ้ำในระบบ กรุณาเปลี่ยน Username");
+                    if (dal.GetMember(txtUser.Text) == null)
+                    {
+                        member = new Member();
+                        member.MEMBER_NAME = txtName.Text;
+                        member.MEMBER_ROLE = cbbRole.Text.ToLower();
+                        member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
+                        member.MEMBER_SURENAME = txtSureName.Text;
+                        member.MEMBER_PASSWORD = txtUser.Text;
+                        member.MEMBER_USER = txtUser.Text;
+                        new MemberDAL().InsertMember(member);
+                        complete = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username นี้ซ้ำในระบบ กรุณาเปลี่ยน Username");
+                    }
+                }
+                if (complete)
+                {
+                    MessageBox.Show("บันทึกข้อมูลสำเร็จ");
+                    this.Close();
                 }
             }
-            if (complete) 
+            catch (Exception ex)
             {
-                MessageBox.Show("บันทึกข้อมูลสำเร็จ");
-                this.Close();
+                MessageBox.Show(ex.ToString());
             }
         }
     }

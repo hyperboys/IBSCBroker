@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CarDAL.cs" />
     <Compile Include="DBbase.cs" />
     <Compile Include="MemberDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
