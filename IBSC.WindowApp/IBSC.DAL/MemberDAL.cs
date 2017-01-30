@@ -35,7 +35,7 @@ namespace IBSC.DAL
             }
         }
 
-        public Member GetMember(string user)
+        public MemberData GetMember(string user)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace IBSC.DAL
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    Member member = new Member();
+                    MemberData member = new MemberData();
                     member.MEMBER_NAME = reader.GetString("MEMBER_NAME");
                     member.MEMBER_SURENAME = reader.GetString("MEMBER_SURENAME");
                     member.MEMBER_USER = reader.GetString("MEMBER_USER");
@@ -66,7 +66,7 @@ namespace IBSC.DAL
             }
         }
 
-        public Member GetMember(string user, string pass)
+        public MemberData GetMember(string user, string pass)
         {
             try
             {
@@ -76,7 +76,7 @@ namespace IBSC.DAL
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
-                    Member member = new Member();
+                    MemberData member = new MemberData();
                     member.MEMBER_NAME = reader.GetString("MEMBER_NAME");
                     member.MEMBER_SURENAME = reader.GetString("MEMBER_SURENAME");
                     member.MEMBER_USER = reader.GetString("MEMBER_USER");
@@ -97,11 +97,11 @@ namespace IBSC.DAL
             }
         }
 
-        public void InsertMember(Member item)
+        public void InsertMember(MemberData item)
         {
             try
             {
-                Member member = (Member)DataCommon.Get("DATA.MEMBER");
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
 
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
@@ -128,11 +128,11 @@ namespace IBSC.DAL
             }
         }
 
-        public void UpdateMember(Member item)
+        public void UpdateMember(MemberData item)
         {
             try
             {
-                Member member = (Member)DataCommon.Get("DATA.MEMBER");
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
                 sql.Append("UPDATE MW_MEMBER SET MEMBER_NAME = '" + item.MEMBER_NAME + "',");

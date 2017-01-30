@@ -22,7 +22,7 @@ namespace IBSC.WindowApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Member member;
+        private MemberData member;
         public MainWindow()
         {
             try
@@ -33,7 +33,7 @@ namespace IBSC.WindowApp
                     this.dateText.Content = DateTime.Now.ToString("HH:mm:ss");
                 }, this.Dispatcher);
 
-                member = (Member)DataCommon.Get("DATA.MEMBER");
+                member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 lblName.Content = member.MEMBER_NAME + " " + member.MEMBER_SURENAME;
                 lblUsername.Content = member.MEMBER_USER;
 

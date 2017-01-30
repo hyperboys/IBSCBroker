@@ -22,11 +22,11 @@ namespace IBSC.WindowApp
     /// </summary>
     public partial class PopupChangePassword : Window
     {
-        private Member member;
+        private MemberData member;
         public PopupChangePassword()
         {
             InitializeComponent();
-            member = (Member)DataCommon.Get("DATA.MEMBER");
+            member = (MemberData)DataCommon.Get("DATA.MEMBER");
             lblUsername.Content = member.MEMBER_USER;
         }
 

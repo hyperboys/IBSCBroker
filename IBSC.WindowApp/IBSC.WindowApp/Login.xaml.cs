@@ -33,7 +33,7 @@ namespace IBSC.WindowApp
             try
             {
 #if DEBUG
-                Member member = new Member();
+                MemberData member = new MemberData();
                 member.MEMBER_NAME = "Debug";
                 member.MEMBER_ROLE = "admin";
                 member.MEMBER_STATUS = "A";

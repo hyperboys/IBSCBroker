@@ -55,7 +55,7 @@ namespace IBSC.WindowApp.Panel
             {
                 int index = grdCar.SelectedIndex;
                 string carCode = ((DataRowView)grdCar.SelectedItem).Row.ItemArray[0].ToString();
-                Car carItem = new CarDAL().GetItem(carCode);
+                CarData carItem = new CarDAL().GetItem(carCode);
                 DataCommon.Set("CAR_EDIT", carItem);
                 PopupCar pop = new PopupCar();
                 pop.ShowDialog();

@@ -92,6 +92,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Popup\PopupCompanyInsure.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Popup\PopupCar.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -123,6 +127,9 @@
     </Compile>
     <Compile Include="Panel\MemberPage.xaml.cs">
       <DependentUpon>MemberPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\PopupCompanyInsure.xaml.cs">
+      <DependentUpon>PopupCompanyInsure.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popup\PopupCar.xaml.cs">
       <DependentUpon>PopupCar.xaml</DependentUpon>
@@ -190,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\addCarInsure.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\AddCompany.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

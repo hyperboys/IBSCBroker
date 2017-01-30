@@ -23,7 +23,7 @@ namespace IBSC.WindowApp.Popup
     /// </summary>
     public partial class PopupCar : Window
     {
-        private Car item;
+        private CarData item;
         public PopupCar()
         {
             try
@@ -31,7 +31,7 @@ namespace IBSC.WindowApp.Popup
                 InitializeComponent();
                 if (DataCommon.Exists("CAR_EDIT"))
                 {
-                    item = (Car)DataCommon.Get("CAR_EDIT");
+                    item = (CarData)DataCommon.Get("CAR_EDIT");
                     txtCarCode.Text = item.CAR_CODE;
                     txtCarName.Text = item.CAR_NAME;
                     txtCarModel.Text = item.CAR_MODEL;
@@ -58,9 +58,9 @@ namespace IBSC.WindowApp.Popup
                 CarDAL dal = new CarDAL();
                 if (DataCommon.Exists("CAR_EDIT"))
                 {
-                    item = (Car)DataCommon.Get("CAR_EDIT");
+                    item = (CarData)DataCommon.Get("CAR_EDIT");
 
-                    Car newItem = new Car();
+                    CarData newItem = new CarData();
                     newItem.CAR_CODE = txtCarCode.Text;
                     newItem.CAR_ENGINE = txtCarEngine.Text;
                     newItem.CAR_MODEL = txtCarModel.Text;
@@ -76,7 +76,7 @@ namespace IBSC.WindowApp.Popup
                 {
                     if (dal.GetItem(txtCarCode.Text) == null)
                     {
-                        item = new Car();
+                        item = new CarData();
                         item.CAR_CODE = txtCarCode.Text;
                         item.CAR_ENGINE = txtCarEngine.Text;
                         item.CAR_MODEL = txtCarModel.Text;

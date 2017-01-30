@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IBSC.Model
 {
-    public class Member
+    public class MemberData
     {
         private string _memberUser;
         public string MEMBER_USER

@@ -23,7 +23,7 @@ namespace IBSC.WindowApp.Popup
     /// </summary>
     public partial class PopupMember : Window
     {
-        private Member member;
+        private MemberData member;
         public PopupMember()
         {
             try
@@ -31,7 +31,7 @@ namespace IBSC.WindowApp.Popup
                 InitializeComponent();
                 if (DataCommon.Exists("MEMBER_EDIT"))
                 {
-                    member = (Member)DataCommon.Get("MEMBER_EDIT");
+                    member = (MemberData)DataCommon.Get("MEMBER_EDIT");
                     txtName.Text = member.MEMBER_NAME;
                     txtSureName.Text = member.MEMBER_SURENAME;
                     txtUser.Text = member.MEMBER_USER;
@@ -62,7 +62,7 @@ namespace IBSC.WindowApp.Popup
                 }
                 if (DataCommon.Exists("MEMBER_EDIT"))
                 {
-                    member = (Member)DataCommon.Get("MEMBER_EDIT");
+                    member = (MemberData)DataCommon.Get("MEMBER_EDIT");
                     member.MEMBER_NAME = txtName.Text;
                     member.MEMBER_ROLE = cbbRole.Text.ToLower();
                     member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
@@ -75,7 +75,7 @@ namespace IBSC.WindowApp.Popup
                 {
                     if (dal.GetMember(txtUser.Text) == null)
                     {
-                        member = new Member();
+                        member = new MemberData();
                         member.MEMBER_NAME = txtName.Text;
                         member.MEMBER_ROLE = cbbRole.Text.ToLower();
                         member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";

@@ -55,7 +55,7 @@ namespace IBSC.WindowApp.Panel
             {
                 int index = grdMember.SelectedIndex;
                 string user = ((DataRowView)grdMember.SelectedItem).Row.ItemArray[2].ToString();
-                Member member = new MemberDAL().GetMember(user);
+                MemberData member = new MemberDAL().GetMember(user);
                 DataCommon.Set("MEMBER_EDIT", member);
                 PopupMember pop = new PopupMember();
                 pop.ShowDialog();
