@@ -6,48 +6,223 @@ using System.Threading.Tasks;
 
 namespace IBSC.Model
 {
-    public class InsureCompanyData
+    public class InsureCarData
     {
         private string _item1;
-        public string COMPANAY_CODE
+        public string INSURE_CAR_CODE
         {
             get { return _item1; }
             set { _item1 = value; }
         }
 
         private string _item2;
-        public string COMPANY_FULLNAME
+        public string COMPANY_CODE
         {
             get { return _item2; }
             set { _item2 = value; }
         }
 
         private string _item3;
-        public string COMPANY_SHORTNAME
+        public string PACKAGE_NAME
         {
             get { return _item3; }
             set { _item3 = value; }
         }
 
         private string _item4;
-        public string COMPANY_PATH_PIC
+        public string CAR_CODE
         {
             get { return _item4; }
             set { _item4 = value; }
         }
 
         private string _item5;
-        public string COMPANY_REMARK
+        public string CAR_NAME
         {
             get { return _item5; }
             set { _item5 = value; }
         }
 
         private string _item6;
-        public string COMPANY_STATUS
+        public string CAR_MODEL
         {
             get { return _item6; }
             set { _item6 = value; }
+        }
+
+        private string _item7;
+        public string CAR_ENGINE
+        {
+            get { return _item7; }
+            set { _item7 = value; }
+        }
+
+        private string _item8;
+        public string INSURE_CATEGORY
+        {
+            get { return _item8; }
+            set { _item8 = value; }
+        }
+
+        private string _item9;
+        public string INSURE_TYPE_REPAIR
+        {
+            get { return _item9; }
+            set { _item9 = value; }
+        }
+
+        private string _item10;
+        public string LIVE_COVERAGE_PEOPLE
+        {
+            get { return _item10; }
+            set { _item10 = value; }
+        }
+
+        private string _item11;
+        public string LIVE_COVERAGE_TIME
+        {
+            get { return _item11; }
+            set { _item11 = value; }
+        }
+
+        private string _item12;
+        public string ASSET_TIME
+        {
+            get { return _item12; }
+            set { _item12 = value; }
+        }
+
+        private string _item13;
+        public string DAMAGE_TO_VEHICLE
+        {
+            get { return _item13; }
+            set { _item13 = value; }
+        }
+
+        private string _item14;
+        public string MISSING_FIRE_CAR
+        {
+            get { return _item14; }
+            set { _item14 = value; }
+        }
+
+        private string _item15;
+        public string FIRST_DAMAGE_PRICE
+        {
+            get { return _item15; }
+            set { _item15 = value; }
+        }
+
+        private string _item16;
+        public string PERSONAL_ACCIDENT_AMT
+        {
+            get { return _item16; }
+            set { _item16 = value; }
+        }
+
+        private string _item17;
+        public string PERSONAL_ACCIDENT_PEOPLE
+        {
+            get { return _item17; }
+            set { _item17 = value; }
+        }
+
+        private string _item18;
+        public string MEDICAL_FEE_AMT
+        {
+            get { return _item18; }
+            set { _item18 = value; }
+        }
+
+        private string _item19;
+        public string MEDICAL_FEE_PEOPLE
+        {
+            get { return _item19; }
+            set { _item19 = value; }
+        }
+
+        private string _item20;
+        public string DRIVER_INSURANCE_AMT
+        {
+            get { return _item20; }
+            set { _item20 = value; }
+        }
+
+        private string _item21;
+        public string NET_PRICE
+        {
+            get { return _item21; }
+            set { _item21 = value; }
+        }
+
+        private string _item22;
+        public string TOTAL_PRICE
+        {
+            get { return _item22; }
+            set { _item22 = value; }
+        }
+
+        private string _item23;
+        public string PRICE_ROUND
+        {
+            get { return _item23; }
+            set { _item23 = value; }
+        }
+
+        private string _item24;
+        public string EFFECTIVE_DATE
+        {
+            get { return _item24; }
+            set { _item24 = value; }
+        }
+
+        private string _item25;
+        public string EXPIRE_DATE
+        {
+            get { return _item25; }
+            set { _item25 = value; }
+        }
+
+        private string _item26;
+        public string CONFIDENTIAL_STATUS
+        {
+            get { return _item26; }
+            set { _item26 = value; }
+        }
+
+        private string _item27;
+        public string CREATE_DATE
+        {
+            get { return _item27; }
+            set { _item27 = value; }
+        }
+
+        private string _item28;
+        public string CREATE_USER
+        {
+            get { return _item28; }
+            set { _item28 = value; }
+        }
+
+        private string _item29;
+        public string UPDATE_DATE
+        {
+            get { return _item29; }
+            set { _item29 = value; }
+        }
+
+        private string _item30;
+        public string UPDATE_USER
+        {
+            get { return _item30; }
+            set { _item30 = value; }
+        }
+
+        private string _item31;
+        public string INSURE_CAR_STATUS
+        {
+            get { return _item31; }
+            set { _item31 = value; }
         }
     }
 }
