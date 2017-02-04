@@ -29,102 +29,81 @@ namespace IBSC.Model
             set { _item3 = value; }
         }
 
-        private string _item4;
-        public string CAR_CODE
+        private int _item4;
+        public int CAR_ID
         {
             get { return _item4; }
             set { _item4 = value; }
         }
 
         private string _item5;
-        public string CAR_NAME
+        public string INSURE_CATEGORY
         {
             get { return _item5; }
             set { _item5 = value; }
         }
 
         private string _item6;
-        public string CAR_MODEL
+        public string INSURE_TYPE_REPAIR
         {
             get { return _item6; }
             set { _item6 = value; }
         }
 
-        private string _item7;
-        public string CAR_ENGINE
+        private decimal _item7;
+        public decimal LIVE_COVERAGE_PEOPLE
         {
             get { return _item7; }
             set { _item7 = value; }
         }
 
-        private string _item8;
-        public string INSURE_CATEGORY
+        private decimal _item8;
+        public decimal LIVE_COVERAGE_TIME
         {
             get { return _item8; }
             set { _item8 = value; }
         }
 
-        private string _item9;
-        public string INSURE_TYPE_REPAIR
+        private decimal _item9;
+        public decimal ASSET_TIME
         {
             get { return _item9; }
             set { _item9 = value; }
         }
 
         private decimal _item10;
-        public decimal LIVE_COVERAGE_PEOPLE
+        public decimal DAMAGE_TO_VEHICLE
         {
             get { return _item10; }
             set { _item10 = value; }
         }
 
         private decimal _item11;
-        public decimal LIVE_COVERAGE_TIME
+        public decimal MISSING_FIRE_CAR
         {
             get { return _item11; }
             set { _item11 = value; }
         }
 
         private decimal _item12;
-        public decimal ASSET_TIME
+        public decimal FIRST_DAMAGE_PRICE
         {
             get { return _item12; }
             set { _item12 = value; }
         }
 
         private decimal _item13;
-        public decimal DAMAGE_TO_VEHICLE
+        public decimal PERSONAL_ACCIDENT_AMT
         {
             get { return _item13; }
             set { _item13 = value; }
         }
 
-        private decimal _item14;
-        public decimal MISSING_FIRE_CAR
+        private int _item14;
+        public int PERSONAL_ACCIDENT_PEOPLE
         {
             get { return _item14; }
             set { _item14 = value; }
-        }
-
-        private decimal _item15;
-        public decimal FIRST_DAMAGE_PRICE
-        {
-            get { return _item15; }
-            set { _item15 = value; }
-        }
-
-        private decimal _item16;
-        public decimal PERSONAL_ACCIDENT_AMT
-        {
-            get { return _item16; }
-            set { _item16 = value; }
-        }
-
-        private int _item17;
-        public int PERSONAL_ACCIDENT_PEOPLE
-        {
-            get { return _item17; }
-            set { _item17 = value; }
         }
 
         private decimal _item18;
