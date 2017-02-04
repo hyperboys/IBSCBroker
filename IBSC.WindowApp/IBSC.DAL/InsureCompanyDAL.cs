@@ -17,7 +17,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT COMPANAY_CODE,COMPANY_FULLNAME,COMPANY_PATH_PIC,COMPANY_REMARK,COMPANY_SHORTNAME,COMPANY_STATUS FROM MW_INSURE_COMPANY WHERE COMPANAY_CODE = '" + code + "'";
+                string sql = "SELECT COMPANAY_CODE,COMPANY_FULLNAME,COMPANY_PATH_PIC,COMPANY_REMARK,COMPANY_SHORTNAME,COMPANY_STATUS FROM MA_INSURE_COMPANY WHERE COMPANAY_CODE = '" + code + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -51,7 +51,7 @@ namespace IBSC.DAL
 
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
-                sql.Append("INSERT INTO MW_INSURE_COMPANY (COMPANAY_CODE,COMPANY_FULLNAME,COMPANY_PATH_PIC,COMPANY_REMARK,COMPANY_SHORTNAME,COMPANY_STATUS,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER) VALUES (");
+                sql.Append("INSERT INTO MA_INSURE_COMPANY (COMPANAY_CODE,COMPANY_FULLNAME,COMPANY_PATH_PIC,COMPANY_REMARK,COMPANY_SHORTNAME,COMPANY_STATUS,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER) VALUES (");
                 sql.Append(" '" + item.COMPANAY_CODE + "',");
                 sql.Append(" '" + item.COMPANY_FULLNAME + "',");
                 sql.Append(" '" + item.COMPANY_PATH_PIC + "',");
@@ -79,7 +79,7 @@ namespace IBSC.DAL
                 MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
-                sql.Append("UPDATE MW_INSURE_COMPANY SET COMPANAY_CODE = '" + item.COMPANAY_CODE + "',");
+                sql.Append("UPDATE MA_INSURE_COMPANY SET COMPANAY_CODE = '" + item.COMPANAY_CODE + "',");
                 sql.Append(" COMPANY_FULLNAME = '" + item.COMPANY_FULLNAME + "',");
                 sql.Append(" COMPANY_PATH_PIC = '" + item.COMPANY_PATH_PIC + "',");
                 sql.Append(" COMPANY_REMARK = '" + item.COMPANY_REMARK + "',");
@@ -102,7 +102,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT COMPANAY_CODE,COMPANY_FULLNAME,COMPANY_STATUS FROM MW_INSURE_COMPANY ORDER BY COMPANAY_CODE";
+                string sql = "SELECT COMPANAY_CODE,COMPANY_FULLNAME,COMPANY_STATUS FROM MA_INSURE_COMPANY ORDER BY COMPANAY_CODE";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();

@@ -40,8 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarData.cs" />
-    <Compile Include="InsureCarData.cs" />
     <Compile Include="InsureCompanyData.cs" />
+    <Compile Include="InsureCarData.cs" />
     <Compile Include="MemberData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

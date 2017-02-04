@@ -43,11 +43,11 @@ namespace IBSC.Model
             set { _memberStatus = value; }
         }
 
-        private string _memberRole;
-        public string MEMBER_ROLE
+        private string _roleCode;
+        public string ROLE_CODE
         {
-            get { return _memberRole; }
-            set { _memberRole = value; }
+            get { return _roleCode; }
+            set { _roleCode = value; }
         }
     }
 }

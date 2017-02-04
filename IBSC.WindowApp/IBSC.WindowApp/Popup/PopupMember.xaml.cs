@@ -35,7 +35,7 @@ namespace IBSC.WindowApp.Popup
                     txtName.Text = member.MEMBER_NAME;
                     txtSureName.Text = member.MEMBER_SURENAME;
                     txtUser.Text = member.MEMBER_USER;
-                    cbbRole.SelectedIndex = member.MEMBER_ROLE.ToUpper() == "ADMIN" ? 1 : 2;
+                    cbbRole.SelectedIndex = member.ROLE_CODE.ToUpper() == "ADMIN" ? 1 : 2;
                     cbbStatus.SelectedIndex = member.MEMBER_STATUS == "A" ? 0 : 1;
                 }
                 else
@@ -64,7 +64,7 @@ namespace IBSC.WindowApp.Popup
                 {
                     member = (MemberData)DataCommon.Get("MEMBER_EDIT");
                     member.MEMBER_NAME = txtName.Text;
-                    member.MEMBER_ROLE = cbbRole.Text.ToLower();
+                    member.ROLE_CODE = cbbRole.Text.ToLower();
                     member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
                     member.MEMBER_SURENAME = txtSureName.Text;
                     dal.UpdateMember(member);
@@ -77,7 +77,7 @@ namespace IBSC.WindowApp.Popup
                     {
                         member = new MemberData();
                         member.MEMBER_NAME = txtName.Text;
-                        member.MEMBER_ROLE = cbbRole.Text.ToLower();
+                        member.ROLE_CODE = cbbRole.Text.ToLower();
                         member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
                         member.MEMBER_SURENAME = txtSureName.Text;
                         member.MEMBER_PASSWORD = txtUser.Text;

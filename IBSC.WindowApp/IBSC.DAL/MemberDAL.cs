@@ -17,7 +17,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT * FROM MW_MEMBER WHERE MEMBER_USER = '" + user + "' AND MEMBER_PASSWORD = '" + pass + "'";
+                string sql = "SELECT * FROM MA_MEMBER WHERE MEMBER_USER = '" + user + "' AND MEMBER_PASSWORD = '" + pass + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -40,7 +40,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS,MEMBER_ROLE FROM MW_MEMBER WHERE MEMBER_USER = '" + user + "'";
+                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS,ROLE_CODE FROM MA_MEMBER WHERE MEMBER_USER = '" + user + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -51,7 +51,7 @@ namespace IBSC.DAL
                     member.MEMBER_USER = reader.GetString("MEMBER_USER");
                     member.MEMBER_PASSWORD = reader.GetString("MEMBER_PASSWORD");
                     member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
-                    member.MEMBER_ROLE = reader.GetString("MEMBER_ROLE");
+                    member.ROLE_CODE = reader.GetString("ROLE_CODE");
                     reader.Close();
                     return member;
                 }
@@ -71,7 +71,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS,MEMBER_ROLE FROM MW_MEMBER WHERE MEMBER_USER = '" + user + "' AND MEMBER_PASSWORD = '" + pass + "'";
+                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS,ROLE_CODE FROM MA_MEMBER WHERE MEMBER_USER = '" + user + "' AND MEMBER_PASSWORD = '" + pass + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -82,7 +82,7 @@ namespace IBSC.DAL
                     member.MEMBER_USER = reader.GetString("MEMBER_USER");
                     member.MEMBER_PASSWORD = reader.GetString("MEMBER_PASSWORD");
                     member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
-                    member.MEMBER_ROLE = reader.GetString("MEMBER_ROLE");
+                    member.ROLE_CODE = reader.GetString("ROLE_CODE");
                     reader.Close();
                     return member;
                 }
@@ -105,13 +105,13 @@ namespace IBSC.DAL
 
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
-                sql.Append("INSERT INTO MW_MEMBER (MEMBER_USER,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_SURENAME,MEMBER_STATUS,MEMBER_ROLE,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER) VALUES (");
+                sql.Append("INSERT INTO MA_MEMBER (MEMBER_USER,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_SURENAME,MEMBER_STATUS,ROLE_CODE,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER) VALUES (");
                 sql.Append(" '" + item.MEMBER_USER + "',");
                 sql.Append(" '" + item.MEMBER_PASSWORD + "',");
                 sql.Append(" '" + item.MEMBER_NAME + "',");
                 sql.Append(" '" + item.MEMBER_SURENAME + "',");
                 sql.Append(" '" + item.MEMBER_STATUS + "',");
-                sql.Append(" '" + item.MEMBER_ROLE + "',");
+                sql.Append(" '" + item.ROLE_CODE + "',");
 
                 sql.Append(" '" + DateTime.Now + "',");
                 sql.Append(" '" + member.MEMBER_USER + "',");
@@ -135,11 +135,11 @@ namespace IBSC.DAL
                 MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
-                sql.Append("UPDATE MW_MEMBER SET MEMBER_NAME = '" + item.MEMBER_NAME + "',");
+                sql.Append("UPDATE MA_MEMBER SET MEMBER_NAME = '" + item.MEMBER_NAME + "',");
                 sql.Append(" MEMBER_SURENAME = '" + item.MEMBER_SURENAME + "',");
                 sql.Append(" MEMBER_USER = '" + item.MEMBER_USER + "',");
                 sql.Append(" MEMBER_PASSWORD = '" + item.MEMBER_PASSWORD + "',");
-                sql.Append(" MEMBER_ROLE = '" + item.MEMBER_ROLE + "',");
+                sql.Append(" ROLE_CODE = '" + item.ROLE_CODE + "',");
                 sql.Append(" MEMBER_STATUS = '" + item.MEMBER_STATUS + "',");
                 sql.Append(" UPDATE_DATE = '" + DateTime.Now + "',");
                 sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
@@ -158,7 +158,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_STATUS,MEMBER_ROLE FROM MW_MEMBER ORDER BY MEMBER_USER";
+                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_STATUS,MEMBER_ROLE FROM MA_MEMBER ORDER BY MEMBER_USER";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();

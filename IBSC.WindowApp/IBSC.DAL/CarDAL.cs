@@ -17,7 +17,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_REMARK,CAR_STATUS FROM MW_CAR WHERE CAR_CODE = '" + carCode + "'";
+                string sql = "SELECT CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_REMARK,CAR_STATUS FROM MA_CAR WHERE CAR_CODE = '" + carCode + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
@@ -51,7 +51,7 @@ namespace IBSC.DAL
 
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
-                sql.Append("INSERT INTO MW_CAR (CAR_CODE,CAR_ENGINE,CAR_MODEL,CAR_NAME,CAR_REMARK,CAR_STATUS,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER) VALUES (");
+                sql.Append("INSERT INTO MA_CAR (CAR_CODE,CAR_ENGINE,CAR_MODEL,CAR_NAME,CAR_REMARK,CAR_STATUS,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER) VALUES (");
                 sql.Append(" '" + item.CAR_CODE + "',");
                 sql.Append(" '" + item.CAR_ENGINE + "',");
                 sql.Append(" '" + item.CAR_MODEL + "',");
@@ -79,7 +79,7 @@ namespace IBSC.DAL
                 MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
-                sql.Append("UPDATE MW_CAR SET CAR_CODE = '" + newItem.CAR_CODE + "',");
+                sql.Append("UPDATE MA_CAR SET CAR_CODE = '" + newItem.CAR_CODE + "',");
                 sql.Append(" CAR_ENGINE = '" + newItem.CAR_ENGINE + "',");
                 sql.Append(" CAR_MODEL = '" + newItem.CAR_MODEL + "',");
                 sql.Append(" CAR_NAME = '" + newItem.CAR_NAME + "',");
@@ -105,7 +105,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_STATUS FROM MW_CAR ORDER BY CAR_CODE";
+                string sql = "SELECT CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_STATUS FROM MA_CAR ORDER BY CAR_CODE";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();
