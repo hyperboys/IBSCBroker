@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CarDAL.cs" />
+    <Compile Include="InsureCarDAL.cs" />
     <Compile Include="InsureCompanyDAL.cs" />
     <Compile Include="DBbase.cs" />
     <Compile Include="MemberDAL.cs" />

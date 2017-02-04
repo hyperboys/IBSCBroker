@@ -17,7 +17,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding COMPANAY_CODE}" MinWidth="150" Header="รหัสบริษัทประกันภัย"/>
+                <DataGridTextColumn Binding="{Binding COMPANY_CODE}" MinWidth="150" Header="รหัสบริษัทประกันภัย"/>
                 <DataGridTextColumn Binding="{Binding COMPANY_FULLNAME}" MinWidth="350" Header="ชื่อบริษัทประกันภัย"/>
                 <DataGridTextColumn Binding="{Binding COMPANY_STATUS}" MinWidth="50" Header="สถานะ"/>
             </DataGrid.Columns>

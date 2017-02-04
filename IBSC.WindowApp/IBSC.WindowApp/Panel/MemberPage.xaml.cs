@@ -75,7 +75,7 @@ namespace IBSC.WindowApp.Panel
                 var results = (from myRow in listMember.AsEnumerable()
                                where myRow.Field<string>("MEMBER_NAME").ToUpper().Contains(txtName.Text.ToUpper())
                                && myRow.Field<string>("MEMBER_SURENAME").ToUpper().Contains(txtSureName.Text.ToUpper())
-                               && (cbbRole.Text == "กรุณาเลือก" ? true : myRow.Field<string>("MEMBER_ROLE").ToUpper().Contains(cbbRole.Text.ToUpper()))
+                               && (cbbRole.Text == "กรุณาเลือก" ? true : myRow.Field<string>("ROLE_CODE").ToUpper().Contains(cbbRole.Text.ToUpper()))
                                && myRow.Field<string>("MEMBER_STATUS").ToUpper() == (cbbStatus.Text == "ใช้งาน" ? "A" : "I")
                                select myRow);
                 if (results.Count() > 0)

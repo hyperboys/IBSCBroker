@@ -32,7 +32,7 @@ namespace IBSC.WindowApp.Popup
                 if (DataCommon.Exists("COMPANY_EDIT"))
                 {
                     item = (InsureCompanyData)DataCommon.Get("COMPANY_EDIT");
-                    txtCompantCode.Text = item.COMPANAY_CODE;
+                    txtCompantCode.Text = item.COMPANY_CODE;
                     txtCompantFullName.Text = item.COMPANY_FULLNAME;
                     txtPicPath.Text = item.COMPANY_PATH_PIC;
                     txtRemark.Text = item.COMPANY_REMARK;
@@ -59,7 +59,7 @@ namespace IBSC.WindowApp.Popup
                 if (DataCommon.Exists("COMPANY_EDIT"))
                 {
                     item = (InsureCompanyData)DataCommon.Get("COMPANY_EDIT");
-                    item.COMPANAY_CODE = txtCompantCode.Text;
+                    item.COMPANY_CODE = txtCompantCode.Text;
                     item.COMPANY_FULLNAME = txtCompantFullName.Text;
                     item.COMPANY_PATH_PIC = txtPicPath.Text;
                     item.COMPANY_REMARK = txtRemark.Text;
@@ -75,7 +75,7 @@ namespace IBSC.WindowApp.Popup
                     if (dal.GetItem(txtCompantCode.Text) == null)
                     {
                         item = new InsureCompanyData();
-                        item.COMPANAY_CODE = txtCompantCode.Text;
+                        item.COMPANY_CODE = txtCompantCode.Text;
                         item.COMPANY_FULLNAME = txtCompantFullName.Text;
                         item.COMPANY_PATH_PIC = txtPicPath.Text;
                         item.COMPANY_REMARK = txtRemark.Text;

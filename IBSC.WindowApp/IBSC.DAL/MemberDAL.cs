@@ -158,7 +158,7 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_STATUS,MEMBER_ROLE FROM MA_MEMBER ORDER BY MEMBER_USER";
+                string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_STATUS,ROLE_CODE FROM MA_MEMBER ORDER BY MEMBER_USER";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();

@@ -1,5 +1,8 @@
-﻿using System;
+﻿using IBSC.Common;
+using IBSC.DAL;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +28,25 @@ namespace IBSC.WindowApp.Panel
             InitializeComponent();
         }
 
+        private void grdInsure_Loaded(object sender, RoutedEventArgs e)
+        {
+            ReloadData();
+        }
+
+        private void ReloadData()
+        {
+            try
+            {
+                DataTable listMember = new InsureCarDAL().GetAll();
+                grdInsure.ItemsSource = listMember.DefaultView;
+                DataCommon.Set("LIST_INSURE_CAR", listMember);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
@@ -35,10 +57,6 @@ namespace IBSC.WindowApp.Panel
 
         }
 
-        private void grdInsure_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

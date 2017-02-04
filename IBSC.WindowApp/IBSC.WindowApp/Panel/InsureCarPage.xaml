@@ -6,8 +6,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="534" d:DesignWidth="833">
     <Grid>
-        <DataGrid x:Name="grdInsure" HorizontalAlignment="Left" Margin="56,108,0,0" VerticalAlignment="Top" Height="367" Width="720"
-    		IsReadOnly="True" CanUserResizeColumns="False" CanUserResizeRows="False" CanUserReorderColumns="False"
+        <DataGrid x:Name="grdInsure" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="367" Width="813"
+    		IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="False"
     		AutoGenerateColumns="False" Loaded="grdInsure_Loaded">
             <DataGrid.Columns>
                 <DataGridTemplateColumn>
@@ -17,9 +17,15 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding COMPANAY_CODE}" MinWidth="150" Header="รหัสบริษัทประกันภัย"/>
-                <DataGridTextColumn Binding="{Binding COMPANY_FULLNAME}" MinWidth="350" Header="ชื่อบริษัทประกันภัย"/>
-                <DataGridTextColumn Binding="{Binding COMPANY_STATUS}" MinWidth="50" Header="สถานะ"/>
+                <DataGridTextColumn Binding="{Binding CAR_YEAR}" Header="ปี"/>
+                <DataGridTextColumn Binding="{Binding CAR_NAME}" Header="ยี่ห้อรถยนต์"/>
+                <DataGridTextColumn Binding="{Binding CAR_MODEL}" Header="รุ่นรถยนต์"/>
+                <DataGridTextColumn Binding="{Binding CAR_ENGINE}" Header="เครื่องยนต์"/>
+                <DataGridTextColumn Binding="{Binding COMPANY_FULLNAME}" Header="บริษัท"/>
+                <DataGridTextColumn Binding="{Binding PACKAGE_NAME}" Header="แพคเกจ"/>
+                <DataGridTextColumn Binding="{Binding INSURE_TYPE_REPAIR}"  Header="ซ่อม"/>
+                <DataGridTextColumn Binding="{Binding CAPITAL_INSURANCE}" Header="ทุนประกันภัย"/>
+                <DataGridTextColumn Binding="{Binding PRICE_ROUND}" Header="ราคา"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="txtCompanyCode" HorizontalAlignment="Left" Height="23" Margin="159,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"/>

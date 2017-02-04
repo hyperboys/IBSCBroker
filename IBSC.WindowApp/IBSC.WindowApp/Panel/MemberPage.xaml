@@ -20,7 +20,7 @@
                 <DataGridTextColumn Binding="{Binding MEMBER_NAME}" MinWidth="100" Header="ชื่อ"/>
                 <DataGridTextColumn Binding="{Binding MEMBER_SURENAME}" MinWidth="100" Header="นามสกุล"/>
                 <DataGridTextColumn Binding="{Binding MEMBER_USER}" MinWidth="100" Header="UserName"/>
-                <DataGridTextColumn Binding="{Binding MEMBER_ROLE}" MinWidth="50" Header="Role"/>
+                <DataGridTextColumn Binding="{Binding ROLE_CODE}" MinWidth="50" Header="Role"/>
                 <DataGridTextColumn Binding="{Binding MEMBER_STATUS}" MinWidth="50" Header="สถานะ"/>
             </DataGrid.Columns>
         </DataGrid>

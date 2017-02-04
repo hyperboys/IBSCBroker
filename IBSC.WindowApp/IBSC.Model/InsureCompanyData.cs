@@ -9,7 +9,7 @@ namespace IBSC.Model
     public class InsureCompanyData
     {
         private string _item1;
-        public string COMPANAY_CODE
+        public string COMPANY_CODE
         {
             get { return _item1; }
             set { _item1 = value; }
