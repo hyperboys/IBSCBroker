@@ -92,6 +92,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Popup\PopupInsureCar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Popup\PopupCompanyInsure.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -127,6 +131,9 @@
     </Compile>
     <Compile Include="Panel\MemberPage.xaml.cs">
       <DependentUpon>MemberPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\PopupInsureCar.xaml.cs">
+      <DependentUpon>PopupInsureCar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Popup\PopupCompanyInsure.xaml.cs">
       <DependentUpon>PopupCompanyInsure.xaml</DependentUpon>
