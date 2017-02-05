@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,12 +24,11 @@ namespace IBSC.WindowApp.Popup
     /// </summary>
     public partial class PopupInsureCar : Window
     {
-        private CarData item;
         public PopupInsureCar()
         {
             try
             {
-                
+                InitializeComponent();
             }
             catch (Exception ex)
             {
@@ -40,12 +40,17 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
-               
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        void NumericTextBoxInput(object sender, TextCompositionEventArgs e)
+        {
+            CommonControl.NumericTextBoxInput(sender, e);
         }
     }
 }

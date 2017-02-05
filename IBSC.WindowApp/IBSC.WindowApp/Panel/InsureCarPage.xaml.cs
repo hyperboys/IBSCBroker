@@ -1,5 +1,6 @@
 ﻿using IBSC.Common;
 using IBSC.DAL;
+using IBSC.WindowApp.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -49,7 +50,9 @@ namespace IBSC.WindowApp.Panel
 
         private void Add_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            PopupInsureCar popup = new PopupInsureCar();
+            popup.ShowDialog();
+            ReloadData();
         }
 
         private void Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

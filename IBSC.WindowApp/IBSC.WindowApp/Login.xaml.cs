@@ -83,12 +83,12 @@ namespace IBSC.WindowApp
 
         private void txtUser_KeyUp(object sender, KeyEventArgs e)
         {
-            FocusAdvancement.KeyUp(sender, e);
+            CommonControl.KeyUp(sender, e);
         }
 
         private void txtPass_KeyUp(object sender, KeyEventArgs e)
         {
-            FocusAdvancement.KeyUp(sender, e);
+            CommonControl.KeyUp(sender, e);
         }
     }
 }

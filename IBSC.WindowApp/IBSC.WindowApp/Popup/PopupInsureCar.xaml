@@ -4,22 +4,22 @@
         Title="ข้อมูลประกันรถยนต์" Height="473.8" Width="713" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/IBSC.WindowApp;component/Image/Icon.jpg">
     <Grid>
         <Label Content="บริษัท" HorizontalAlignment="Left" Margin="53,35,0,0" VerticalAlignment="Top"/>
-        <Label Content="แพคเกจ" HorizontalAlignment="Left" Margin="377,35,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txtPackage" HorizontalAlignment="Left" Height="23" Margin="429,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
-        <Button Name="btnSave" Content="บันทึก" HorizontalAlignment="Left" Margin="567,401,0,0" VerticalAlignment="Top" Width="81" Height="35" Click="btnSave_Click"/>
-        <Label Content="สถานะ" HorizontalAlignment="Left" Margin="41,397,0,0" VerticalAlignment="Top" FlowDirection="RightToLeft"/>
-        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="88,401,0,0" VerticalAlignment="Top" Width="118">
+        <Label Content="แพคเกจ" HorizontalAlignment="Left" Margin="381,35,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtPackage" HorizontalAlignment="Left" Height="23" Margin="433,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Button Name="btnSave" Content="บันทึก" HorizontalAlignment="Left" Margin="567,385,0,0" VerticalAlignment="Top" Width="81" Height="35" Click="btnSave_Click"/>
+        <Label Content="สถานะ" HorizontalAlignment="Left" Margin="41,391,0,0" VerticalAlignment="Top" FlowDirection="RightToLeft"/>
+        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="88,395,0,0" VerticalAlignment="Top" Width="118">
             <ComboBoxItem Content="ใช้งาน" IsSelected="True"/>
             <ComboBoxItem Content="ไม่ใช้งาน"/>
         </ComboBox>
         <Label Content="รุ่นรถยนต์" HorizontalAlignment="Left" Margin="34,114,0,0" VerticalAlignment="Top"/>
-        <Label Content="เครื่องยนต์" HorizontalAlignment="Left" Margin="368,114,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbbCompany" HorizontalAlignment="Left" Margin="100,35,0,0" VerticalAlignment="Top" Width="236" IsEditable="True">
+        <Label Content="เครื่องยนต์" HorizontalAlignment="Left" Margin="372,114,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbCompany" HorizontalAlignment="Left" Margin="104,35,0,0" VerticalAlignment="Top" Width="236" IsEditable="True">
         </ComboBox>
         <Label Content="ยี่ห้อรถยนต์" HorizontalAlignment="Left" Margin="27,75,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbbCarName" HorizontalAlignment="Left" Margin="101,75,0,0" VerticalAlignment="Top" Width="235" IsEditable="True"/>
-        <Label Content="ปี" HorizontalAlignment="Left" Margin="407,75,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbbCarYear" HorizontalAlignment="Left" Margin="429,75,0,0" VerticalAlignment="Top" Width="118">
+        <ComboBox x:Name="cbbCarName" HorizontalAlignment="Left" Margin="105,75,0,0" VerticalAlignment="Top" Width="235" IsEditable="True"/>
+        <Label Content="ปี" HorizontalAlignment="Left" Margin="411,75,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbCarYear" HorizontalAlignment="Left" Margin="433,75,0,0" VerticalAlignment="Top" Width="118">
             <ComboBoxItem Content="2017" IsSelected="True"/>
             <ComboBoxItem Content="2016"/>
             <ComboBoxItem Content="2015"/>
@@ -35,22 +35,39 @@
             <ComboBoxItem Content="2005"/>
             <ComboBoxItem Content="2004"/>
         </ComboBox>
-        <ComboBox x:Name="cbbCarModel" HorizontalAlignment="Left" Margin="101,118,0,0" VerticalAlignment="Top" Width="235" IsEditable="True"/>
-        <ComboBox x:Name="cbbCarEngine" HorizontalAlignment="Left" Margin="429,114,0,0" VerticalAlignment="Top" Width="235" IsEditable="True"/>
+        <ComboBox x:Name="cbbCarModel" HorizontalAlignment="Left" Margin="105,118,0,0" VerticalAlignment="Top" Width="235" IsEditable="True"/>
+        <ComboBox x:Name="cbbCarEngine" HorizontalAlignment="Left" Margin="433,114,0,0" VerticalAlignment="Top" Width="235" IsEditable="True"/>
         <Label Content="ประเภทประกัน" HorizontalAlignment="Left" Margin="15,154,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbbInsureCat" HorizontalAlignment="Left" Margin="101,154,0,0" VerticalAlignment="Top" Width="78" HorizontalContentAlignment="Center">
+        <ComboBox x:Name="cbbInsureCat" HorizontalAlignment="Left" Margin="105,154,0,0" VerticalAlignment="Top" Width="78" HorizontalContentAlignment="Center">
             <ComboBoxItem Content="1" IsSelected="True"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
             <ComboBoxItem Content="2+"/>
             <ComboBoxItem Content="3+"/>
         </ComboBox>
-        <Label Content="ซ่อม" HorizontalAlignment="Left" Margin="210,154,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbbTypeRepair" HorizontalAlignment="Left" Margin="245,154,0,0" VerticalAlignment="Top" Width="91" HorizontalContentAlignment="Center">
+        <Label Content="ซ่อม" HorizontalAlignment="Left" Margin="214,154,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbTypeRepair" HorizontalAlignment="Left" Margin="249,154,0,0" VerticalAlignment="Top" Width="91" HorizontalContentAlignment="Center">
             <ComboBoxItem Content="ศูนย์" IsSelected="True"/>
             <ComboBoxItem Content="อู่"/>
         </ComboBox>
-        <Label Content="ทุนประกัน" HorizontalAlignment="Left" Margin="368,153,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCapitalInsure" HorizontalAlignment="Left" Height="23" Margin="429,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label Content="ทุนประกัน" HorizontalAlignment="Left" Margin="372,153,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCapitalInsure" PreviewTextInput="NumericTextBoxInput" MaxLength="10" HorizontalAlignment="Left" Height="23" Margin="433,153,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235"/>
+        <Label Content="เบี้ยสุทธิ" HorizontalAlignment="Left" Margin="40,185,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNetPrice" PreviewTextInput="NumericTextBoxInput" MaxLength="10" HorizontalAlignment="Left" Height="23" Margin="104,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <Label Content="เบี้ยรวม" HorizontalAlignment="Left" Margin="262,188,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtTotalPrice" PreviewTextInput="NumericTextBoxInput" MaxLength="10" HorizontalAlignment="Left" Height="23" Margin="311,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <Label Content="เบี้ยกลมๆ" HorizontalAlignment="Left" Margin="472,187,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtRoundPrice" PreviewTextInput="NumericTextBoxInput" MaxLength="10" HorizontalAlignment="Left" Height="23" Margin="529,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <Label Content="ลำดับการแสดงผล" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPriolity" PreviewTextInput="NumericTextBoxInput" MaxLength="10" HorizontalAlignment="Left" Height="23" Margin="105,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52"/>
+        <Label Content="สถานะความลับ" HorizontalAlignment="Left" Margin="157,228,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbConfident" HorizontalAlignment="Left" Margin="241,232,0,0" VerticalAlignment="Top" Width="78" HorizontalContentAlignment="Center">
+            <ComboBoxItem Content="Show" IsSelected="True"/>
+            <ComboBoxItem Content="Hidden"/>
+        </ComboBox>
+        <DatePicker HorizontalAlignment="Left" Text="" Height="26" Margin="384,228,0,0" VerticalAlignment="Top" Width="99" IsDropDownOpen="True" IsEnabled="False"/>
+        <Label Content="วันที่มีผล" HorizontalAlignment="Left" Margin="329,230,0,0" VerticalAlignment="Top"/>
+        <Label Content="วันที่หมดอายุ" HorizontalAlignment="Left" Margin="491,228,0,0" VerticalAlignment="Top"/>
+        <DatePicker HorizontalAlignment="Left"  Text="" Height="26" Margin="564,228,0,0" VerticalAlignment="Top" Width="104" IsDropDownOpen="True" IsEnabled="False"/>
     </Grid>
 </Window>
