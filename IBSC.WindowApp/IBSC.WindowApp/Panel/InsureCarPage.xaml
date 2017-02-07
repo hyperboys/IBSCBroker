@@ -28,9 +28,9 @@
                 <DataGridTextColumn Binding="{Binding PRICE_ROUND}" Header="ราคา"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBox x:Name="txtCompanyCode" HorizontalAlignment="Left" Height="23" Margin="159,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"/>
-        <TextBox x:Name="txtCompanyName" HorizontalAlignment="Left" Height="23" Margin="345,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="610,61,0,0" VerticalAlignment="Top" Width="56">
+        <TextBox x:Name="txtCompanyCode" HorizontalAlignment="Left" Height="23" Margin="114,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"/>
+        <TextBox x:Name="txtCompanyName" HorizontalAlignment="Left" Height="23" Margin="300,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
+        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="565,61,0,0" VerticalAlignment="Top" Width="56">
             <ComboBox.ItemBindingGroup>
                 <BindingGroup/>
             </ComboBox.ItemBindingGroup>
@@ -38,10 +38,10 @@
             <ComboBoxItem Content="ไม่ใช้งาน"/>
         </ComboBox>
 
-        <Label Content="รหัสบริษัทประกันภัย" HorizontalAlignment="Left" Margin="56,56,0,0" VerticalAlignment="Top"/>
-        <Label Content="ชื่อบริษัทประกันภัย" HorizontalAlignment="Left" Margin="247,59,0,0" VerticalAlignment="Top"/>
-        <Label Content="สถานะ" HorizontalAlignment="Left" Margin="565,56,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="42" Margin="680,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/Search.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-        <Image HorizontalAlignment="Left" Height="83" Margin="709,25,0,0" VerticalAlignment="Top" Width="90"  Source="/IBSC.WindowApp;component/Image/addCarInsure.png" MouseLeftButtonDown="Add_MouseLeftButtonDown"/>
+        <Label Content="รหัสบริษัทประกันภัย" HorizontalAlignment="Left" Margin="11,56,0,0" VerticalAlignment="Top"/>
+        <Label Content="ชื่อบริษัทประกันภัย" HorizontalAlignment="Left" Margin="202,59,0,0" VerticalAlignment="Top"/>
+        <Label Content="สถานะ" HorizontalAlignment="Left" Margin="520,56,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="635,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/Search.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+        <Image HorizontalAlignment="Left" Height="83" Margin="664,25,0,0" VerticalAlignment="Top" Width="90"  Source="/IBSC.WindowApp;component/Image/addCarInsure.png" MouseLeftButtonDown="Add_MouseLeftButtonDown"/>
     </Grid>
 </UserControl>

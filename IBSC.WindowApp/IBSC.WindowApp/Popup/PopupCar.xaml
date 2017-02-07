@@ -3,22 +3,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ข้อมูลรถยนต์" Height="279.8" Width="527" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/IBSC.WindowApp;component/Image/Icon.jpg">
     <Grid>
-        <Label Content="รหัสรถยนต์" HorizontalAlignment="Left" Margin="34,33,0,0" VerticalAlignment="Top"/>
-        <Label Content="ยี่ห้อรถยนต์" HorizontalAlignment="Left" Margin="252,36,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="txtCarCode" HorizontalAlignment="Left" Height="23" Margin="100,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
-        <TextBox Name="txtCarName" HorizontalAlignment="Left" Height="23" Margin="319,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"/>
-        <Button Name="btnSave" Content="บันทึก" HorizontalAlignment="Left" Margin="409,196,0,0" VerticalAlignment="Top" Width="81" Height="35" Click="btnSave_Click"/>
-        <Label Content="สถานะ" HorizontalAlignment="Left" Margin="53,192,0,0" VerticalAlignment="Top" FlowDirection="RightToLeft"/>
-        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="100,196,0,0" VerticalAlignment="Top" Width="118">
+        <Label Content="รหัสรถยนต์" HorizontalAlignment="Left" Margin="34,33,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="ยี่ห้อรถยนต์" HorizontalAlignment="Left" Margin="252,36,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox Name="txtCarCode" HorizontalAlignment="Left" Height="23" Margin="100,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" FontSize="14"/>
+        <TextBox Name="txtCarName" HorizontalAlignment="Left" Height="23" Margin="319,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" FontSize="14"/>
+        <Button Name="btnSave" Content="บันทึก" HorizontalAlignment="Left" Margin="409,196,0,0" VerticalAlignment="Top" Width="81" Height="35" Click="btnSave_Click" FontSize="14"/>
+        <Label Content="สถานะ" HorizontalAlignment="Left" Margin="53,198,0,0" VerticalAlignment="Top" FlowDirection="RightToLeft" FontSize="14"/>
+        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="100,202,0,0" VerticalAlignment="Top" Width="118" FontSize="14">
             <ComboBoxItem Content="ใช้งาน" IsSelected="True"/>
             <ComboBoxItem Content="ไม่ใช้งาน"/>
         </ComboBox>
-        <Label Content="รุ่นรถยนต์" HorizontalAlignment="Left" Margin="34,66,0,0" VerticalAlignment="Top"/>
-        <Label Content="เครื่องยนต์" HorizontalAlignment="Left" Margin="252,69,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCarModel" HorizontalAlignment="Left" Height="23" Margin="100,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147"/>
-        <TextBox x:Name="txtCarEngine" HorizontalAlignment="Left" Height="23" Margin="319,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171"/>
-        <Label Content="หมายเหตุ" HorizontalAlignment="Left" Margin="34,102,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtCarRemark" HorizontalAlignment="Left" Height="79" Margin="100,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" HorizontalScrollBarVisibility="Visible" Grid.RowSpan="10"/>
+        <Label Content="รุ่นรถยนต์" HorizontalAlignment="Left" Margin="34,66,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="เครื่องยนต์" HorizontalAlignment="Left" Margin="252,69,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txtCarModel" HorizontalAlignment="Left" Height="23" Margin="100,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" FontSize="14"/>
+        <TextBox x:Name="txtCarEngine" HorizontalAlignment="Left" Height="23" Margin="319,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="171" FontSize="14"/>
+        <Label Content="หมายเหตุ" HorizontalAlignment="Left" Margin="34,102,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txtCarRemark" HorizontalAlignment="Left" Height="79" Margin="100,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="390" HorizontalScrollBarVisibility="Visible" Grid.RowSpan="10" FontSize="14"/>
 
     </Grid>
 </Window>
