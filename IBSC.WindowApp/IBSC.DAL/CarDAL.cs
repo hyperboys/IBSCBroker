@@ -121,5 +121,27 @@ namespace IBSC.DAL
                 throw ex;
             }
         }
+
+        public DataTable GetComboBoxCarName()
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_STATUS FROM MA_CAR ORDER BY CAR_CODE";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dataTable = new DataTable();
+                ds.Tables.Add(dataTable);
+                ds.EnforceConstraints = false;
+                dataTable.Load(reader);
+                reader.Close();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

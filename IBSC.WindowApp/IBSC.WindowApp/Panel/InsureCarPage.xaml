@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="534" d:DesignWidth="833">
     <Grid>
-        <DataGrid x:Name="grdInsure" HorizontalAlignment="Left" Margin="10,108,0,0" VerticalAlignment="Top" Height="367" Width="813"
+        <DataGrid x:Name="grdInsure" HorizontalAlignment="Left" Margin="10,171,0,0" VerticalAlignment="Top" Height="337" Width="813"
     		IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="False"
     		AutoGenerateColumns="False" Loaded="grdInsure_Loaded">
             <DataGrid.Columns>
@@ -17,6 +17,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
+
                 <DataGridTextColumn Binding="{Binding CAR_YEAR}" Header="ปี"/>
                 <DataGridTextColumn Binding="{Binding CAR_NAME}" Header="ยี่ห้อรถยนต์"/>
                 <DataGridTextColumn Binding="{Binding CAR_MODEL}" Header="รุ่นรถยนต์"/>
@@ -30,7 +31,7 @@
         </DataGrid>
         <TextBox x:Name="txtCompanyCode" HorizontalAlignment="Left" Height="23" Margin="114,59,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83"/>
         <TextBox x:Name="txtCompanyName" HorizontalAlignment="Left" Height="23" Margin="300,61,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215"/>
-        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="565,61,0,0" VerticalAlignment="Top" Width="56">
+        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="575,131,0,0" VerticalAlignment="Top" Width="56">
             <ComboBox.ItemBindingGroup>
                 <BindingGroup/>
             </ComboBox.ItemBindingGroup>
@@ -40,8 +41,32 @@
 
         <Label Content="รหัสบริษัทประกันภัย" HorizontalAlignment="Left" Margin="11,56,0,0" VerticalAlignment="Top"/>
         <Label Content="ชื่อบริษัทประกันภัย" HorizontalAlignment="Left" Margin="202,59,0,0" VerticalAlignment="Top"/>
-        <Label Content="สถานะ" HorizontalAlignment="Left" Margin="520,56,0,0" VerticalAlignment="Top"/>
-        <Image HorizontalAlignment="Left" Height="42" Margin="635,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/Search.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
-        <Image HorizontalAlignment="Left" Height="83" Margin="664,25,0,0" VerticalAlignment="Top" Width="90"  Source="/IBSC.WindowApp;component/Image/addCarInsure.png" MouseLeftButtonDown="Add_MouseLeftButtonDown"/>
+        <Label Content="สถานะ" HorizontalAlignment="Left" Margin="530,127,0,0" VerticalAlignment="Top"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="530,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/Search.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+        <Image x:Name="btnAdd" HorizontalAlignment="Left" Height="83" Margin="583,25,0,0" VerticalAlignment="Top" Width="90"  Source="/IBSC.WindowApp;component/Image/addCarInsure.png" MouseLeftButtonDown="Add_MouseLeftButtonDown"/>
+        <Label Content="ปี" HorizontalAlignment="Left" Margin="92,91,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbCarYear" HorizontalAlignment="Left" Margin="114,91,0,0" VerticalAlignment="Top" Width="65">
+            <ComboBoxItem Content="2017" IsSelected="True"/>
+            <ComboBoxItem Content="2016"/>
+            <ComboBoxItem Content="2015"/>
+            <ComboBoxItem Content="2014"/>
+            <ComboBoxItem Content="2013"/>
+            <ComboBoxItem Content="2012"/>
+            <ComboBoxItem Content="2011"/>
+            <ComboBoxItem Content="2010"/>
+            <ComboBoxItem Content="2009"/>
+            <ComboBoxItem Content="2008"/>
+            <ComboBoxItem Content="2007"/>
+            <ComboBoxItem Content="2006"/>
+            <ComboBoxItem Content="2005"/>
+            <ComboBoxItem Content="2004"/>
+        </ComboBox>
+        <Label Content="รุ่นรถยนต์" HorizontalAlignment="Left" Margin="54,127,0,0" VerticalAlignment="Top"/>
+        <Label Content="เครื่องยนต์" HorizontalAlignment="Left" Margin="279,127,0,0" VerticalAlignment="Top"/>
+        <Label Content="ยี่ห้อรถยนต์" HorizontalAlignment="Left" Margin="233,93,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbCarName" DisplayMemberPath = "CAR_NAME" SelectedValuePath ="CAR_NAME" HorizontalAlignment="Left" Margin="300,93,0,0" VerticalAlignment="Top" Width="215" IsEditable="True"/>
+        <ComboBox x:Name="cbbCarModel" DisplayMemberPath = "CAR_MODEL" SelectedValuePath ="CAR_MODEL" HorizontalAlignment="Left" Margin="114,131,0,0" VerticalAlignment="Top" Width="160" IsEditable="True"/>
+        <ComboBox x:Name="cbbCarEngine" DisplayMemberPath = "CAR_ENGINE" SelectedValuePath ="CAR_ENGINE" HorizontalAlignment="Left" Margin="340,131,0,0" VerticalAlignment="Top" Width="175" IsEditable="True"/>
+        <Image x:Name="btnImport" HorizontalAlignment="Left" Height="42" Margin="678,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/ExcelImport.png" MouseLeftButtonDown="Excel_MouseLeftButtonDown"/>
     </Grid>
 </UserControl>

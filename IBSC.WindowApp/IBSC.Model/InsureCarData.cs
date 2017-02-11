@@ -148,13 +148,6 @@ namespace IBSC.Model
             set { _item23 = value; }
         }
 
-        private decimal _item32;
-        public decimal CAPITAL_INSURANCE
-        {
-            get { return _item32; }
-            set { _item32 = value; }
-        }
-
         private DateTime _item24;
         public DateTime EFFECTIVE_DATE
         {
@@ -209,6 +202,41 @@ namespace IBSC.Model
         {
             get { return _item31; }
             set { _item31 = value; }
+        }
+
+        private decimal _item32;
+        public decimal CAPITAL_INSURANCE
+        {
+            get { return _item32; }
+            set { _item32 = value; }
+        }
+
+        private string _item33;
+        public string CAR_NAME
+        {
+            get { return _item33; }
+            set { _item33 = value; }
+        }
+
+        private string _item34;
+        public string CAR_MODEL
+        {
+            get { return _item34; }
+            set { _item34 = value; }
+        }
+
+        private string _item35;
+        public string CAR_ENGINE
+        {
+            get { return _item35; }
+            set { _item35 = value; }
+        }
+
+        private string _item36;
+        public string COMPANY_FULLNAME
+        {
+            get { return _item36; }
+            set { _item36 = value; }
         }
     }
 }

@@ -86,7 +86,6 @@ namespace IBSC.WindowApp.Panel
                 {
                     grdCar.ItemsSource = null;
                 }
-
             }
             catch (Exception ex)
             {
