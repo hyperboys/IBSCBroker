@@ -127,7 +127,51 @@ namespace IBSC.DAL
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_STATUS FROM MA_CAR ORDER BY CAR_CODE";
+                string sql = "SELECT DISTINCT CAR_NAME FROM MA_CAR WHERE CAR_STATUS = 'A'";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dataTable = new DataTable();
+                ds.Tables.Add(dataTable);
+                ds.EnforceConstraints = false;
+                dataTable.Load(reader);
+                reader.Close();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetComboBoxCarModel(string carName)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT DISTINCT CAR_MODEL FROM MA_CAR WHERE CAR_STATUS = 'A' AND CAR_NAME = '" + carName + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dataTable = new DataTable();
+                ds.Tables.Add(dataTable);
+                ds.EnforceConstraints = false;
+                dataTable.Load(reader);
+                reader.Close();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetComboBoxCarEngine(string carName,string carModel)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT DISTINCT CAR_ENGINE FROM MA_CAR WHERE CAR_STATUS = 'A' AND CAR_NAME = '" + carName + "' AND CAR_MODEL = '" + carModel + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();

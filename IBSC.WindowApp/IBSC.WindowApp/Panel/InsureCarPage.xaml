@@ -64,8 +64,8 @@
         <Label Content="รุ่นรถยนต์" HorizontalAlignment="Left" Margin="54,127,0,0" VerticalAlignment="Top"/>
         <Label Content="เครื่องยนต์" HorizontalAlignment="Left" Margin="279,127,0,0" VerticalAlignment="Top"/>
         <Label Content="ยี่ห้อรถยนต์" HorizontalAlignment="Left" Margin="233,93,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbbCarName" DisplayMemberPath = "CAR_NAME" SelectedValuePath ="CAR_NAME" HorizontalAlignment="Left" Margin="300,93,0,0" VerticalAlignment="Top" Width="215" IsEditable="True"/>
-        <ComboBox x:Name="cbbCarModel" DisplayMemberPath = "CAR_MODEL" SelectedValuePath ="CAR_MODEL" HorizontalAlignment="Left" Margin="114,131,0,0" VerticalAlignment="Top" Width="160" IsEditable="True"/>
+        <ComboBox x:Name="cbbCarName" DisplayMemberPath = "CAR_NAME" SelectedValuePath ="CAR_NAME" HorizontalAlignment="Left" Margin="300,93,0,0" VerticalAlignment="Top" Width="215" IsEditable="True" SelectionChanged="cbbCarName_SelectionChanged"/>
+        <ComboBox x:Name="cbbCarModel" DisplayMemberPath = "CAR_MODEL" SelectedValuePath ="CAR_MODEL" HorizontalAlignment="Left" Margin="114,131,0,0" VerticalAlignment="Top" Width="160" IsEditable="True" SelectionChanged="cbbCarModel_SelectionChanged"/>
         <ComboBox x:Name="cbbCarEngine" DisplayMemberPath = "CAR_ENGINE" SelectedValuePath ="CAR_ENGINE" HorizontalAlignment="Left" Margin="340,131,0,0" VerticalAlignment="Top" Width="175" IsEditable="True"/>
         <Image x:Name="btnImport" HorizontalAlignment="Left" Height="42" Margin="678,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/ExcelImport.png" MouseLeftButtonDown="Excel_MouseLeftButtonDown"/>
     </Grid>

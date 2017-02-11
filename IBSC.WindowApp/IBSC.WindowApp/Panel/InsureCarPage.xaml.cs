@@ -27,7 +27,16 @@ namespace IBSC.WindowApp.Panel
     {
         public InsureCarPage()
         {
-            InitializeComponent();
+            try
+            {
+                InitializeComponent();
+                DataTable listCar = new CarDAL().GetComboBoxCarName();
+                cbbCarName.ItemsSource = listCar.DefaultView;
+            }
+            catch (Exception ex) 
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void grdInsure_Loaded(object sender, RoutedEventArgs e)
@@ -107,6 +116,19 @@ namespace IBSC.WindowApp.Panel
         private void Excel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void cbbCarName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataTable listCar = new CarDAL().GetComboBoxCarModel(cbbCarName.SelectedValue.ToString());
+            cbbCarModel.ItemsSource = listCar.DefaultView;
+            cbbCarEngine.ItemsSource = null;
+        }
+
+        private void cbbCarModel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataTable listCar = new CarDAL().GetComboBoxCarEngine(cbbCarName.SelectedValue.ToString(), cbbCarModel.SelectedValue.ToString());
+            cbbCarEngine.ItemsSource = listCar.DefaultView;
         }
     }
 }
