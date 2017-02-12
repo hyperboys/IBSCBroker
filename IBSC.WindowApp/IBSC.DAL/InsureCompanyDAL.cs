@@ -118,5 +118,27 @@ namespace IBSC.DAL
                 throw ex;
             }
         }
+
+        public DataTable GetComboBoxCompanyName()
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT COMPANY_FULLNAME FROM MA_INSURE_COMPANY ORDER BY COMPANY_CODE";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dataTable = new DataTable();
+                ds.Tables.Add(dataTable);
+                ds.EnforceConstraints = false;
+                dataTable.Load(reader);
+                reader.Close();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

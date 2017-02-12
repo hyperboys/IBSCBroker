@@ -238,5 +238,19 @@ namespace IBSC.Model
             get { return _item36; }
             set { _item36 = value; }
         }
+
+        private int _item37;
+        public int INSURE_PRIORITY
+        {
+            get { return _item37; }
+            set { _item37 = value; }
+        }
+
+         private string _item38;
+         public string CAR_YEAR
+        {
+            get { return _item38; }
+            set { _item38 = value; }
+        }
     }
 }

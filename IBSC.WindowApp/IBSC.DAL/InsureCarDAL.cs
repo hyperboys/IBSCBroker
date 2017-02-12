@@ -70,6 +70,8 @@ namespace IBSC.DAL
                     item.CAR_ID = Convert.ToInt32(reader.GetString("CAR_ID"));
                     item.CAR_MODEL = reader.GetString("CAR_MODEL");
                     item.CAR_NAME = reader.GetString("CAR_NAME");
+                    item.CAR_ENGINE = reader.GetString("CAR_NAME");
+                    item.CAR_YEAR = reader.GetString("CAR_YEAR");
                     item.COMPANY_CODE = reader.GetString("COMPANY_CODE");
                     item.COMPANY_FULLNAME = reader.GetString("COMPANY_FULLNAME");
                     item.CONFIDENTIAL_STATUS = reader.GetString("CONFIDENTIAL_STATUS");
@@ -94,6 +96,7 @@ namespace IBSC.DAL
                     item.PRICE_ROUND = Convert.ToDecimal(reader.GetString("PRICE_ROUND"));
                     item.TOTAL_PRICE = Convert.ToDecimal(reader.GetString("TOTAL_PRICE"));
                     item.COMPANY_CODE = reader.GetString("COMPANY_CODE");
+                    item.INSURE_PRIORITY = Convert.ToInt32(reader.GetString("INSURE_PRIORITY"));
                     reader.Close();
                     return item;
                 }
