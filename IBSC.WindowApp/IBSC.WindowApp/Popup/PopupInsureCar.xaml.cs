@@ -29,8 +29,12 @@ namespace IBSC.WindowApp.Popup
             try
             {
                 InitializeComponent();
+
                 DataTable listCar = new CarDAL().GetComboBoxCarName();
                 cbbCarName.ItemsSource = listCar.DefaultView;
+
+                DataTable listCompany = new InsureCompanyDAL().GetComboBoxCompanyName();
+                cbbCompany.ItemsSource = listCompany.DefaultView;
             }
             catch (Exception ex)
             {

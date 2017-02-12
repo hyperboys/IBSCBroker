@@ -38,7 +38,7 @@
         <ComboBox x:Name="cbbCarModel" DisplayMemberPath = "CAR_MODEL" SelectedValuePath ="CAR_MODEL" HorizontalAlignment="Left" Margin="105,118,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" FontSize="14" SelectionChanged="cbbCarModel_SelectionChanged"/>
         <ComboBox x:Name="cbbCarEngine" DisplayMemberPath = "CAR_ENGINE" SelectedValuePath ="CAR_ENGINE" HorizontalAlignment="Left" Margin="433,114,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" FontSize="14"/>
         <Label Content="ประเภทประกัน" HorizontalAlignment="Left" Margin="15,154,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="cbbInsureCat" HorizontalAlignment="Left" Margin="105,154,0,0" VerticalAlignment="Top" Width="78" HorizontalContentAlignment="Center">
+        <ComboBox x:Name="cbbInsureCat" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="105,154,0,0" VerticalAlignment="Top" Width="78" HorizontalContentAlignment="Center">
             <ComboBoxItem Content="1" IsSelected="True"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
@@ -46,7 +46,7 @@
             <ComboBoxItem Content="3+"/>
         </ComboBox>
         <Label Content="ซ่อม" HorizontalAlignment="Left" Margin="214,154,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="cbbTypeRepair" HorizontalAlignment="Left" Margin="249,154,0,0" VerticalAlignment="Top" Width="91" HorizontalContentAlignment="Center">
+        <ComboBox x:Name="cbbTypeRepair" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="249,154,0,0" VerticalAlignment="Top" Width="91" HorizontalContentAlignment="Center">
             <ComboBoxItem Content="ศูนย์" IsSelected="True"/>
             <ComboBoxItem Content="อู่"/>
         </ComboBox>
@@ -61,7 +61,7 @@
         <Label Content="ลำดับการแสดงผล" HorizontalAlignment="Left" Margin="10,227,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtPriolity" PreviewTextInput="NumericTextBoxInput" MaxLength="10" HorizontalAlignment="Left" Height="23" Margin="115,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" FontSize="14"/>
         <Label Content="สถานะความลับ" HorizontalAlignment="Left" Margin="167,228,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="cbbConfident" HorizontalAlignment="Left" Margin="258,232,0,0" VerticalAlignment="Top" Width="78" HorizontalContentAlignment="Center">
+        <ComboBox x:Name="cbbConfident" SelectedValuePath="Content" HorizontalAlignment="Left" Margin="258,232,0,0" VerticalAlignment="Top" Width="78" HorizontalContentAlignment="Center">
             <ComboBoxItem Content="Show" IsSelected="True"/>
             <ComboBoxItem Content="Hidden"/>
         </ComboBox>
