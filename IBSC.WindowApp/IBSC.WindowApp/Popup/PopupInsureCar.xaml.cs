@@ -91,6 +91,39 @@ namespace IBSC.WindowApp.Popup
                 cbbConfident.SelectedValue = item.CONFIDENTIAL_STATUS == "S" ? "Show" : "Hidden";
                 cbbInsureCat.SelectedValue = item.INSURE_CATEGORY.ToString();
                 cbbTypeRepair.SelectedValue = item.INSURE_TYPE_REPAIR.ToString();
+
+                if (mode == "VIEW") 
+                {
+                    txtAssetTime.IsEnabled = false;
+                    txtCapitalInsure.IsEnabled = false;
+                    txtCoveragePeople.IsEnabled = false;
+                    txtCoverageTime.IsEnabled = false;
+                    txtDamageCar.IsEnabled = false;
+                    txtFirstDamage.IsEnabled = false;
+                    txtInsureDriver.IsEnabled = false;
+                    txtMEDICAL_FEE_AMT.IsEnabled = false;
+                    txtMEDICAL_FEE_PEOPLE.IsEnabled = false;
+                    txtMissingCar.IsEnabled = false;
+                    txtNetPrice.IsEnabled = false;
+                    txtPackage.IsEnabled = false;
+                    txtPERSONAL_ACCIDENT_AMT.IsEnabled = false;
+                    txtPERSONAL_ACCIDENT_PEOPLE.IsEnabled = false;
+                    txtPriolity.IsEnabled = false;
+                    txtRoundPrice.IsEnabled = false;
+                    txtTotalPrice.IsEnabled = false;
+                    txtEff.IsEnabled = false;
+                    txtExp.IsEnabled = false;
+                    cbbCarYear.IsEnabled = false;
+                    cbbCarName.IsEnabled = false;
+                    cbbCarModel.IsEnabled = false;
+                    cbbCarEngine.IsEnabled = false;
+                    cbbCompany.IsEnabled = false;
+                    cbbConfident.IsEnabled = false;
+                    cbbInsureCat.IsEnabled = false;
+                    cbbTypeRepair.IsEnabled = false;
+                    cbbStatus.IsEnabled = false;
+                    btnSave.Visibility = System.Windows.Visibility.Hidden;
+                }
             }
             catch (Exception ex)
             {

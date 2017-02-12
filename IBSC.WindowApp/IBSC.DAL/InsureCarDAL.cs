@@ -110,5 +110,96 @@ namespace IBSC.DAL
                 throw ex;
             }
         }
+
+        public void Insert(InsureCarData item)
+        {
+            try
+            {
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+
+                DBbase.Connect();
+                StringBuilder sql = new StringBuilder();
+                sql.Append(@"INSERT INTO MA_INSURE_CAR (INSURE_CAR_CODE, COMPANY_CODE, PACKAGE_NAME, CAR_ID, INSURE_CATEGORY,INSURE_TYPE_REPAIR,CAR_YEAR,LIVE_COVERAGE_PEOPLE,
+                LIVE_COVERAGE_TIME,ASSET_TIME,DAMAGE_TO_VEHICLE,MISSING_FIRE_CAR,FIRST_DAMAGE_PRICE,PERSONAL_ACCIDENT_AMT,PERSONAL_ACCIDENT_PEOPLE,MEDICAL_FEE_AMT,
+                MEDICAL_FEE_PEOPLE,DRIVER_INSURANCE_AMT,NET_PRICE,TOTAL_PRICE,PRICE_ROUND,CAPITAL_INSURANCE,INSURE_PRIORITY,EFFECTIVE_DATE,EXPIRE_DATE,CONFIDENTIAL_STATUS,
+                INSURE_CAR_STATUS,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER)  VALUES (");
+
+                string INSURE_CAR_CODE = DateTime.Now.ToString("yyyyMMdd") + "_" + item.COMPANY_CODE + "_" + item.PACKAGE_NAME;
+                INSURE_CAR_CODE += "_" + item.CAR_NAME + "_" + item.CAR_MODEL + "_" + item.CAR_ENGINE + "_" + item.INSURE_CATEGORY;
+                INSURE_CAR_CODE += "_" + item.INSURE_TYPE_REPAIR;
+
+                sql.Append(" '" + INSURE_CAR_CODE + "',");
+                sql.Append(" '" + item.COMPANY_CODE + "',");
+                sql.Append(" '" + item.PACKAGE_NAME + "',");
+                sql.Append(" '" + item.CAR_ID + "',");
+                sql.Append(" '" + item.INSURE_CATEGORY + "',");
+                sql.Append(" '" + item.INSURE_TYPE_REPAIR + "',");
+
+                sql.Append(" '" + item.CAR_YEAR + "',");
+                sql.Append(" '" + item.LIVE_COVERAGE_PEOPLE + "',");
+                sql.Append(" '" + item.LIVE_COVERAGE_TIME + "',");
+                sql.Append(" '" + item.ASSET_TIME + "',");
+                sql.Append(" '" + item.DAMAGE_TO_VEHICLE + "',");
+
+                sql.Append(" '" + item.MISSING_FIRE_CAR + "',");
+                sql.Append(" '" + item.FIRST_DAMAGE_PRICE + "',");
+                sql.Append(" '" + item.PERSONAL_ACCIDENT_AMT + "',");
+                sql.Append(" '" + item.PERSONAL_ACCIDENT_PEOPLE + "',");
+                sql.Append(" '" + item.MEDICAL_FEE_AMT + "',");
+
+                sql.Append(" '" + item.MEDICAL_FEE_PEOPLE + "',");
+                sql.Append(" '" + item.DRIVER_INSURANCE_AMT + "',");
+                sql.Append(" '" + item.NET_PRICE + "',");
+                sql.Append(" '" + item.TOTAL_PRICE + "',");
+                sql.Append(" '" + item.PRICE_ROUND + "',");
+
+                sql.Append(" '" + item.CAPITAL_INSURANCE + "',");
+                sql.Append(" '" + item.INSURE_PRIORITY + "',");
+                sql.Append(" '" + item.EFFECTIVE_DATE + "',");
+                sql.Append(" '" + item.EXPIRE_DATE + "',");
+                sql.Append(" '" + item.CONFIDENTIAL_STATUS + "',");
+
+                sql.Append(" '" + item.INSURE_CAR_STATUS + "',");
+                sql.Append(" '" + DateTime.Now + "',");
+                sql.Append(" '" + member.MEMBER_USER + "',");
+                sql.Append(" '" + DateTime.Now + "',");
+                sql.Append(" '" + member.MEMBER_USER + "')");
+
+                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void Update(CarData oldItem, CarData newItem)
+        {
+            try
+            {
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                DBbase.Connect();
+                StringBuilder sql = new StringBuilder();
+                sql.Append("UPDATE MA_INSURE_CAR SET CAR_CODE = '" + newItem.CAR_CODE + "',");
+                sql.Append(" CAR_ENGINE = '" + newItem.CAR_ENGINE + "',");
+                sql.Append(" CAR_MODEL = '" + newItem.CAR_MODEL + "',");
+                sql.Append(" CAR_NAME = '" + newItem.CAR_NAME + "',");
+                sql.Append(" CAR_REMARK = '" + newItem.CAR_REMARK + "',");
+                sql.Append(" CAR_STATUS = '" + newItem.CAR_STATUS + "',");
+                sql.Append(" UPDATE_DATE = '" + DateTime.Now + "',");
+                sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
+                sql.Append(" WHERE CAR_CODE = '" + oldItem.CAR_CODE + "'");
+                sql.Append(" AND CAR_ENGINE = '" + oldItem.CAR_ENGINE + "'");
+                sql.Append(" AND CAR_MODEL = '" + oldItem.CAR_MODEL + "'");
+                sql.Append(" AND CAR_NAME = '" + oldItem.CAR_NAME + "'");
+                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
