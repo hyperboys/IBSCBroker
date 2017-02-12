@@ -25,7 +25,7 @@ namespace IBSC.DAL
                  A.DRIVER_INSURANCE_AMT, A.NET_PRICE, A.TOTAL_PRICE, A.PRICE_ROUND,
                  A.CAPITAL_INSURANCE, A.INSURE_PRIORITY, A.EFFECTIVE_DATE, A.EXPIRE_DATE,
                  A.CONFIDENTIAL_STATUS, A.CREATE_DATE, A.CREATE_USER, A.UPDATE_DATE,
-                 A.UPDATE_USER, A.INSURE_CAR_STATUS, C.CAR_NAME,C.CAR_MODEL,C.CAR_ENGINE ,I.COMPANY_FULLNAME
+                 A.UPDATE_USER, A.INSURE_CAR_STATUS, C.CAR_CODE,C.CAR_NAME,C.CAR_MODEL,C.CAR_ENGINE ,I.COMPANY_FULLNAME
                 FROM MA_INSURE_CAR A INNER JOIN MA_CAR C ON A.CAR_ID = C.CAR_ID INNER JOIN MA_INSURE_COMPANY I ON A.COMPANY_CODE = I.COMPANY_CODE";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
@@ -56,7 +56,7 @@ namespace IBSC.DAL
                  A.DRIVER_INSURANCE_AMT, A.NET_PRICE, A.TOTAL_PRICE, A.PRICE_ROUND,
                  A.CAPITAL_INSURANCE, A.INSURE_PRIORITY, A.EFFECTIVE_DATE, A.EXPIRE_DATE,
                  A.CONFIDENTIAL_STATUS, A.CREATE_DATE, A.CREATE_USER, A.UPDATE_DATE,
-                 A.UPDATE_USER, A.INSURE_CAR_STATUS, C.CAR_NAME,C.CAR_MODEL,C.CAR_ENGINE ,I.COMPANY_FULLNAME
+                 A.UPDATE_USER, A.INSURE_CAR_STATUS, C.CAR_CODE,C.CAR_NAME,C.CAR_MODEL,C.CAR_ENGINE ,I.COMPANY_FULLNAME
                 FROM MA_INSURE_CAR A INNER JOIN MA_CAR C ON A.CAR_ID = C.CAR_ID INNER JOIN MA_INSURE_COMPANY I ON A.COMPANY_CODE = I.COMPANY_CODE
                 WHERE INSURE_CAR_CODE = '" + code + "'";
 
@@ -68,9 +68,10 @@ namespace IBSC.DAL
                     item.ASSET_TIME = Convert.ToDecimal(reader.GetString("ASSET_TIME"));
                     item.CAPITAL_INSURANCE = Convert.ToDecimal(reader.GetString("CAPITAL_INSURANCE"));
                     item.CAR_ID = Convert.ToInt32(reader.GetString("CAR_ID"));
+                    item.CAR_CODE = reader.GetString("CAR_CODE");
                     item.CAR_MODEL = reader.GetString("CAR_MODEL");
                     item.CAR_NAME = reader.GetString("CAR_NAME");
-                    item.CAR_ENGINE = reader.GetString("CAR_NAME");
+                    item.CAR_ENGINE = reader.GetString("CAR_ENGINE");
                     item.CAR_YEAR = reader.GetString("CAR_YEAR");
                     item.COMPANY_CODE = reader.GetString("COMPANY_CODE");
                     item.COMPANY_FULLNAME = reader.GetString("COMPANY_FULLNAME");
@@ -160,9 +161,9 @@ namespace IBSC.DAL
                 sql.Append(" '" + item.CONFIDENTIAL_STATUS + "',");
 
                 sql.Append(" '" + item.INSURE_CAR_STATUS + "',");
-                sql.Append(" '" + DateTime.Now + "',");
+                sql.Append(" '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
                 sql.Append(" '" + member.MEMBER_USER + "',");
-                sql.Append(" '" + DateTime.Now + "',");
+                sql.Append(" '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
                 sql.Append(" '" + member.MEMBER_USER + "')");
 
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
@@ -174,25 +175,48 @@ namespace IBSC.DAL
             }
         }
 
-        public void Update(CarData oldItem, CarData newItem)
+        public void Update(InsureCarData oldItem, InsureCarData newItem)
         {
             try
             {
                 MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
-                sql.Append("UPDATE MA_INSURE_CAR SET CAR_CODE = '" + newItem.CAR_CODE + "',");
-                sql.Append(" CAR_ENGINE = '" + newItem.CAR_ENGINE + "',");
-                sql.Append(" CAR_MODEL = '" + newItem.CAR_MODEL + "',");
-                sql.Append(" CAR_NAME = '" + newItem.CAR_NAME + "',");
-                sql.Append(" CAR_REMARK = '" + newItem.CAR_REMARK + "',");
-                sql.Append(" CAR_STATUS = '" + newItem.CAR_STATUS + "',");
-                sql.Append(" UPDATE_DATE = '" + DateTime.Now + "',");
+
+                string INSURE_CAR_CODE = DateTime.Now.ToString("yyyyMMdd") + "_" + newItem.COMPANY_CODE + "_" + newItem.PACKAGE_NAME;
+                INSURE_CAR_CODE += "_" + newItem.CAR_CODE + "_" + newItem.CAR_NAME + "_" + newItem.CAR_MODEL + "_" + newItem.CAR_ENGINE + "_" + newItem.INSURE_CATEGORY;
+                INSURE_CAR_CODE += "_" + newItem.INSURE_TYPE_REPAIR;
+
+                sql.Append("UPDATE MA_INSURE_CAR SET INSURE_CAR_CODE = '" + INSURE_CAR_CODE + "',");
+                sql.Append(" COMPANY_CODE = '" + newItem.COMPANY_CODE + "',");
+                sql.Append(" PACKAGE_NAME = '" + newItem.PACKAGE_NAME + "',");
+                sql.Append(" CAR_ID = '" + newItem.CAR_ID + "',");
+                sql.Append(" INSURE_CATEGORY = '" + newItem.INSURE_CATEGORY + "',");
+                sql.Append(" INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "',");
+                sql.Append(" CAR_YEAR = '" + newItem.CAR_YEAR + "',");
+                sql.Append(" LIVE_COVERAGE_PEOPLE = '" + newItem.LIVE_COVERAGE_PEOPLE + "',");
+                sql.Append(" LIVE_COVERAGE_TIME = '" + newItem.LIVE_COVERAGE_TIME + "',");
+                sql.Append(" ASSET_TIME = '" + newItem.ASSET_TIME + "',");
+                sql.Append(" INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "',");
+                sql.Append(" DAMAGE_TO_VEHICLE = '" + newItem.DAMAGE_TO_VEHICLE + "',");
+                sql.Append(" MISSING_FIRE_CAR = '" + newItem.MISSING_FIRE_CAR + "',");
+                sql.Append(" FIRST_DAMAGE_PRICE = '" + newItem.FIRST_DAMAGE_PRICE + "',");
+                sql.Append(" PERSONAL_ACCIDENT_AMT = '" + newItem.PERSONAL_ACCIDENT_AMT + "',");
+                sql.Append(" PERSONAL_ACCIDENT_PEOPLE = '" + newItem.PERSONAL_ACCIDENT_PEOPLE + "',");
+                sql.Append(" MEDICAL_FEE_AMT = '" + newItem.MEDICAL_FEE_AMT + "',");
+                sql.Append(" MEDICAL_FEE_PEOPLE = '" + newItem.MEDICAL_FEE_PEOPLE + "',");
+                sql.Append(" DRIVER_INSURANCE_AMT = '" + newItem.DRIVER_INSURANCE_AMT + "',");
+                sql.Append(" NET_PRICE = '" + newItem.NET_PRICE + "',");
+                sql.Append(" TOTAL_PRICE = '" + newItem.TOTAL_PRICE + "',");
+                sql.Append(" PRICE_ROUND = '" + newItem.PRICE_ROUND + "',");
+                sql.Append(" CAPITAL_INSURANCE = '" + newItem.CAPITAL_INSURANCE + "',");
+                sql.Append(" INSURE_PRIORITY = '" + newItem.INSURE_PRIORITY + "',");
+                sql.Append(" EFFECTIVE_DATE = '" + newItem.EFFECTIVE_DATE.ToString("yyyy-MM-dd") + "',");
+                sql.Append(" EXPIRE_DATE = '" + newItem.EXPIRE_DATE.ToString("yyyy-MM-dd") + "',");
+                sql.Append(" CONFIDENTIAL_STATUS = '" + newItem.CONFIDENTIAL_STATUS + "',");
+                sql.Append(" UPDATE_DATE = '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
                 sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
-                sql.Append(" WHERE CAR_CODE = '" + oldItem.CAR_CODE + "'");
-                sql.Append(" AND CAR_ENGINE = '" + oldItem.CAR_ENGINE + "'");
-                sql.Append(" AND CAR_MODEL = '" + oldItem.CAR_MODEL + "'");
-                sql.Append(" AND CAR_NAME = '" + oldItem.CAR_NAME + "'");
+                sql.Append(" WHERE INSURE_CAR_CODE = '" + oldItem.INSURE_CAR_CODE + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
             }

@@ -246,11 +246,20 @@ namespace IBSC.Model
             set { _item37 = value; }
         }
 
-         private string _item38;
-         public string CAR_YEAR
+        private string _item38;
+        public string CAR_YEAR
         {
             get { return _item38; }
             set { _item38 = value; }
         }
+
+        private string _item39;
+        public string CAR_CODE
+        {
+            get { return _item39; }
+            set { _item39 = value; }
+        }
+
+
     }
 }

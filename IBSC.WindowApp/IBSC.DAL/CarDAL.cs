@@ -12,17 +12,51 @@ namespace IBSC.DAL
 {
     public class CarDAL : DBbase
     {
-        public CarData GetItem(string carCode)
+        public CarData GetItem(string carCode,string carName,string carModel,string carEngine)
         {
             try
             {
                 DBbase.Connect();
-                string sql = "SELECT CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_REMARK,CAR_STATUS FROM MA_CAR WHERE CAR_CODE = '" + carCode + "'";
+                string sql = @"SELECT CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_REMARK,CAR_STATUS FROM MA_CAR WHERE
+                CAR_CODE = '" + carCode + "' AND CAR_NAME = '" + carName + "' AND CAR_MODEL = '" + carModel + "' AND CAR_ENGINE = '" + carEngine + "'";
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     CarData item = new CarData();
+                    item.CAR_CODE = reader.GetString("CAR_CODE");
+                    item.CAR_NAME = reader.GetString("CAR_NAME");
+                    item.CAR_MODEL = reader.GetString("CAR_MODEL");
+                    item.CAR_ENGINE = reader.GetString("CAR_ENGINE");
+                    item.CAR_REMARK = reader.GetString("CAR_REMARK");
+                    item.CAR_STATUS = reader.GetString("CAR_STATUS");
+                    reader.Close();
+                    return item;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public CarData GetItem(string carName, string carModel, string carEngine)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = @"SELECT CAR_ID,CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_REMARK,CAR_STATUS FROM MA_CAR WHERE
+                CAR_NAME = '" + carName + "' AND CAR_MODEL = '" + carModel + "' AND CAR_ENGINE = '" + carEngine + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    CarData item = new CarData();
+                    item.CAR_ID = Convert.ToInt32(reader.GetString("CAR_ID"));
                     item.CAR_CODE = reader.GetString("CAR_CODE");
                     item.CAR_NAME = reader.GetString("CAR_NAME");
                     item.CAR_MODEL = reader.GetString("CAR_MODEL");

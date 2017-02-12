@@ -74,7 +74,7 @@ namespace IBSC.WindowApp.Popup
                 }
                 else
                 {
-                    if (dal.GetItem(txtCarCode.Text) == null)
+                    if (dal.GetItem(txtCarCode.Text, txtCarName.Text, txtCarModel.Text, txtCarEngine.Text) == null)
                     {
                         item = new CarData();
                         item.CAR_CODE = txtCarCode.Text;

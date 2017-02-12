@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConvertCommon.cs" />
     <Compile Include="DataCommon.cs" />
     <Compile Include="CustomData.cs" />
     <Compile Include="DataInterface.cs" />

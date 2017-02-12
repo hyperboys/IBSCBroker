@@ -68,7 +68,7 @@ namespace IBSC.WindowApp.Popup
                 txtTotalPrice.Text = item.TOTAL_PRICE.ToString();
 
                 txtEff.Text = item.EFFECTIVE_DATE.ToShortDateString();
-                txtExp.Text = item.EFFECTIVE_DATE.ToShortDateString();
+                txtExp.Text = item.EXPIRE_DATE.ToShortDateString();
 
                 cbbCarYear.SelectedValue = item.CAR_YEAR.ToString();
 
@@ -135,7 +135,61 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
+                bool complete = false;
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                InsureCarData newItem = new InsureCarData();
+                newItem.ASSET_TIME = Convert.ToDecimal(txtAssetTime.Text);
+                newItem.CAPITAL_INSURANCE = Convert.ToDecimal(txtCapitalInsure.Text);
+                CarData carItem = new CarDAL().GetItem(cbbCarName.Text, cbbCarModel.Text, cbbCarEngine.Text);
+                newItem.CAR_ID = carItem.CAR_ID;
+                newItem.CAR_CODE = carItem.CAR_CODE;
+                newItem.CAR_ENGINE = carItem.CAR_ENGINE;
+                newItem.CAR_MODEL = carItem.CAR_MODEL;
+                newItem.CAR_NAME = carItem.CAR_NAME;
+                newItem.CAR_YEAR = cbbCarYear.Text;
+                newItem.COMPANY_CODE = new InsureCompanyDAL().GetCompanyCode(cbbCompany.Text);
+                newItem.CONFIDENTIAL_STATUS = cbbConfident.Text == "Show" ? "S" : "H";
+                newItem.CREATE_DATE = DateTime.Now;
+                newItem.CREATE_USER = member.MEMBER_USER;
+                newItem.DAMAGE_TO_VEHICLE = Convert.ToDecimal(txtDamageCar.Text);
+                newItem.DRIVER_INSURANCE_AMT = Convert.ToDecimal(txtInsureDriver.Text);
+                newItem.EFFECTIVE_DATE = Convert.ToDateTime(txtEff.Text);
+                newItem.EXPIRE_DATE = Convert.ToDateTime(txtExp.Text);
+                newItem.FIRST_DAMAGE_PRICE = Convert.ToDecimal(txtFirstDamage.Text);
+                newItem.INSURE_CAR_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
+                newItem.INSURE_CATEGORY = cbbInsureCat.Text;
+                newItem.INSURE_PRIORITY = Convert.ToInt32(txtPriolity.Text);
+                newItem.INSURE_TYPE_REPAIR = cbbTypeRepair.Text;
+                newItem.LIVE_COVERAGE_PEOPLE = Convert.ToDecimal(txtCoveragePeople.Text);
+                newItem.LIVE_COVERAGE_TIME = Convert.ToDecimal(txtCoverageTime.Text);
+                newItem.MEDICAL_FEE_AMT = Convert.ToDecimal(txtMEDICAL_FEE_AMT.Text);
+                newItem.MEDICAL_FEE_PEOPLE = Convert.ToInt32(txtMEDICAL_FEE_PEOPLE.Text);
+                newItem.MISSING_FIRE_CAR = Convert.ToDecimal(txtMissingCar.Text);
+                newItem.NET_PRICE = Convert.ToDecimal(txtNetPrice.Text);
+                newItem.PACKAGE_NAME = txtPackage.Text;
+                newItem.PERSONAL_ACCIDENT_AMT = Convert.ToDecimal(txtPERSONAL_ACCIDENT_AMT.Text);
+                newItem.PERSONAL_ACCIDENT_PEOPLE = Convert.ToInt32(txtPERSONAL_ACCIDENT_PEOPLE.Text);
+                newItem.PRICE_ROUND = Convert.ToDecimal(txtRoundPrice.Text);
+                newItem.TOTAL_PRICE = Convert.ToDecimal(txtTotalPrice.Text);
+                newItem.UPDATE_DATE = DateTime.Now;
+                newItem.UPDATE_USER = member.MEMBER_USER;
+                if (DataCommon.Exists("INSURE_CAR_EDIT"))
+                {
+                    InsureCarData oldItem = (InsureCarData)DataCommon.Get("INSURE_CAR_EDIT");
+                    new InsureCarDAL().Update(oldItem, newItem);
+                    complete = true;
+                }
+                else 
+                {
+                    new InsureCarDAL().Insert(newItem);
+                    complete = true;
+                }
 
+                if (complete)
+                {
+                    MessageBox.Show("บันทึกข้อมูลสำเร็จ");
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {

@@ -8,6 +8,14 @@ namespace IBSC.Model
 {
     public class CarData
     {
+
+        private int _item0;
+        public int CAR_ID
+        {
+            get { return _item0; }
+            set { _item0 = value; }
+        }
+
         private string _item1;
         public string CAR_CODE
         {
