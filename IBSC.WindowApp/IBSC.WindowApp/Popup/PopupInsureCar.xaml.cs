@@ -29,6 +29,8 @@ namespace IBSC.WindowApp.Popup
             try
             {
                 InitializeComponent();
+                DataTable listCar = new CarDAL().GetComboBoxCarName();
+                cbbCarName.ItemsSource = listCar.DefaultView;
             }
             catch (Exception ex)
             {
@@ -51,6 +53,19 @@ namespace IBSC.WindowApp.Popup
         void NumericTextBoxInput(object sender, TextCompositionEventArgs e)
         {
             CommonControl.NumericTextBoxInput(sender, e);
+        }
+
+        private void cbbCarName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataTable listCar = new CarDAL().GetComboBoxCarModel(cbbCarName.SelectedValue.ToString());
+            cbbCarModel.ItemsSource = listCar.DefaultView;
+            cbbCarEngine.ItemsSource = null;
+        }
+
+        private void cbbCarModel_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataTable listCar = new CarDAL().GetComboBoxCarEngine(cbbCarName.SelectedValue.ToString(), cbbCarModel.SelectedValue.ToString());
+            cbbCarEngine.ItemsSource = listCar.DefaultView;
         }
     }
 }

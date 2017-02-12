@@ -17,7 +17,7 @@
         <ComboBox x:Name="cbbCompany" HorizontalAlignment="Left" Margin="104,35,0,0" VerticalAlignment="Top" Width="236" IsEditable="True" FontSize="14">
         </ComboBox>
         <Label Content="ยี่ห้อรถยนต์" HorizontalAlignment="Left" Margin="27,75,0,0" VerticalAlignment="Top" FontSize="14"/>
-        <ComboBox x:Name="cbbCarName" HorizontalAlignment="Left" Margin="105,75,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" FontSize="14"/>
+        <ComboBox x:Name="cbbCarName" DisplayMemberPath = "CAR_NAME" SelectedValuePath ="CAR_NAME" HorizontalAlignment="Left" Margin="105,75,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" FontSize="14" SelectionChanged="cbbCarName_SelectionChanged"/>
         <Label Content="ปี" HorizontalAlignment="Left" Margin="411,75,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="cbbCarYear" HorizontalAlignment="Left" Margin="433,75,0,0" VerticalAlignment="Top" Width="118">
             <ComboBoxItem Content="2017" IsSelected="True"/>
@@ -35,8 +35,8 @@
             <ComboBoxItem Content="2005"/>
             <ComboBoxItem Content="2004"/>
         </ComboBox>
-        <ComboBox x:Name="cbbCarModel" HorizontalAlignment="Left" Margin="105,118,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" FontSize="14"/>
-        <ComboBox x:Name="cbbCarEngine" HorizontalAlignment="Left" Margin="433,114,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" FontSize="14"/>
+        <ComboBox x:Name="cbbCarModel" DisplayMemberPath = "CAR_MODEL" SelectedValuePath ="CAR_MODEL" HorizontalAlignment="Left" Margin="105,118,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" FontSize="14" SelectionChanged="cbbCarModel_SelectionChanged"/>
+        <ComboBox x:Name="cbbCarEngine" DisplayMemberPath = "CAR_ENGINE" SelectedValuePath ="CAR_ENGINE" HorizontalAlignment="Left" Margin="433,114,0,0" VerticalAlignment="Top" Width="235" IsEditable="True" FontSize="14"/>
         <Label Content="ประเภทประกัน" HorizontalAlignment="Left" Margin="15,154,0,0" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="cbbInsureCat" HorizontalAlignment="Left" Margin="105,154,0,0" VerticalAlignment="Top" Width="78" HorizontalContentAlignment="Center">
             <ComboBoxItem Content="1" IsSelected="True"/>
