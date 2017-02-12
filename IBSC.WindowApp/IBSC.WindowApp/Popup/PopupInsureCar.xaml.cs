@@ -38,6 +38,22 @@ namespace IBSC.WindowApp.Popup
             }
         }
 
+        public PopupInsureCar(string mode)
+        {
+            try
+            {
+                InitializeComponent();
+                DataTable listCar = new CarDAL().GetComboBoxCarName();
+                cbbCarName.ItemsSource = listCar.DefaultView;
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try

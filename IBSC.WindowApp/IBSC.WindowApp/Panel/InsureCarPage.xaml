@@ -45,8 +45,9 @@
         <Image HorizontalAlignment="Left" Height="42" Margin="530,56,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/Search.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
         <Image x:Name="btnAdd" HorizontalAlignment="Left" Height="83" Margin="583,25,0,0" VerticalAlignment="Top" Width="90"  Source="/IBSC.WindowApp;component/Image/addCarInsure.png" MouseLeftButtonDown="Add_MouseLeftButtonDown"/>
         <Label Content="ปี" HorizontalAlignment="Left" Margin="92,91,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cbbCarYear" HorizontalAlignment="Left" Margin="114,91,0,0" VerticalAlignment="Top" Width="65">
-            <ComboBoxItem Content="2017" IsSelected="True"/>
+        <ComboBox x:Name="cbbCarYear" HorizontalAlignment="Left" Margin="114,91,0,0" VerticalAlignment="Top" Width="83">
+            <ComboBoxItem Content="กรุณาเลือก" IsSelected="True"/>
+            <ComboBoxItem Content="2017"/>
             <ComboBoxItem Content="2016"/>
             <ComboBoxItem Content="2015"/>
             <ComboBoxItem Content="2014"/>

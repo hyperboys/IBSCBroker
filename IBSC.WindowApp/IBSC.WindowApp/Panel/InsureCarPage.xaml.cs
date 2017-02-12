@@ -33,7 +33,7 @@ namespace IBSC.WindowApp.Panel
                 DataTable listCar = new CarDAL().GetComboBoxCarName();
                 cbbCarName.ItemsSource = listCar.DefaultView;
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -78,7 +78,13 @@ namespace IBSC.WindowApp.Panel
             {
                 DataTable listItem = (DataTable)DataCommon.Get("LIST_INSURE_CAR");
                 var results = (from myRow in listItem.AsEnumerable()
-                               where myRow.Field<string>("INSURE_CAR_STATUS").ToUpper() == (cbbStatus.Text == "ใช้งาน" ? "A" : "I")
+                               where myRow.Field<string>("COMPANY_CODE").ToUpper().Contains(txtCompanyCode.Text.ToUpper())
+                               && myRow.Field<string>("COMPANY_FULLNAME").ToUpper().Contains(txtCompanyName.Text.ToUpper())
+                               && myRow.Field<string>("CAR_YEAR").ToUpper().Contains(cbbCarYear.Text == "กรุณาเลือก" ? "" : cbbCarYear.Text)
+                               && myRow.Field<string>("CAR_NAME").Contains(cbbCarName.Text.ToUpper())
+                               && myRow.Field<string>("CAR_MODEL").Contains(cbbCarModel.Text.ToUpper())
+                               && myRow.Field<string>("CAR_ENGINE").Contains(cbbCarEngine.Text.ToUpper())
+                               && myRow.Field<string>("INSURE_CAR_STATUS").ToUpper() == (cbbStatus.Text == "ใช้งาน" ? "A" : "I")
                                select myRow);
                 if (results.Count() > 0)
                 {
@@ -103,7 +109,16 @@ namespace IBSC.WindowApp.Panel
                 string code = ((DataRowView)grdInsure.SelectedItem).Row.ItemArray[0].ToString();
                 InsureCarData item = new InsureCarDAL().GetItem(code);
                 DataCommon.Set("INSURE_CAR_EDIT", item);
-                PopupInsureCar pop = new PopupInsureCar();
+                PopupInsureCar pop;
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                if (!member.ROLE_CODE.Equals("admin"))
+                {
+                    pop = new PopupInsureCar("VIEW");
+                }
+                else
+                {
+                    pop = new PopupInsureCar("EDIT");
+                }
                 pop.ShowDialog();
                 ReloadData();
             }
