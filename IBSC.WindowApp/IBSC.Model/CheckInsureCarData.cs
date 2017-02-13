@@ -77,6 +77,33 @@ namespace IBSC.Model
             get { return _item10; }
             set { _item10 = value; }
         }
-        
+
+        private string _item11;
+        public string AGENT_NAME
+        {
+            get { return _item11; }
+            set { _item11 = value; }
+        }
+
+        private string _item12;
+        public string AGENT_EMAIL
+        {
+            get { return _item12; }
+            set { _item12 = value; }
+        }
+
+        private string _item13;
+        public string AGENT_TEL
+        {
+            get { return _item13; }
+            set { _item13 = value; }
+        }
+
+        private string _item14;
+        public string AGENT_PHONE
+        {
+            get { return _item14; }
+            set { _item14 = value; }
+        }
     }
 }

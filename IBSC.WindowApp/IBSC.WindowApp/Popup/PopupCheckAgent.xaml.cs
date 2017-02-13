@@ -19,23 +19,23 @@ using System.Windows.Shapes;
 namespace IBSC.WindowApp.Popup
 {
     /// <summary>
-    /// Interaction logic for PopupCheckCustomer.xaml
+    /// Interaction logic for PopupCheckAgent.xaml
     /// </summary>
-    public partial class PopupCheckCustomer : Window
+    public partial class PopupCheckAgent : Window
     {
         CheckInsureCarData item;
         MemberData member;
-        public PopupCheckCustomer()
+        public PopupCheckAgent()
         {
             try
             {
                 InitializeComponent();
                 item = (CheckInsureCarData)DataCommon.Get("CHECK_INSURE_CAR_EDIT");
                 txtDate.Text = item.CREATE_DATE.ToString();
-                txtEMail.Text = item.CUSTOMER_EMAIL;
-                txtName.Text = item.CUSTOMER_NAME;
-                txtTel.Text = item.CUSTOMER_TEL;
-
+                txtEMail.Text = item.AGENT_EMAIL;
+                txtName.Text = item.AGENT_NAME;
+                txtTel.Text = item.AGENT_TEL + "," + item.AGENT_PHONE;
+                txtAgentCode.Text = item.AGENT_CODE;
                 member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 if (member.ROLE_CODE.Equals("admin"))
                 {

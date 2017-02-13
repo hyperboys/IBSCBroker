@@ -53,6 +53,26 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
+                if (txtName.Text == "") 
+                {
+                    MessageBox.Show("กรุณากรอก ชื่อ");
+                    return;
+                }
+                if (txtSureName.Text == "")
+                {
+                    MessageBox.Show("กรุณากรอก นามสกุล");
+                    return;
+                }
+                if (txtUser.Text == "")
+                {
+                    MessageBox.Show("กรุณากรอก Username");
+                    return;
+                }
+                if (cbbRole.Text == "กรุณาเลือก")
+                {
+                    MessageBox.Show("กรุณาเลือก Role");
+                    return;
+                }
                 if (MessageBox.Show("ยืนยันการบันทึกข้อมูล", "การบันทึกข้อมูล", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     bool complete = false;

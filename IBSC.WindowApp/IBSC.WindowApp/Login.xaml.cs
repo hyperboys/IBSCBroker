@@ -66,8 +66,6 @@ namespace IBSC.WindowApp
                     Alert.Visibility = Visibility.Visible;
                 }
 #endif
-
-
             }
             catch (Exception ex)
             {

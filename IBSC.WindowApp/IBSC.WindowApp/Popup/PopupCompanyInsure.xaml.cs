@@ -34,9 +34,9 @@ namespace IBSC.WindowApp.Popup
                     item = (InsureCompanyData)DataCommon.Get("COMPANY_EDIT");
                     txtCompantCode.Text = item.COMPANY_CODE;
                     txtCompantFullName.Text = item.COMPANY_FULLNAME;
-                    txtPicPath.Text = item.COMPANY_PATH_PIC;
+                    //txtPicPath.Text = item.COMPANY_PATH_PIC;
                     txtRemark.Text = item.COMPANY_REMARK;
-                    txtShortName.Text = item.COMPANY_SHORTNAME;
+                    //txtShortName.Text = item.COMPANY_SHORTNAME;
                     cbbStatus.SelectedIndex = item.COMPANY_STATUS == "A" ? 0 : 1;
                 }
                 else
@@ -54,6 +54,16 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
+                if (txtCompantCode.Text == "")
+                {
+                    MessageBox.Show("กรุณากรอก รหัสบริษัท");
+                    return;
+                }
+                if (txtCompantFullName.Text == "")
+                {
+                    MessageBox.Show("กรุณากรอก ชื่อเต็มบริษัท");
+                    return;
+                }
                 if (MessageBox.Show("ยืนยันการบันทึกข้อมูล", "การบันทึกข้อมูล", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     bool complete = false;
@@ -63,9 +73,9 @@ namespace IBSC.WindowApp.Popup
                         item = (InsureCompanyData)DataCommon.Get("COMPANY_EDIT");
                         item.COMPANY_CODE = txtCompantCode.Text;
                         item.COMPANY_FULLNAME = txtCompantFullName.Text;
-                        item.COMPANY_PATH_PIC = txtPicPath.Text;
+                        item.COMPANY_PATH_PIC = "";
                         item.COMPANY_REMARK = txtRemark.Text;
-                        item.COMPANY_SHORTNAME = txtShortName.Text;
+                        item.COMPANY_SHORTNAME = "";
                         item.COMPANY_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
 
                         dal.Update(item);
@@ -79,9 +89,9 @@ namespace IBSC.WindowApp.Popup
                             item = new InsureCompanyData();
                             item.COMPANY_CODE = txtCompantCode.Text;
                             item.COMPANY_FULLNAME = txtCompantFullName.Text;
-                            item.COMPANY_PATH_PIC = txtPicPath.Text;
+                            item.COMPANY_PATH_PIC = "";
                             item.COMPANY_REMARK = txtRemark.Text;
-                            item.COMPANY_SHORTNAME = txtShortName.Text;
+                            item.COMPANY_SHORTNAME = "";
                             item.COMPANY_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
                             new InsureCompanyDAL().Insert(item);
                             complete = true;

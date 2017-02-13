@@ -83,7 +83,7 @@ namespace IBSC.WindowApp.Panel
             }
         }
 
-        
+
         private void grdInsure_Loaded(object sender, RoutedEventArgs e)
         {
             ReloadData();
@@ -124,6 +124,7 @@ namespace IBSC.WindowApp.Panel
                                && myRow.Field<string>("CAR_MODEL").Contains(cbbCarModel.Text)
                                && myRow.Field<string>("CAR_ENGINE").Contains(cbbCarEngine.Text)
                                && myRow.Field<string>("SELECT_INSURANCE_STATUS").Contains(condStatus)
+                               && myRow.Field<string>("SELECT_INSURANCE_CODE").Contains(txtCheckOrder.Text)
                                select myRow);
                 if (results.Count() > 0)
                 {
@@ -159,8 +160,7 @@ namespace IBSC.WindowApp.Panel
             {
                 CheckInsureCarDAL objDal = new CheckInsureCarDAL();
                 string code = ((DataRowView)grdInsure.SelectedItem).Row.ItemArray[0].ToString();
-                CheckInsureCarData item = objDal.GetItem(code);
-                DataCommon.Set("CHECK_INSURE_CAR_EDIT", item);
+
 
                 if (objDal.CheckStatus(code) != "01" && objDal.CheckOwner(code, member.MEMBER_USER) != "02" && member.ROLE_CODE == "member")
                 {
@@ -172,15 +172,20 @@ namespace IBSC.WindowApp.Panel
                     {
                         objDal.UpdateStatus(code);
                     }
+                    CheckInsureCarData item = objDal.GetItem(code);
                     if (item.TRANSACTION_TYPE == "ลูกค้าทั่วไป")
                     {
+                        DataCommon.Set("CHECK_INSURE_CAR_EDIT", item);
                         PopupCheckCustomer popup = new PopupCheckCustomer();
                         popup.ShowDialog();
 
                     }
                     else
                     {
-
+                        item = objDal.GetItemAgent(code);
+                        DataCommon.Set("CHECK_INSURE_CAR_EDIT", item);
+                        PopupCheckAgent popup = new PopupCheckAgent();
+                        popup.ShowDialog();
                     }
                 }
 
@@ -236,6 +241,7 @@ namespace IBSC.WindowApp.Panel
                                && myRow.Field<string>("CAR_MODEL").Contains(cbbCarModel.Text)
                                && myRow.Field<string>("CAR_ENGINE").Contains(cbbCarEngine.Text)
                                && myRow.Field<string>("SELECT_INSURANCE_STATUS").Contains(condStatus)
+                               && myRow.Field<string>("SELECT_INSURANCE_CODE").Contains(txtCheckOrder.Text)
                                select myRow);
                 if (results.Count() > 0)
                 {

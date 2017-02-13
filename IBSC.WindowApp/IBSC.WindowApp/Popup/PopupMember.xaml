@@ -1,7 +1,7 @@
 ﻿<Window x:Class="IBSC.WindowApp.Popup.PopupMember"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="ข้อมูลสมาชิก" Height="215.8" Width="527" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/IBSC.WindowApp;component/Image/Icon.jpg">
+        Title="ข้อมูลสมาชิก" Height="244.8" Width="527" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/IBSC.WindowApp;component/Image/Icon.jpg">
     <Grid>
         <Label Content="ชื่อ" HorizontalAlignment="Left" Margin="71,33,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="นามสกุล" HorizontalAlignment="Left" Margin="265,33,0,0" VerticalAlignment="Top" FontSize="14"/>
@@ -21,6 +21,7 @@
             <ComboBoxItem Content="ใช้งาน" IsSelected="True"/>
             <ComboBoxItem Content="ไม่ใช้งาน"/>
         </ComboBox>
+        <Label Content="***กรณีเพิ่ม User ระบบจะนำ username ไปเป็น Password ด้วย" HorizontalAlignment="Left" Margin="55,169,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#FFFF0202" ForceCursor="True"/>
 
     </Grid>
 </Window>

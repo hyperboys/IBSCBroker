@@ -1,0 +1,23 @@
+﻿<Window x:Class="IBSC.WindowApp.Popup.PopupCheckAgent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="ข้อมูลตัวแทน" Height="455.8" Width="546" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Icon="/IBSC.WindowApp;component/Image/Icon.jpg">
+    <Grid>
+        <Label Content="วัน - เวลา เช็คเบี้ย" HorizontalAlignment="Left" Margin="19,32,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox Name="txtDate" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="129,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="285" FontSize="14"/>
+        <Button Name="btnSave" Content="ติดต่อแล้ว" HorizontalAlignment="Left" Margin="429,359,0,0" VerticalAlignment="Top" Width="81" Height="35" Click="btnSave_Click" FontSize="14"/>
+        <Label Content="อีเมล" HorizontalAlignment="Left" Margin="87,125,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <Label Content="เบอร์โทร" HorizontalAlignment="Left" Margin="69,171,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txtEMail" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="129,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="381" FontSize="14"/>
+        <TextBox x:Name="txtTel" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="129,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="381" FontSize="14"/>
+        <Label Content="หมายเหตุ" HorizontalAlignment="Left" Margin="62,208,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Height="129" Margin="129,208,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="381" HorizontalScrollBarVisibility="Visible" FontSize="14"/>
+        <Button x:Name="btnCheck" Content="ข้อมูลเบี้ย" HorizontalAlignment="Left" Margin="429,26,0,0" VerticalAlignment="Top" Width="81" Height="35" Click="btnCheck_Click" FontSize="14"/>
+        <Label Content="ชื่อ - นามสกุล" HorizontalAlignment="Left" Margin="37,74,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txtName" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="129,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" FontSize="14"/>
+        <Button x:Name="btnCancel" Content="ข้อมูลเท็จ" HorizontalAlignment="Left" Margin="329,359,0,0" VerticalAlignment="Top" Width="81" Height="35" Click="btnCancel_Click" FontSize="14"/>
+        <Label Content="รหัสตัวแทน" HorizontalAlignment="Left" Margin="334,74,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txtAgentCode" IsEnabled="False" HorizontalAlignment="Left" Height="23" Margin="414,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="96" FontSize="14"/>
+
+    </Grid>
+</Window>

@@ -54,6 +54,26 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
+                if (txtCarCode.Text == "") 
+                {
+                    MessageBox.Show("กรุณากรอก รหัสรถยนต์");
+                    return;
+                }
+                if (txtCarName.Text == "")
+                {
+                    MessageBox.Show("กรุณากรอก ยี่ห้อรถยนต์");
+                    return;
+                }
+                if (txtCarModel.Text == "")
+                {
+                    MessageBox.Show("กรุณากรอก รุ่นรถยนต์");
+                    return;
+                }
+                if (txtCarEngine.Text == "")
+                {
+                    MessageBox.Show("กรุณากรอก เครื่องรถยนต์");
+                    return;
+                }
                 if (MessageBox.Show("ยืนยันการบันทึกข้อมูล", "การบันทึกข้อมูล", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
                     bool complete = false;

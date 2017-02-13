@@ -53,7 +53,7 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = @"SELECT T.SELECT_INSURANCE_CODE,T.CUSTOMER_NAME,T.CUSTOMER_EMAIL,T.CUSTOMER_TEL,T.SELECT_INSURANCE_STATUS,
-                (CASE T.SELECT_INSURANCE_STATUS WHEN '01' THEN 'ส่งเรื่อง' WHEN '02' THEN 'ติดต่อแล้ว' WHEN '03' THEN 'ข้อมูลเท็จ' END) AS SELECT_INSURANCE_STATUS_NAME ,
+                (CASE T.SELECT_INSURANCE_STATUS WHEN '01' THEN 'ส่งเรื่อง' WHEN '02' THEN 'รับเรื่อง' WHEN '03' THEN 'ติดต่อแล้ว' WHEN '04' THEN 'ข้อมูลเท็จ' END) AS SELECT_INSURANCE_STATUS_NAME ,
                 T.WINDOW_IP,T.AGENT_CODE,T.TRANSACTION_TYPE,T.UPDATE_USER,
                 A.INSURE_CAR_CODE, A.COMPANY_CODE, A.PACKAGE_NAME, A.CAR_ID,
                  A.INSURE_CATEGORY, A.INSURE_TYPE_REPAIR, A.CAR_YEAR, A.LIVE_COVERAGE_PEOPLE,
@@ -176,6 +176,46 @@ namespace IBSC.DAL
             }
         }
 
+        public CheckInsureCarData GetItemAgent(string code)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = @"SELECT T.SELECT_INSURANCE_CODE,T.SELECT_INSURANCE_STATUS,
+                T.WINDOW_IP,T.AGENT_CODE,T.TRANSACTION_TYPE,T.INSURE_CAR_CODE,T.REMARK,T.CREATE_DATE,S.sm_name,S.sm_lastname,S.sm_email,S.sm_tel,S.sm_phone 
+                FROM TA_SELECT_INSURANCE T INNER JOIN system_member S ON T.AGENT_CODE = S.sm_code WHERE SELECT_INSURANCE_CODE = '" + code + "'";
+
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    CheckInsureCarData item = new CheckInsureCarData();
+                    item.SELECT_INSURANCE_CODE = reader.GetString("SELECT_INSURANCE_CODE");
+                    item.INSURE_CAR_CODE = reader.GetString("INSURE_CAR_CODE");
+                    item.AGENT_NAME = reader.GetString("sm_name") + " " + reader.GetString("sm_lastname");
+                    item.AGENT_EMAIL = reader.GetString("sm_email");
+                    item.AGENT_PHONE = reader.GetString("sm_phone");
+                    item.AGENT_TEL = reader.GetString("sm_tel");
+                    item.SELECT_INSURANCE_STATUS = reader.GetString("SELECT_INSURANCE_STATUS");
+                    item.WINDOW_IP = reader.GetString("WINDOW_IP");
+                    item.AGENT_CODE = reader.GetString("AGENT_CODE");
+                    item.TRANSACTION_TYPE = reader.GetString("TRANSACTION_TYPE");
+                    item.REMARK = reader.GetString("REMARK");
+                    item.CREATE_DATE = Convert.ToDateTime(reader.GetString("CREATE_DATE"));
+                    reader.Close();
+                    return item;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public void UpdateStatus(string code)
         {
             try
@@ -189,6 +229,29 @@ namespace IBSC.DAL
                 sql.Append(" UPDATE_DATE = '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
                 sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
                 sql.Append(" WHERE SELECT_INSURANCE_CODE = '" + code + "'");
+                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public void UpdateComplete(CheckInsureCarData item)
+        {
+            try
+            {
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                DBbase.Connect();
+                StringBuilder sql = new StringBuilder();
+                sql.Append("UPDATE TA_SELECT_INSURANCE ");
+                sql.Append("SET SELECT_INSURANCE_STATUS = '" + item.SELECT_INSURANCE_STATUS + "',");
+                sql.Append(" REMARK = '" + item.REMARK + "',");
+                sql.Append(" WINDOW_IP = '" + UtilityCommon.GetLocalIPAddress() + "',");
+                sql.Append(" UPDATE_DATE = '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
+                sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
+                sql.Append(" WHERE SELECT_INSURANCE_CODE = '" + item.SELECT_INSURANCE_CODE + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
             }
