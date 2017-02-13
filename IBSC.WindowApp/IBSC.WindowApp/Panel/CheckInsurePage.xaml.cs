@@ -1,6 +1,7 @@
 ﻿using IBSC.Common;
 using IBSC.DAL;
 using IBSC.Model;
+using IBSC.WindowApp.Popup;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -25,6 +26,7 @@ namespace IBSC.WindowApp.Panel
     /// </summary>
     public partial class CheckInsurePage : UserControl
     {
+        MemberData member;
         public CheckInsurePage()
         {
             try
@@ -33,7 +35,7 @@ namespace IBSC.WindowApp.Panel
                 DataTable listCar = new CarDAL().GetComboBoxCarName();
                 cbbCarName.ItemsSource = listCar.DefaultView;
 
-                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 if (!member.ROLE_CODE.Equals("admin"))
                 {
                     cbbStatus.Visibility = System.Windows.Visibility.Hidden;
@@ -71,16 +73,16 @@ namespace IBSC.WindowApp.Panel
             try
             {
                 DataTable listItem;
-                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
-                if (!member.ROLE_CODE.Equals("admin"))
-                {
-                    listItem = new CheckInsureCarDAL().GetAll("01");
-                }
-                else 
+                if (member.ROLE_CODE.Equals("admin"))
                 {
                     listItem = new CheckInsureCarDAL().GetAll();
                 }
-                
+                else
+                {
+                    listItem = new CheckInsureCarDAL().GetAll(member.MEMBER_USER);
+                    grdInsure.Columns[12].Visibility = System.Windows.Visibility.Hidden;
+                }
+
                 grdInsure.ItemsSource = listItem.DefaultView;
                 DataCommon.Set("LIST_CHECK_INSURE_CAR", listItem);
             }
@@ -96,10 +98,32 @@ namespace IBSC.WindowApp.Panel
             {
                 CheckInsureCarDAL objDal = new CheckInsureCarDAL();
                 string code = ((DataRowView)grdInsure.SelectedItem).Row.ItemArray[0].ToString();
-                if (objDal.CheckStatus(code) != "01") 
+                CheckInsureCarData item = objDal.GetItem(code);
+                DataCommon.Set("CHECK_INSURE_CAR_EDIT", item);
+
+                if (objDal.CheckStatus(code) != "01" && objDal.CheckOwner(code, member.MEMBER_USER) != "02" && member.ROLE_CODE == "member")
                 {
                     MessageBox.Show("มีพนักงานท่ายอื่นดำเนินการแล้ว");
                 }
+                else
+                {
+                    if (member.ROLE_CODE == "member")
+                    {
+                        objDal.UpdateStatus(code);
+                    }
+                    if (item.TRANSACTION_TYPE == "ลูกค้าทั่วไป")
+                    {
+                        PopupCheckCustomer popup = new PopupCheckCustomer();
+                        popup.ShowDialog();
+
+                    }
+                    else
+                    {
+
+                    }
+                }
+
+                ReloadData();
             }
             catch (Exception ex)
             {
@@ -145,16 +169,16 @@ namespace IBSC.WindowApp.Panel
             try
             {
                 string condStatus = "";
-                switch (cbbStatus.Text) 
+                switch (cbbStatus.Text)
                 {
                     case "กรุณาเลือก":
                         {
                             condStatus = "";
-                        }break;
-                    case "ส่งเรื่อง": 
+                        } break;
+                    case "ส่งเรื่อง":
                         {
                             condStatus = "01";
-                        }break;
+                        } break;
                     case "ติดต่อแล้ว":
                         {
                             condStatus = "02";
@@ -162,7 +186,7 @@ namespace IBSC.WindowApp.Panel
                     case "ข้อมูลเท็จ":
                         {
                             condStatus = "03";
-                        } break;   
+                        } break;
                 }
                 DataTable listItem = (DataTable)DataCommon.Get("LIST_CHECK_INSURE_CAR");
                 var results = (from myRow in listItem.AsEnumerable()
@@ -170,7 +194,7 @@ namespace IBSC.WindowApp.Panel
                                && myRow.Field<string>("CAR_NAME").Contains(cbbCarName.Text)
                                && myRow.Field<string>("CAR_MODEL").Contains(cbbCarModel.Text)
                                && myRow.Field<string>("CAR_ENGINE").Contains(cbbCarEngine.Text)
-                               && myRow.Field<string>("SELECT_INSURANCE_STAUTS").Contains(condStatus)
+                               && myRow.Field<string>("SELECT_INSURANCE_STATUS").Contains(condStatus)
                                select myRow);
                 if (results.Count() > 0)
                 {

@@ -27,7 +27,8 @@
                 <DataGridTextColumn Binding="{Binding INSURE_TYPE_REPAIR}"  Header="ซ่อม"/>
                 <DataGridTextColumn Binding="{Binding CAPITAL_INSURANCE}" Header="ทุนประกันภัย"/>
                 <DataGridTextColumn Binding="{Binding PRICE_ROUND}" Header="ราคา"/>
-                <DataGridTextColumn Binding="{Binding SELECT_INSURANCE_STAUTS_NAME}" Header="สถานะ"/>
+                <DataGridTextColumn Binding="{Binding SELECT_INSURANCE_STATUS_NAME}" Header="สถานะ"/>
+                <DataGridTextColumn Binding="{Binding UPDATE_USER}" Header="ผู้รับผผิดชอบ"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="ปี" HorizontalAlignment="Left" Margin="92,33,0,0" VerticalAlignment="Top"/>

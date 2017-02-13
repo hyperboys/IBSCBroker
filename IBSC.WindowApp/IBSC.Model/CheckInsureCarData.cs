@@ -37,7 +37,7 @@ namespace IBSC.Model
         }
 
         private string _item5;
-        public string SELECT_INSURANCE_STAUTS
+        public string SELECT_INSURANCE_STATUS
         {
             get { return _item5; }
             set { _item5 = value; }
@@ -65,10 +65,18 @@ namespace IBSC.Model
         }
 
         private string _item9;
-        public string SELECT_INSURANCE_STAUTS_NAME
+        public string SELECT_INSURANCE_STATUS_NAME
         {
             get { return _item9; }
             set { _item9 = value; }
         }
+
+        private string _item10;
+        public string REMARK
+        {
+            get { return _item10; }
+            set { _item10 = value; }
+        }
+        
     }
 }
