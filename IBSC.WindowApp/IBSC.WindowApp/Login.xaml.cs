@@ -35,7 +35,7 @@ namespace IBSC.WindowApp
 #if DEBUG
                 MemberData member = new MemberData();
                 member.MEMBER_NAME = "Debug";
-                member.ROLE_CODE = "admin";
+                member.ROLE_CODE = "member";
                 member.MEMBER_STATUS = "A";
                 member.MEMBER_SURENAME = "Debug";
                 member.MEMBER_USER = "Debug";

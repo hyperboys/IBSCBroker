@@ -17,7 +17,6 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
                 <DataGridTextColumn Binding="{Binding CAR_YEAR}" Header="ปี"/>
                 <DataGridTextColumn Binding="{Binding CAR_NAME}" Header="ยี่ห้อรถยนต์"/>
                 <DataGridTextColumn Binding="{Binding CAR_MODEL}" Header="รุ่นรถยนต์"/>

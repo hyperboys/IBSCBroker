@@ -32,6 +32,13 @@ namespace IBSC.WindowApp.Panel
                 InitializeComponent();
                 DataTable listCar = new CarDAL().GetComboBoxCarName();
                 cbbCarName.ItemsSource = listCar.DefaultView;
+
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                if (!member.ROLE_CODE.Equals("admin"))
+                {
+                    btnImport.Visibility = System.Windows.Visibility.Hidden;
+                    btnAdd.Visibility = System.Windows.Visibility.Hidden;
+                }
             }
             catch (Exception ex)
             {
@@ -51,13 +58,6 @@ namespace IBSC.WindowApp.Panel
                 DataTable listMember = new InsureCarDAL().GetAll();
                 grdInsure.ItemsSource = listMember.DefaultView;
                 DataCommon.Set("LIST_INSURE_CAR", listMember);
-
-                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
-                if (!member.ROLE_CODE.Equals("admin"))
-                {
-                    btnImport.Visibility = System.Windows.Visibility.Hidden;
-                    btnAdd.Visibility = System.Windows.Visibility.Hidden;
-                }
             }
             catch (Exception ex)
             {
@@ -81,9 +81,9 @@ namespace IBSC.WindowApp.Panel
                                where myRow.Field<string>("COMPANY_CODE").ToUpper().Contains(txtCompanyCode.Text.ToUpper())
                                && myRow.Field<string>("COMPANY_FULLNAME").ToUpper().Contains(txtCompanyName.Text.ToUpper())
                                && myRow.Field<string>("CAR_YEAR").ToUpper().Contains(cbbCarYear.Text == "กรุณาเลือก" ? "" : cbbCarYear.Text)
-                               && myRow.Field<string>("CAR_NAME").Contains(cbbCarName.Text.ToUpper())
-                               && myRow.Field<string>("CAR_MODEL").Contains(cbbCarModel.Text.ToUpper())
-                               && myRow.Field<string>("CAR_ENGINE").Contains(cbbCarEngine.Text.ToUpper())
+                               && myRow.Field<string>("CAR_NAME").Contains(cbbCarName.Text)
+                               && myRow.Field<string>("CAR_MODEL").Contains(cbbCarModel.Text)
+                               && myRow.Field<string>("CAR_ENGINE").Contains(cbbCarEngine.Text)
                                && myRow.Field<string>("INSURE_CAR_STATUS").ToUpper() == (cbbStatus.Text == "ใช้งาน" ? "A" : "I")
                                select myRow);
                 if (results.Count() > 0)
@@ -105,7 +105,6 @@ namespace IBSC.WindowApp.Panel
         {
             try
             {
-                int index = grdInsure.SelectedIndex;
                 string code = ((DataRowView)grdInsure.SelectedItem).Row.ItemArray[0].ToString();
                 InsureCarData item = new InsureCarDAL().GetItem(code);
                 DataCommon.Set("INSURE_CAR_EDIT", item);

@@ -6,7 +6,63 @@
              mc:Ignorable="d" 
              d:DesignHeight="534" d:DesignWidth="833">
     <Grid>
-        <Label Content="CheckInsurePage" HorizontalAlignment="Left" Margin="222,187,0,0" VerticalAlignment="Top" Height="166" Width="296" FontSize="40"/>
-
+        <DataGrid x:Name="grdInsure" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Height="396" Width="813"
+    		IsReadOnly="True" CanUserResizeRows="False" CanUserReorderColumns="False"
+    		AutoGenerateColumns="False" Loaded="grdInsure_Loaded">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="Button_Click" Content="Show"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding TRANSACTION_TYPE}" Header="ประเภท"/>
+                <DataGridTextColumn Binding="{Binding CAR_YEAR}" Header="ปี"/>
+                <DataGridTextColumn Binding="{Binding CAR_NAME}" Header="ยี่ห้อรถยนต์"/>
+                <DataGridTextColumn Binding="{Binding CAR_MODEL}" Header="รุ่นรถยนต์"/>
+                <DataGridTextColumn Binding="{Binding CAR_ENGINE}" Header="เครื่องยนต์"/>
+                <DataGridTextColumn Binding="{Binding COMPANY_FULLNAME}" Header="บริษัท"/>
+                <DataGridTextColumn Binding="{Binding PACKAGE_NAME}" Header="แพคเกจ"/>
+                <DataGridTextColumn Binding="{Binding INSURE_TYPE_REPAIR}"  Header="ซ่อม"/>
+                <DataGridTextColumn Binding="{Binding CAPITAL_INSURANCE}" Header="ทุนประกันภัย"/>
+                <DataGridTextColumn Binding="{Binding PRICE_ROUND}" Header="ราคา"/>
+                <DataGridTextColumn Binding="{Binding SELECT_INSURANCE_STAUTS_NAME}" Header="สถานะ"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="ปี" HorizontalAlignment="Left" Margin="92,33,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbCarYear" HorizontalAlignment="Left" Margin="114,33,0,0" VerticalAlignment="Top" Width="83">
+            <ComboBoxItem Content="กรุณาเลือก" IsSelected="True"/>
+            <ComboBoxItem Content="2017"/>
+            <ComboBoxItem Content="2016"/>
+            <ComboBoxItem Content="2015"/>
+            <ComboBoxItem Content="2014"/>
+            <ComboBoxItem Content="2013"/>
+            <ComboBoxItem Content="2012"/>
+            <ComboBoxItem Content="2011"/>
+            <ComboBoxItem Content="2010"/>
+            <ComboBoxItem Content="2009"/>
+            <ComboBoxItem Content="2008"/>
+            <ComboBoxItem Content="2007"/>
+            <ComboBoxItem Content="2006"/>
+            <ComboBoxItem Content="2005"/>
+            <ComboBoxItem Content="2004"/>
+        </ComboBox>
+        <Label Content="รุ่นรถยนต์" HorizontalAlignment="Left" Margin="54,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="เครื่องยนต์" HorizontalAlignment="Left" Margin="379,69,0,0" VerticalAlignment="Top"/>
+        <Label Content="ยี่ห้อรถยนต์" HorizontalAlignment="Left" Margin="374,35,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbCarName" DisplayMemberPath = "CAR_NAME" SelectedValuePath ="CAR_NAME" HorizontalAlignment="Left" Margin="438,35,0,0" VerticalAlignment="Top" Width="232" IsEditable="True" SelectionChanged="cbbCarName_SelectionChanged"/>
+        <ComboBox x:Name="cbbCarModel" DisplayMemberPath = "CAR_MODEL" SelectedValuePath ="CAR_MODEL" HorizontalAlignment="Left" Margin="114,73,0,0" VerticalAlignment="Top" Width="232" IsEditable="True" SelectionChanged="cbbCarModel_SelectionChanged"/>
+        <ComboBox x:Name="cbbCarEngine" DisplayMemberPath = "CAR_ENGINE" SelectedValuePath ="CAR_ENGINE" HorizontalAlignment="Left" Margin="440,73,0,0" VerticalAlignment="Top" Width="232" IsEditable="True"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="691,17,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/Search.png" MouseLeftButtonDown="Image_MouseLeftButtonDown"/>
+        <Image HorizontalAlignment="Left" Height="42" Margin="752,17,0,0" VerticalAlignment="Top" Width="41" Source="/IBSC.WindowApp;component/Image/refresh.png" MouseLeftButtonDown="Reset_MouseLeftButtonDown"/>
+        <Label x:Name="lblStatus" Content="สถานะ" HorizontalAlignment="Left" Margin="677,69,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="722,73,0,0" VerticalAlignment="Top" Width="83">
+            <ComboBoxItem Content="กรุณาเลือก" IsSelected="True"/>
+            <ComboBoxItem Content="รับเรื่อง"/>
+            <ComboBoxItem Content="ส่งเรื่อง"/>
+            <ComboBoxItem Content="ติดต่อแล้ว"/>
+            <ComboBoxItem Content="ข้อมูลเท็จ"/>
+        </ComboBox>
     </Grid>
 </UserControl>
