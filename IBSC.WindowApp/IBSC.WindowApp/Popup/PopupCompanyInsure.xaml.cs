@@ -54,45 +54,48 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
-                bool complete = false;
-                InsureCompanyDAL dal = new InsureCompanyDAL();
-                if (DataCommon.Exists("COMPANY_EDIT"))
+                if (MessageBox.Show("ยืนยันการบันทึกข้อมูล", "การบันทึกข้อมูล", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    item = (InsureCompanyData)DataCommon.Get("COMPANY_EDIT");
-                    item.COMPANY_CODE = txtCompantCode.Text;
-                    item.COMPANY_FULLNAME = txtCompantFullName.Text;
-                    item.COMPANY_PATH_PIC = txtPicPath.Text;
-                    item.COMPANY_REMARK = txtRemark.Text;
-                    item.COMPANY_SHORTNAME = txtShortName.Text;
-                    item.COMPANY_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
-
-                    dal.Update(item);
-                    DataCommon.Remove("COMPANY_EDIT");
-                    complete = true;
-                }
-                else
-                {
-                    if (dal.GetItem(txtCompantCode.Text) == null)
+                    bool complete = false;
+                    InsureCompanyDAL dal = new InsureCompanyDAL();
+                    if (DataCommon.Exists("COMPANY_EDIT"))
                     {
-                        item = new InsureCompanyData();
+                        item = (InsureCompanyData)DataCommon.Get("COMPANY_EDIT");
                         item.COMPANY_CODE = txtCompantCode.Text;
                         item.COMPANY_FULLNAME = txtCompantFullName.Text;
                         item.COMPANY_PATH_PIC = txtPicPath.Text;
                         item.COMPANY_REMARK = txtRemark.Text;
                         item.COMPANY_SHORTNAME = txtShortName.Text;
                         item.COMPANY_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
-                        new InsureCompanyDAL().Insert(item);
+
+                        dal.Update(item);
+                        DataCommon.Remove("COMPANY_EDIT");
                         complete = true;
                     }
                     else
                     {
-                        MessageBox.Show("รหัสบริษัทนี้ซ้ำในระบบ กรุณาเปลี่ยนรหัสบริษัท");
+                        if (dal.GetItem(txtCompantCode.Text) == null)
+                        {
+                            item = new InsureCompanyData();
+                            item.COMPANY_CODE = txtCompantCode.Text;
+                            item.COMPANY_FULLNAME = txtCompantFullName.Text;
+                            item.COMPANY_PATH_PIC = txtPicPath.Text;
+                            item.COMPANY_REMARK = txtRemark.Text;
+                            item.COMPANY_SHORTNAME = txtShortName.Text;
+                            item.COMPANY_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
+                            new InsureCompanyDAL().Insert(item);
+                            complete = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("รหัสบริษัทนี้ซ้ำในระบบ กรุณาเปลี่ยนรหัสบริษัท");
+                        }
                     }
-                }
-                if (complete)
-                {
-                    MessageBox.Show("บันทึกข้อมูลสำเร็จ");
-                    this.Close();
+                    if (complete)
+                    {
+                        MessageBox.Show("บันทึกข้อมูลสำเร็จ");
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)

@@ -53,47 +53,50 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
-                bool complete = false;
-                MemberDAL dal = new MemberDAL();
-                if (cbbRole.Text.Equals("กรุณาเลือก"))
+                if (MessageBox.Show("ยืนยันการบันทึกข้อมูล", "การบันทึกข้อมูล", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    MessageBox.Show("กรุณาเลือก Role ก่อนบันทึก");
-                    return;
-                }
-                if (DataCommon.Exists("MEMBER_EDIT"))
-                {
-                    member = (MemberData)DataCommon.Get("MEMBER_EDIT");
-                    member.MEMBER_NAME = txtName.Text;
-                    member.ROLE_CODE = cbbRole.Text.ToLower();
-                    member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
-                    member.MEMBER_SURENAME = txtSureName.Text;
-                    dal.UpdateMember(member);
-                    DataCommon.Remove("MEMBER_EDIT");
-                    complete = true;
-                }
-                else
-                {
-                    if (dal.GetMember(txtUser.Text) == null)
+                    bool complete = false;
+                    MemberDAL dal = new MemberDAL();
+                    if (cbbRole.Text.Equals("กรุณาเลือก"))
                     {
-                        member = new MemberData();
+                        MessageBox.Show("กรุณาเลือก Role ก่อนบันทึก");
+                        return;
+                    }
+                    if (DataCommon.Exists("MEMBER_EDIT"))
+                    {
+                        member = (MemberData)DataCommon.Get("MEMBER_EDIT");
                         member.MEMBER_NAME = txtName.Text;
                         member.ROLE_CODE = cbbRole.Text.ToLower();
                         member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
                         member.MEMBER_SURENAME = txtSureName.Text;
-                        member.MEMBER_PASSWORD = txtUser.Text;
-                        member.MEMBER_USER = txtUser.Text;
-                        new MemberDAL().InsertMember(member);
+                        dal.UpdateMember(member);
+                        DataCommon.Remove("MEMBER_EDIT");
                         complete = true;
                     }
                     else
                     {
-                        MessageBox.Show("Username นี้ซ้ำในระบบ กรุณาเปลี่ยน Username");
+                        if (dal.GetMember(txtUser.Text) == null)
+                        {
+                            member = new MemberData();
+                            member.MEMBER_NAME = txtName.Text;
+                            member.ROLE_CODE = cbbRole.Text.ToLower();
+                            member.MEMBER_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
+                            member.MEMBER_SURENAME = txtSureName.Text;
+                            member.MEMBER_PASSWORD = txtUser.Text;
+                            member.MEMBER_USER = txtUser.Text;
+                            new MemberDAL().InsertMember(member);
+                            complete = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Username นี้ซ้ำในระบบ กรุณาเปลี่ยน Username");
+                        }
                     }
-                }
-                if (complete)
-                {
-                    MessageBox.Show("บันทึกข้อมูลสำเร็จ");
-                    this.Close();
+                    if (complete)
+                    {
+                        MessageBox.Show("บันทึกข้อมูลสำเร็จ");
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)

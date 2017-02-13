@@ -24,6 +24,7 @@ namespace IBSC.WindowApp.Popup
     public partial class PopupCheckCustomer : Window
     {
         CheckInsureCarData item;
+        MemberData member;
         public PopupCheckCustomer()
         {
             try
@@ -34,6 +35,13 @@ namespace IBSC.WindowApp.Popup
                 txtEMail.Text = item.CUSTOMER_EMAIL;
                 txtName.Text = item.CUSTOMER_NAME;
                 txtTel.Text = item.CUSTOMER_TEL;
+
+                member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                if (member.ROLE_CODE.Equals("admin"))
+                {
+                    btnCancel.Visibility = System.Windows.Visibility.Hidden;
+                    btnSave.Visibility = System.Windows.Visibility.Hidden;
+                }
             }
             catch (Exception ex)
             {
@@ -45,9 +53,14 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
+                if (MessageBox.Show("ยืนยันการบันทึกข้อมูล", "การบันทึกข้อมูล", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    item.REMARK = txtRemark.Text;
+                    item.SELECT_INSURANCE_STATUS = "03";
 
-                MessageBox.Show("บันทึกข้อมูลสำเร็จ");
-                this.Close();
+                    MessageBox.Show("บันทึกข้อมูลสำเร็จ");
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {
@@ -67,9 +80,14 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
+                if (MessageBox.Show("ยืนยันการบันทึกข้อมูล", "การบันทึกข้อมูล", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+                {
+                    item.REMARK = txtRemark.Text;
+                    item.SELECT_INSURANCE_STATUS = "04";
 
-                MessageBox.Show("บันทึกข้อมูลสำเร็จ");
-                this.Close();
+                    MessageBox.Show("บันทึกข้อมูลสำเร็จ");
+                    this.Close();
+                }
             }
             catch (Exception ex)
             {

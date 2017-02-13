@@ -54,47 +54,50 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
-                bool complete = false;
-                CarDAL dal = new CarDAL();
-                if (DataCommon.Exists("CAR_EDIT"))
+                if (MessageBox.Show("ยืนยันการบันทึกข้อมูล", "การบันทึกข้อมูล", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
                 {
-                    item = (CarData)DataCommon.Get("CAR_EDIT");
-
-                    CarData newItem = new CarData();
-                    newItem.CAR_CODE = txtCarCode.Text;
-                    newItem.CAR_ENGINE = txtCarEngine.Text;
-                    newItem.CAR_MODEL = txtCarModel.Text;
-                    newItem.CAR_NAME = txtCarName.Text;
-                    newItem.CAR_REMARK = txtCarRemark.Text;
-                    newItem.CAR_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
-
-                    dal.Update(item, newItem);
-                    DataCommon.Remove("CAR_EDIT");
-                    complete = true;
-                }
-                else
-                {
-                    if (dal.GetItem(txtCarCode.Text, txtCarName.Text, txtCarModel.Text, txtCarEngine.Text) == null)
+                    bool complete = false;
+                    CarDAL dal = new CarDAL();
+                    if (DataCommon.Exists("CAR_EDIT"))
                     {
-                        item = new CarData();
-                        item.CAR_CODE = txtCarCode.Text;
-                        item.CAR_ENGINE = txtCarEngine.Text;
-                        item.CAR_MODEL = txtCarModel.Text;
-                        item.CAR_NAME = txtCarName.Text;
-                        item.CAR_REMARK = txtCarRemark.Text;
-                        item.CAR_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
-                        new CarDAL().Insert(item);
+                        item = (CarData)DataCommon.Get("CAR_EDIT");
+
+                        CarData newItem = new CarData();
+                        newItem.CAR_CODE = txtCarCode.Text;
+                        newItem.CAR_ENGINE = txtCarEngine.Text;
+                        newItem.CAR_MODEL = txtCarModel.Text;
+                        newItem.CAR_NAME = txtCarName.Text;
+                        newItem.CAR_REMARK = txtCarRemark.Text;
+                        newItem.CAR_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
+
+                        dal.Update(item, newItem);
+                        DataCommon.Remove("CAR_EDIT");
                         complete = true;
                     }
                     else
                     {
-                        MessageBox.Show("รหัสรถยนต์นี้ซ้ำในระบบ กรุณาเปลี่ยนรหัสรถยนต์");
+                        if (dal.GetItem(txtCarCode.Text, txtCarName.Text, txtCarModel.Text, txtCarEngine.Text) == null)
+                        {
+                            item = new CarData();
+                            item.CAR_CODE = txtCarCode.Text;
+                            item.CAR_ENGINE = txtCarEngine.Text;
+                            item.CAR_MODEL = txtCarModel.Text;
+                            item.CAR_NAME = txtCarName.Text;
+                            item.CAR_REMARK = txtCarRemark.Text;
+                            item.CAR_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
+                            new CarDAL().Insert(item);
+                            complete = true;
+                        }
+                        else
+                        {
+                            MessageBox.Show("รหัสรถยนต์นี้ซ้ำในระบบ กรุณาเปลี่ยนรหัสรถยนต์");
+                        }
                     }
-                }
-                if (complete)
-                {
-                    MessageBox.Show("บันทึกข้อมูลสำเร็จ");
-                    this.Close();
+                    if (complete)
+                    {
+                        MessageBox.Show("บันทึกข้อมูลสำเร็จ");
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)

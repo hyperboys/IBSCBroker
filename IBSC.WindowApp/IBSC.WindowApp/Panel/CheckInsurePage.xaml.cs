@@ -27,6 +27,39 @@ namespace IBSC.WindowApp.Panel
     public partial class CheckInsurePage : UserControl
     {
         MemberData member;
+
+        private string condStatus
+        {
+            get
+            {
+                string tmp = "";
+                switch (cbbStatus.Text)
+                {
+                    case "กรุณาเลือก":
+                        {
+                            tmp = "";
+                        } break;
+                    case "ส่งเรื่อง":
+                        {
+                            tmp = "01";
+                        } break;
+                    case "รับเรื่อง":
+                        {
+                            tmp = "02";
+                        } break;
+                    case "ติดต่อแล้ว":
+                        {
+                            tmp = "03";
+                        } break;
+                    case "ข้อมูลเท็จ":
+                        {
+                            tmp = "04";
+                        } break;
+                }
+                return tmp;
+            }
+        }
+
         public CheckInsurePage()
         {
             try
@@ -50,19 +83,7 @@ namespace IBSC.WindowApp.Panel
             }
         }
 
-        protected void dispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            ReloadData();
-        }
-
-        private void SetTimer()
-        {
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 20);
-            dispatcherTimer.Start();
-        }
-
+        
         private void grdInsure_Loaded(object sender, RoutedEventArgs e)
         {
             ReloadData();
@@ -90,6 +111,46 @@ namespace IBSC.WindowApp.Panel
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void ReloadDataForReFresh()
+        {
+            try
+            {
+                DataTable listItem = (DataTable)DataCommon.Get("LIST_CHECK_INSURE_CAR");
+                var results = (from myRow in listItem.AsEnumerable()
+                               where myRow.Field<string>("CAR_YEAR").ToUpper().Contains(cbbCarYear.Text == "กรุณาเลือก" ? "" : cbbCarYear.Text)
+                               && myRow.Field<string>("CAR_NAME").Contains(cbbCarName.Text)
+                               && myRow.Field<string>("CAR_MODEL").Contains(cbbCarModel.Text)
+                               && myRow.Field<string>("CAR_ENGINE").Contains(cbbCarEngine.Text)
+                               && myRow.Field<string>("SELECT_INSURANCE_STATUS").Contains(condStatus)
+                               select myRow);
+                if (results.Count() > 0)
+                {
+                    grdInsure.ItemsSource = results.CopyToDataTable<DataRow>().DefaultView;
+                }
+                else
+                {
+                    grdInsure.ItemsSource = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        protected void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            ReloadDataForReFresh();
+        }
+
+        private void SetTimer()
+        {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 20);
+            dispatcherTimer.Start();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -168,26 +229,6 @@ namespace IBSC.WindowApp.Panel
         {
             try
             {
-                string condStatus = "";
-                switch (cbbStatus.Text)
-                {
-                    case "กรุณาเลือก":
-                        {
-                            condStatus = "";
-                        } break;
-                    case "ส่งเรื่อง":
-                        {
-                            condStatus = "01";
-                        } break;
-                    case "ติดต่อแล้ว":
-                        {
-                            condStatus = "02";
-                        } break;
-                    case "ข้อมูลเท็จ":
-                        {
-                            condStatus = "03";
-                        } break;
-                }
                 DataTable listItem = (DataTable)DataCommon.Get("LIST_CHECK_INSURE_CAR");
                 var results = (from myRow in listItem.AsEnumerable()
                                where myRow.Field<string>("CAR_YEAR").ToUpper().Contains(cbbCarYear.Text == "กรุณาเลือก" ? "" : cbbCarYear.Text)
