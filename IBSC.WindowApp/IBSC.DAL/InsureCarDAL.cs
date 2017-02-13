@@ -156,8 +156,8 @@ namespace IBSC.DAL
 
                 sql.Append(" '" + item.CAPITAL_INSURANCE + "',");
                 sql.Append(" '" + item.INSURE_PRIORITY + "',");
-                sql.Append(" '" + item.EFFECTIVE_DATE + "',");
-                sql.Append(" '" + item.EXPIRE_DATE + "',");
+                sql.Append(" '" + ConvertCommon.ConvertDateTime(item.EFFECTIVE_DATE) + "',");
+                sql.Append(" '" + ConvertCommon.ConvertDateTime(item.EXPIRE_DATE) + "',");
                 sql.Append(" '" + item.CONFIDENTIAL_STATUS + "',");
 
                 sql.Append(" '" + item.INSURE_CAR_STATUS + "',");
@@ -211,8 +211,8 @@ namespace IBSC.DAL
                 sql.Append(" PRICE_ROUND = '" + newItem.PRICE_ROUND + "',");
                 sql.Append(" CAPITAL_INSURANCE = '" + newItem.CAPITAL_INSURANCE + "',");
                 sql.Append(" INSURE_PRIORITY = '" + newItem.INSURE_PRIORITY + "',");
-                sql.Append(" EFFECTIVE_DATE = '" + newItem.EFFECTIVE_DATE.ToString("yyyy-MM-dd") + "',");
-                sql.Append(" EXPIRE_DATE = '" + newItem.EXPIRE_DATE.ToString("yyyy-MM-dd") + "',");
+                sql.Append(" EFFECTIVE_DATE = '" + ConvertCommon.ConvertDateTime(newItem.EFFECTIVE_DATE) + "',");
+                sql.Append(" EXPIRE_DATE = '" + ConvertCommon.ConvertDateTime(newItem.EXPIRE_DATE) + "',");
                 sql.Append(" CONFIDENTIAL_STATUS = '" + newItem.CONFIDENTIAL_STATUS + "',");
                 sql.Append(" UPDATE_DATE = '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
                 sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
