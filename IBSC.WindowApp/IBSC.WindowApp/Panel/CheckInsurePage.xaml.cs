@@ -53,7 +53,6 @@ namespace IBSC.WindowApp.Panel
             ReloadData();
         }
 
-
         private void SetTimer()
         {
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
@@ -95,8 +94,12 @@ namespace IBSC.WindowApp.Panel
         {
             try
             {
+                CheckInsureCarDAL objDal = new CheckInsureCarDAL();
                 string code = ((DataRowView)grdInsure.SelectedItem).Row.ItemArray[0].ToString();
-
+                if (objDal.CheckStatus(code) != "01") 
+                {
+                    MessageBox.Show("มีพนักงานท่ายอื่นดำเนินการแล้ว");
+                }
             }
             catch (Exception ex)
             {
