@@ -129,7 +129,15 @@ namespace IBSC.WindowApp.Panel
 
         private void Excel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            try
+            {
+                PopupImportExcel popup = new PopupImportExcel();
+                popup.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         private void cbbCarName_SelectionChanged(object sender, SelectionChangedEventArgs e)
