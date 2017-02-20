@@ -3,9 +3,11 @@ using IBSC.DAL;
 using IBSC.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,13 +25,14 @@ namespace IBSC.WindowApp.Popup
     /// </summary>
     public partial class PopupImportExcel : Window
     {
-
+        List<TextError> items;
+        private int ROWS = 100;
         public PopupImportExcel()
         {
             try
             {
                 InitializeComponent();
-                
+                items = new List<TextError>();
             }
             catch (Exception ex)
             {
@@ -58,7 +61,7 @@ namespace IBSC.WindowApp.Popup
                     btnStart.IsEnabled = true;
                 }
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
@@ -68,13 +71,46 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
-              
-
+                Process();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
+        }
+
+        private void Process()
+        {
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.WorkerReportsProgress = true;
+            worker.DoWork += worker_DoWork;
+            worker.ProgressChanged += worker_ProgressChanged;
+
+            worker.RunWorkerAsync();
+        }
+
+        void worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 0; i <= ROWS; i++)
+            {
+                (sender as BackgroundWorker).ReportProgress(i);
+                Thread.Sleep(100);
+            }
+        }
+
+
+        /// <summary>
+        /// Process Excel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            progressBar.Value = e.ProgressPercentage;
+            
+            items.Add(new TextError() { Error = "ERROR" });
+            viewError.ItemsSource = items;
+            viewError.Items.Refresh();
         }
 
         private void txtPath_TextChanged(object sender, TextChangedEventArgs e)
@@ -83,7 +119,7 @@ namespace IBSC.WindowApp.Popup
             {
                 btnStart.IsEnabled = false;
             }
-            else 
+            else
             {
                 btnStart.IsEnabled = true;
             }
@@ -100,5 +136,10 @@ namespace IBSC.WindowApp.Popup
                 MessageBox.Show(ex.ToString());
             }
         }
+    }
+
+    public class TextError
+    {
+        public string Error { get; set; }
     }
 }

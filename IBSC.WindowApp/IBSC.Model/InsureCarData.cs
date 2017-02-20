@@ -260,6 +260,11 @@ namespace IBSC.Model
             set { _item39 = value; }
         }
 
-
+        private string exception;
+        public string EXCEPTION
+        {
+            get { return exception; }
+            set { exception = value; }
+        }
     }
 }

@@ -7,8 +7,15 @@
         <TextBox Name="txtPath" HorizontalAlignment="Left" Height="23" Margin="116,29,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="371" TextChanged="txtPath_TextChanged"/>
         <Button x:Name="btnChose" Content="เลือก" HorizontalAlignment="Left" Margin="502,24,0,0" VerticalAlignment="Top" Width="78" Height="29" Click="btnChose_Click"/>
         <Button x:Name="btnStart" Content="เรื่ม" HorizontalAlignment="Left" Margin="598,23,0,0" VerticalAlignment="Top" Width="78" Height="29" IsEnabled="False" Click="btnStart_Click"/>
-        <ProgressBar HorizontalAlignment="Left" Height="27" Margin="21,71,0,0" VerticalAlignment="Top" Width="655"/>
+        <ProgressBar x:Name="progressBar" Minimum="0" Maximum="100" HorizontalAlignment="Left" Height="27" Margin="21,71,0,0" VerticalAlignment="Top" Width="655"/>
         <Button x:Name="btnClose" Content="ปิด" HorizontalAlignment="Left" Margin="315,522,0,0" VerticalAlignment="Top" Width="78" Height="29" IsEnabled="False" Click="btnClose_Click"/>
+        <ListView x:Name="viewError" HorizontalAlignment="Left" Height="382" Margin="21,122,0,0" VerticalAlignment="Top" Width="655">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ข้อผิดพลาด" DisplayMemberBinding="{Binding Error}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

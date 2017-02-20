@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBSC.Model", "IBSC.Model\IB
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBSC.Common", "IBSC.Common\IBSC.Common.csproj", "{BB167141-E9B8-4D63-9E18-C6EC4BD9E7AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IBSC.Utility", "IBSC.Utility\IBSC.Utility.csproj", "{E55D470C-CB71-4C71-8E29-C5C0330B6879}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{BB167141-E9B8-4D63-9E18-C6EC4BD9E7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB167141-E9B8-4D63-9E18-C6EC4BD9E7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB167141-E9B8-4D63-9E18-C6EC4BD9E7AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E55D470C-CB71-4C71-8E29-C5C0330B6879}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E55D470C-CB71-4C71-8E29-C5C0330B6879}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E55D470C-CB71-4C71-8E29-C5C0330B6879}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E55D470C-CB71-4C71-8E29-C5C0330B6879}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
