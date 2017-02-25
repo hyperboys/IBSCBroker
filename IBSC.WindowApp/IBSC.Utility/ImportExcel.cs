@@ -54,7 +54,7 @@ namespace IBSC.Utility
                         {
                             item.EFFECTIVE_DATE = dateValue;
                         }
-                        else 
+                        else
                         {
                             item.EXCEPTION = "ไม่มีข้อมูลวันที่มีผลผิดในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
                             continue;
@@ -75,7 +75,30 @@ namespace IBSC.Utility
                             item.EXCEPTION = "ไม่มีข้อมูลวันที่มีผลผิดในบรรทัดที่ " + row + "ของ Sheet :" + xlWorkSheet.Name;
                             continue;
                         }
-                       
+
+                        //INSURE_PRIORITY 
+                        int INSURE_PRIORITY = 0;
+                        bool result = Int32.TryParse((range.Cells[row, EXCEL_DATA.INSURE_PRIORITY] as Excel.Range).Text, out INSURE_PRIORITY);
+                        if (result)
+                        {
+                            item.INSURE_PRIORITY = INSURE_PRIORITY;
+                        }
+                        else
+                        {
+                            item.INSURE_PRIORITY = 999;
+                        }
+
+                        //PACKAGE_NAME 
+                        if (Convert.ToString((range.Cells[row, EXCEL_DATA.PACKAGE_NAME] as Excel.Range).Text) == "")
+                        {
+                            item.EXCEPTION = "ไม่มีข้อมูลชื่อ Package ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                            continue;
+                        }
+                        item.PACKAGE_NAME = Convert.ToString((range.Cells[row, EXCEL_DATA.PACKAGE_NAME] as Excel.Range).Text);
+                         
+
+
+
 
                         //int ASSET_TIME = 0;
                         //bool result = Int32.TryParse(txtPriolity.Text, out priority);

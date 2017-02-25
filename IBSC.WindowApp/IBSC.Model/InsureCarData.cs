@@ -29,7 +29,7 @@ namespace IBSC.Model
             set { _item3 = value; }
         }
 
-        private int _item4;
+        private int _item4 = 0;
         public int CAR_ID
         {
             get { return _item4; }
@@ -260,11 +260,17 @@ namespace IBSC.Model
             set { _item39 = value; }
         }
 
-        private string exception;
+        private string exception = string.Empty;
         public string EXCEPTION
         {
             get { return exception; }
-            set { exception = value; }
+            set 
+            {
+                if (exception == "")
+                {
+                    exception = value;
+                }
+            }
         }
     }
 }

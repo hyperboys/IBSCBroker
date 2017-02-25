@@ -133,6 +133,7 @@ namespace IBSC.WindowApp.Panel
             {
                 PopupImportExcel popup = new PopupImportExcel();
                 popup.ShowDialog();
+                ReloadData();
             }
             catch (Exception ex)
             {
@@ -151,6 +152,18 @@ namespace IBSC.WindowApp.Panel
         {
             DataTable listCar = new CarDAL().GetComboBoxCarEngine(cbbCarName.SelectedValue.ToString(), cbbCarModel.SelectedValue.ToString());
             cbbCarEngine.ItemsSource = listCar.DefaultView;
+        }
+
+        private void Reset_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                ReloadData();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }

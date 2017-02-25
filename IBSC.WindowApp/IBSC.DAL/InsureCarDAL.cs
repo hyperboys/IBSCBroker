@@ -225,5 +225,92 @@ namespace IBSC.DAL
                 throw ex;
             }
         }
+
+        public void UpdateOnExcel(InsureCarData newItem)
+        {
+            try
+            {
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                DBbase.Connect();
+                StringBuilder sql = new StringBuilder();
+
+                sql.Append("UPDATE MA_INSURE_CAR ");
+                sql.Append("SET COMPANY_CODE = '" + newItem.COMPANY_CODE + "',");
+                sql.Append(" PACKAGE_NAME = '" + newItem.PACKAGE_NAME + "',");
+                sql.Append(" CAR_ID = '" + newItem.CAR_ID + "',");
+                sql.Append(" INSURE_CATEGORY = '" + newItem.INSURE_CATEGORY + "',");
+                sql.Append(" INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "',");
+                sql.Append(" CAR_YEAR = '" + newItem.CAR_YEAR + "',");
+                sql.Append(" LIVE_COVERAGE_PEOPLE = '" + newItem.LIVE_COVERAGE_PEOPLE + "',");
+                sql.Append(" LIVE_COVERAGE_TIME = '" + newItem.LIVE_COVERAGE_TIME + "',");
+                sql.Append(" ASSET_TIME = '" + newItem.ASSET_TIME + "',");
+                sql.Append(" INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "',");
+                sql.Append(" DAMAGE_TO_VEHICLE = '" + newItem.DAMAGE_TO_VEHICLE + "',");
+                sql.Append(" MISSING_FIRE_CAR = '" + newItem.MISSING_FIRE_CAR + "',");
+                sql.Append(" FIRST_DAMAGE_PRICE = '" + newItem.FIRST_DAMAGE_PRICE + "',");
+                sql.Append(" PERSONAL_ACCIDENT_AMT = '" + newItem.PERSONAL_ACCIDENT_AMT + "',");
+                sql.Append(" PERSONAL_ACCIDENT_PEOPLE = '" + newItem.PERSONAL_ACCIDENT_PEOPLE + "',");
+                sql.Append(" MEDICAL_FEE_AMT = '" + newItem.MEDICAL_FEE_AMT + "',");
+                sql.Append(" MEDICAL_FEE_PEOPLE = '" + newItem.MEDICAL_FEE_PEOPLE + "',");
+                sql.Append(" DRIVER_INSURANCE_AMT = '" + newItem.DRIVER_INSURANCE_AMT + "',");
+                sql.Append(" NET_PRICE = '" + newItem.NET_PRICE + "',");
+                sql.Append(" TOTAL_PRICE = '" + newItem.TOTAL_PRICE + "',");
+                sql.Append(" PRICE_ROUND = '" + newItem.PRICE_ROUND + "',");
+                sql.Append(" CAPITAL_INSURANCE = '" + newItem.CAPITAL_INSURANCE + "',");
+                sql.Append(" INSURE_PRIORITY = '" + newItem.INSURE_PRIORITY + "',");
+                sql.Append(" EFFECTIVE_DATE = '" + ConvertCommon.ConvertDateTime(newItem.EFFECTIVE_DATE) + "',");
+                sql.Append(" EXPIRE_DATE = '" + ConvertCommon.ConvertDateTime(newItem.EXPIRE_DATE) + "',");
+                sql.Append(" CONFIDENTIAL_STATUS = '" + newItem.CONFIDENTIAL_STATUS + "',");
+                sql.Append(" UPDATE_DATE = '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
+                sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
+                sql.Append(" WHERE 	COMPANY_CODE = '" + newItem.COMPANY_CODE + "'");
+                sql.Append(" AND 	PACKAGE_NAME = '" + newItem.PACKAGE_NAME + "'");
+                sql.Append(" AND 	CAR_ID = '" + newItem.CAR_ID + "'");
+                sql.Append(" AND 	INSURE_CATEGORY = '" + newItem.INSURE_CATEGORY + "'");
+                sql.Append(" AND 	INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "'");
+                sql.Append(" AND 	CAR_YEAR = '" + newItem.CAR_YEAR + "'");
+                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public bool CheckItem(InsureCarData item)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = @"SELECT A.INSURE_CAR_CODE, A.COMPANY_CODE, A.PACKAGE_NAME, A.CAR_ID,
+                 A.INSURE_CATEGORY, A.INSURE_TYPE_REPAIR, A.CAR_YEAR, A.LIVE_COVERAGE_PEOPLE,
+                 A.LIVE_COVERAGE_TIME, A.ASSET_TIME, A.DAMAGE_TO_VEHICLE,
+                 A.MISSING_FIRE_CAR, A.FIRST_DAMAGE_PRICE, A.PERSONAL_ACCIDENT_AMT,
+                 A.PERSONAL_ACCIDENT_PEOPLE, A.MEDICAL_FEE_AMT, A.MEDICAL_FEE_PEOPLE, 
+                 A.DRIVER_INSURANCE_AMT, A.NET_PRICE, A.TOTAL_PRICE, A.PRICE_ROUND,
+                 A.CAPITAL_INSURANCE, A.INSURE_PRIORITY, A.EFFECTIVE_DATE, A.EXPIRE_DATE,
+                 A.CONFIDENTIAL_STATUS, A.CREATE_DATE, A.CREATE_USER, A.UPDATE_DATE,
+                 A.UPDATE_USER, A.INSURE_CAR_STATUS, C.CAR_CODE,C.CAR_NAME,C.CAR_MODEL,C.CAR_ENGINE ,I.COMPANY_FULLNAME
+                FROM MA_INSURE_CAR A INNER JOIN MA_CAR C ON A.CAR_ID = C.CAR_ID INNER JOIN MA_INSURE_COMPANY I ON A.COMPANY_CODE = I.COMPANY_CODE
+                WHERE I.COMPANY_CODE = '" + item.COMPANY_CODE + "' AND A.PACKAGE_NAME = '" + item.PACKAGE_NAME + "' AND A.CAR_ID = '" + item.CAR_ID
+                                        + "' AND A.INSURE_CATEGORY = '" + item.INSURE_CATEGORY + "' AND A.INSURE_TYPE_REPAIR = '" + item.INSURE_TYPE_REPAIR + "' AND A.CAR_YEAR = '" + item.CAR_YEAR + "'";
+
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

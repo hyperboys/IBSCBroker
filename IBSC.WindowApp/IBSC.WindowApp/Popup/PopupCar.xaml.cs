@@ -83,10 +83,10 @@ namespace IBSC.WindowApp.Popup
                         item = (CarData)DataCommon.Get("CAR_EDIT");
 
                         CarData newItem = new CarData();
-                        newItem.CAR_CODE = txtCarCode.Text;
-                        newItem.CAR_ENGINE = txtCarEngine.Text;
-                        newItem.CAR_MODEL = txtCarModel.Text;
-                        newItem.CAR_NAME = txtCarName.Text;
+                        newItem.CAR_CODE = txtCarCode.Text.ToUpper();
+                        newItem.CAR_ENGINE = txtCarEngine.Text.ToUpper();
+                        newItem.CAR_MODEL = txtCarModel.Text.ToUpper();
+                        newItem.CAR_NAME = txtCarName.Text.ToUpper();
                         newItem.CAR_REMARK = txtCarRemark.Text;
                         newItem.CAR_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
 
@@ -99,10 +99,10 @@ namespace IBSC.WindowApp.Popup
                         if (dal.GetItem(txtCarCode.Text, txtCarName.Text, txtCarModel.Text, txtCarEngine.Text) == null)
                         {
                             item = new CarData();
-                            item.CAR_CODE = txtCarCode.Text;
-                            item.CAR_ENGINE = txtCarEngine.Text;
-                            item.CAR_MODEL = txtCarModel.Text;
-                            item.CAR_NAME = txtCarName.Text;
+                            item.CAR_CODE = txtCarCode.Text.ToUpper();
+                            item.CAR_ENGINE = txtCarEngine.Text.ToUpper();
+                            item.CAR_MODEL = txtCarModel.Text.ToUpper();
+                            item.CAR_NAME = txtCarName.Text.ToUpper();
                             item.CAR_REMARK = txtCarRemark.Text;
                             item.CAR_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
                             new CarDAL().Insert(item);

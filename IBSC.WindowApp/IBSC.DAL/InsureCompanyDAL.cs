@@ -43,6 +43,29 @@ namespace IBSC.DAL
             }
         }
 
+        public bool CheckItem(string code)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT COMPANY_CODE FROM MA_INSURE_COMPANY WHERE COMPANY_CODE = '" + code + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public string GetCompanyCode(string name)
         {
             try
