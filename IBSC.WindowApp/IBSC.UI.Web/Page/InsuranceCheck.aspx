@@ -148,26 +148,28 @@
             }
         }
     </script>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-6 topic padding-top-20">
-                <img id="ContentPlaceHolder_imgBrand" class="img-circle img-responsive pull-left" src="../images/carbrand/AUDI.png">
-                <h1 class="no-margin hideOverflow">AUDI A4 1.8cc 4 Door ปี2016</h1>
+                <img id="ContentPlaceHolder_imgBrand" class="img-circle img-responsive pull-left" src="../logoCar/AUDI.png" />
+                <h1 class="no-margin hideOverflow">
+                    <asp:Label ID="lblCarName" runat="server" Text="CarName CarModel CarEngine ปีCarYear" style="font-size:xx-large"></asp:Label></h1>
                 ประกันภัยรถยนต์ ชั้น1
 				<div class="clearfix"></div>
             </div>
             <div class="col-md-6">
                 <blockquote>
-                    <p>รายการ <b>ประกันภัยรถยนต์ ชั้น1</b> AUDI A4 1.8cc 4 Door ปี2016 ทุกบริษัทประกันราคาพิเศษ คุ้มครองครอบคลุมทุกความเสี่ยง ทั้งชน รถหาย ไฟไหม้ เหมาะกับผู้ที่ใช้รถเป็นประจำและหมดกังวลทุกการขับขี่</p>
+                    <p>รายการ <b>ประกันภัยรถยนต์ ชั้น1</b>
+                        <asp:Label ID="Label2" runat="server" Text="CarName CarModel CarEngine ปีCarYear"></asp:Label>
+                        ทุกบริษัทประกันราคาพิเศษ คุ้มครองครอบคลุมทุกความเสี่ยง ทั้งชน รถหาย ไฟไหม้ เหมาะกับผู้ที่ใช้รถเป็นประจำและหมดกังวลทุกการขับขี่</p>
                     <footer><b><span id="ContentPlaceHolder_lbCPType">ประกันภัยรถยนต์ ชั้น1</span></b></footer>
                 </blockquote>
             </div>
         </div>
-        <hr class="no-margin-top">
+        <hr class="no-margin-top"/>
 
         <div class="row">
-
-
             <div class="col-md-4">
                 <div class="btn-group btn-group-justified margin-bottom-10">
                     <a id="ContentPlaceHolder_linkCarType1" class="btn btn-primary">ชั้น1</a>
@@ -187,7 +189,6 @@
                                 </script>
 
                                 <div id="ContentPlaceHolder_UpdatePanel1">
-
                                     <div class="form-group">
                                         <label for="select">ปีรถ</label>
                                         <select name="ctl00$ContentPlaceHolder$ddlCarYear" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddlCarYear\',\'\')', 0)" id="ContentPlaceHolder_ddlCarYear" class="form-control">
@@ -249,13 +250,11 @@
                                             <option selected="selected" value="617">A4 1.8cc 4 Door</option>
                                             <option value="616">Q3 2.0cc 4 Door</option>
                                             <option value="395">Q5 2.0cc 5 Door</option>
-
                                         </select>
                                     </div>
-
-
                                 </div>
-                                <input type="submit" name="ctl00$ContentPlaceHolder$btCal" value="ยืนยันข้อมูล" id="ContentPlaceHolder_btCal" class="btn btn-ar btn-primary">
+                                <%--<input type="submit" name="ctl00$ContentPlaceHolder$btCal" value="ยืนยันข้อมูล" id="ContentPlaceHolder_btCal" class="btn btn-ar btn-primary"/>--%>
+                                <asp:Button ID="btnSearch"  runat="server" Text="ยืนยันข้อมูล" class="btn btn-ar btn-primary" OnClick="btnSearch_Click" />
                             </div>
                         </div>
                     </div>

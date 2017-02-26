@@ -114,6 +114,7 @@
     <Content Include="images\premium.jpg" />
     <Content Include="images\Ribbon.png" />
     <Content Include="images\slide_back.jpg" />
+    <Content Include="logoCar\AUDI.png" />
     <Content Include="Page\InsuranceCheck.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

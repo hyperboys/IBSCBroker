@@ -13,5 +13,10 @@ namespace IBSC.UI.Web.Page
         {
 
         }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
