@@ -51,7 +51,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .header-contact a:hover {
     color: #fff;
-    background-color: #00aced;
+    background-color: #FF00FF;
 }
 
 .header-contact a {
@@ -96,7 +96,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     .header-contact a:hover {
     color: #fff;
-    background-color: #00aced;
+    background-color: ##FF00FF;
     }
 
     .header-contact a {
@@ -208,7 +208,7 @@ h1, h2, h3, h4, h5, h6 {
 
 
 .panel .panel-heading a {
-	background-color: #0075A7;
+	background-color: #ED00DD;
 	color: white;
 }
 
@@ -424,7 +424,7 @@ h1, h2, h3, h4, h5, h6 {
 .camp-download {
 	display: inline-block;
 	padding: 10px 0 0 5px;
-	color: #0075A7;
+	color: #ED00DD;
 }
 
 .icon-ins-list {
@@ -666,7 +666,7 @@ hr.line {
 }
 
 .owl-camp .item .thumbnail {
-	background-color: #F5F5F5;
+	background-color: #F6CEF5;
 }
 
 .owl-camp .item .thumbnail h3 {
@@ -705,7 +705,7 @@ hr.line {
 	 white-space: nowrap;
 }
 .table > tbody > tr.primary > td, .table > tbody > tr.primary > th, .table > tbody > tr > td.primary, .table > tbody > tr > th.primary, .table > tfoot > tr.primary > td, .table > tfoot > tr.primary > th, .table > tfoot > tr > td.primary, .table > tfoot > tr > th.primary, .table > thead > tr.primary > td, .table > thead > tr.primary > th, .table > thead > tr > td.primary, .table > thead > tr > th.primary {
-    background-color: #0075A7;
+    background-color: #ED00DD;
 	color: white;
 }
 
@@ -731,7 +731,7 @@ hr.line {
 	max-width: 80px;
 }
 .DocThumb img:hover {
-	border:solid 1px #0075A7;
+	border:solid 1px #ED00DD;
 }
 
 .margin-bottom-30 {
@@ -816,7 +816,7 @@ a.em-primary-inverse {
 }
 
 .pricign-box {
-	border: 1px solid #0075A7;
+	border: 1px solid #ED00DD;
 	box-shadow: 3px 3px 8px 0 #CCC;
 	margin-bottom: 20px;
 	-moz-transition: all 0.3s ease 0s;
@@ -827,7 +827,7 @@ a.em-primary-inverse {
 
 .pricign-box .pricing-box-header {
     color: #FFF;
-    background-color: #0075A7;
+    background-color: #ED00DD;
     padding: 10px;
 }
 
@@ -995,7 +995,7 @@ input[type="checkbox"], input[type="radio"] {
 }
 
 .nav-pills > li > a > i {
-    color: #F5F5F5;
+    color: #F6CEF5;
 }
 
 .nav-pills > li > a:hover > i {
@@ -1939,7 +1939,7 @@ input[type="checkbox"]:checked + label{
     transition: all .25s ease;
 }
 #footer-widgets a:hover {
-    color: #0075A7;
+    color: #ED00DD;
     text-decoration: underline;
     transition: all .25s ease;
 }
@@ -2026,10 +2026,10 @@ input[type="checkbox"]:checked + label{
     text-align: right;
 }
 .table-cover tbody tr td:nth-child(2) {
-    background-color: #F5F5F5;
+    background-color: #F6CEF5;
 }
 .table-cover .bg-info{
-    /*background-color: #F5F5F5;*/
+    /*background-color: #F6CEF5;*/
     background-color: #fff3e5;
     color: black;
 }

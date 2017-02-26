@@ -22,13 +22,49 @@ namespace IBSC.UI.Web.Page {
         protected global::System.Web.UI.WebControls.Label lblCarName;
         
         /// <summary>
-        /// Label2 control.
+        /// lblCarNameDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblCarNameDesc;
+        
+        /// <summary>
+        /// ddlCarYear control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCarYear;
+        
+        /// <summary>
+        /// ddlCarName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCarName;
+        
+        /// <summary>
+        /// ddlCarModel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCarModel;
+        
+        /// <summary>
+        /// ddlCarEngine control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCarEngine;
         
         /// <summary>
         /// btnSearch control.

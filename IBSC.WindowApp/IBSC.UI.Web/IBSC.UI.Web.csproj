@@ -80,6 +80,7 @@
     <Content Include="assets\js\colorbox.js" />
     <Content Include="assets\js\DropdownHover.js" />
     <Content Include="assets\js\lightbox.js" />
+    <Content Include="assets\js\package_list.js" />
     <Content Include="assets\js\retina.min.js" />
     <Content Include="assets\js\syntaxhighlighter\shBrushJScript.js" />
     <Content Include="assets\js\syntaxhighlighter\shBrushXml.js" />
@@ -115,6 +116,8 @@
     <Content Include="images\Ribbon.png" />
     <Content Include="images\slide_back.jpg" />
     <Content Include="logoCar\AUDI.png" />
+    <Content Include="logoCompany\SEI.jpg" />
+    <Content Include="logoCompany\VIB.jpg" />
     <Content Include="Page\InsuranceCheck.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>

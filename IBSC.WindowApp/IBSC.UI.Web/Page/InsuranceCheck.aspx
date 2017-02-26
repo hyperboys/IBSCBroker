@@ -148,32 +148,34 @@
             }
         }
     </script>
-    
+
     <div class="container">
         <div class="row">
             <div class="col-md-6 topic padding-top-20">
                 <img id="ContentPlaceHolder_imgBrand" class="img-circle img-responsive pull-left" src="../logoCar/AUDI.png" />
                 <h1 class="no-margin hideOverflow">
-                    <asp:Label ID="lblCarName" runat="server" Text="CarName CarModel CarEngine ปีCarYear" style="font-size:xx-large"></asp:Label></h1>
+                    <asp:Label ID="lblCarName" runat="server" Text="CarName CarModel CarEngine ปีCarYear" Style="font-size: xx-large; color: hotpink;"></asp:Label></h1>
                 ประกันภัยรถยนต์ ชั้น1
 				<div class="clearfix"></div>
             </div>
             <div class="col-md-6">
                 <blockquote>
-                    <p>รายการ <b>ประกันภัยรถยนต์ ชั้น1</b>
-                        <asp:Label ID="Label2" runat="server" Text="CarName CarModel CarEngine ปีCarYear"></asp:Label>
-                        ทุกบริษัทประกันราคาพิเศษ คุ้มครองครอบคลุมทุกความเสี่ยง ทั้งชน รถหาย ไฟไหม้ เหมาะกับผู้ที่ใช้รถเป็นประจำและหมดกังวลทุกการขับขี่</p>
+                    <p>
+                        รายการ <b>ประกันภัยรถยนต์ ชั้น1</b>
+                        <asp:Label ID="lblCarNameDesc" runat="server" Text="CarName CarModel CarEngine ปีCarYear"></asp:Label>
+                        ทุกบริษัทประกันราคาพิเศษ คุ้มครองครอบคลุมทุกความเสี่ยง ทั้งชน รถหาย ไฟไหม้ เหมาะกับผู้ที่ใช้รถเป็นประจำและหมดกังวลทุกการขับขี่
+                    </p>
                     <footer><b><span id="ContentPlaceHolder_lbCPType">ประกันภัยรถยนต์ ชั้น1</span></b></footer>
                 </blockquote>
             </div>
         </div>
-        <hr class="no-margin-top"/>
+        <hr class="no-margin-top" />
 
         <div class="row">
             <div class="col-md-4">
-                <div class="btn-group btn-group-justified margin-bottom-10">
+                <%-- <div class="btn-group btn-group-justified margin-bottom-10">
                     <a id="ContentPlaceHolder_linkCarType1" class="btn btn-primary">ชั้น1</a>
-                </div>
+                </div>--%>
                 <div class="panel-group">
                     <div class="panel panel-default">
                         <div class="panel-heading panel-heading-link">
@@ -191,75 +193,42 @@
                                 <div id="ContentPlaceHolder_UpdatePanel1">
                                     <div class="form-group">
                                         <label for="select">ปีรถ</label>
-                                        <select name="ctl00$ContentPlaceHolder$ddlCarYear" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddlCarYear\',\'\')', 0)" id="ContentPlaceHolder_ddlCarYear" class="form-control">
-                                            <option value="0">Select...</option>
-                                            <option selected="selected" value="2016">2016</option>
-                                            <option value="2015">2015</option>
-                                            <option value="2014">2014</option>
-                                            <option value="2013">2013</option>
-                                            <option value="2012">2012</option>
-                                            <option value="2011">2011</option>
-                                            <option value="2010">2010</option>
-                                            <option value="2009">2009</option>
-                                            <option value="2008">2008</option>
-                                            <option value="2007">2007</option>
-                                            <option value="2006">2006</option>
-                                            <option value="2005">2005</option>
-                                            <option value="2004">2004</option>
-                                            <option value="2003">2003</option>
-                                            <option value="2002">2002</option>
-
-                                        </select>
+                                         <asp:DropDownList ID="ddlCarYear" runat="server" class="form-control">
+                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
+                                             <asp:ListItem Text="2017" Value="1" />
+                                             <asp:ListItem Text="2016" Value="2" />
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="select">ยี่ห้อรถ</label>
-                                        <select name="ctl00$ContentPlaceHolder$ddlCarBrand" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddlCarBrand\',\'\')', 0)" id="ContentPlaceHolder_ddlCarBrand" class="form-control">
-                                            <option value="0">Select...</option>
-                                            <option selected="selected" value="AUDI">AUDI</option>
-                                            <option value="BMW">BMW</option>
-                                            <option value="CHEVROLET">CHEVROLET</option>
-                                            <option value="CITROEN">CITROEN</option>
-                                            <option value="FORD">FORD</option>
-                                            <option value="HONDA">HONDA</option>
-                                            <option value="HYUNDAI">HYUNDAI</option>
-                                            <option value="ISUZU">ISUZU</option>
-                                            <option value="KIA">KIA</option>
-                                            <option value="LAND ROVER">LAND ROVER</option>
-                                            <option value="LEXUS">LEXUS</option>
-                                            <option value="MAZDA">MAZDA</option>
-                                            <option value="MERCEDES-BENZ">MERCEDES-BENZ</option>
-                                            <option value="MG">MG</option>
-                                            <option value="MINI">MINI</option>
-                                            <option value="MITSUBISHI">MITSUBISHI</option>
-                                            <option value="NISSAN">NISSAN</option>
-                                            <option value="PEUGEOT">PEUGEOT</option>
-                                            <option value="SKODA">SKODA</option>
-                                            <option value="SUZUKI">SUZUKI</option>
-                                            <option value="THAIRUNG">THAIRUNG</option>
-                                            <option value="TOYOTA">TOYOTA</option>
-                                            <option value="VOLKSWAGEN">VOLKSWAGEN</option>
-                                            <option value="VOLVO">VOLVO</option>
-
-                                        </select>
+                                         <asp:DropDownList ID="ddlCarName" runat="server" class="form-control">
+                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
+                                             <asp:ListItem Text="AUDI" Value="1" />
+                                             <asp:ListItem Text="BMW" Value="2" />
+                                        </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="select">รุ่นรถ</label>
-                                        <select name="ctl00$ContentPlaceHolder$ddlCarModel" onchange="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder$ddlCarModel\',\'\')', 0)" id="ContentPlaceHolder_ddlCarModel" class="form-control">
-                                            <option value="0">Select...</option>
-                                            <option value="391">A4 2.0cc 4 Door</option>
-                                            <option selected="selected" value="617">A4 1.8cc 4 Door</option>
-                                            <option value="616">Q3 2.0cc 4 Door</option>
-                                            <option value="395">Q5 2.0cc 5 Door</option>
-                                        </select>
+                                        <asp:DropDownList ID="ddlCarModel" runat="server" class="form-control">
+                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
+                                             <asp:ListItem Text="A4" Value="1" />
+                                             <asp:ListItem Text="Q3" Value="2" />
+                                        </asp:DropDownList>
+                                    </div>
+                                     <div class="form-group">
+                                        <label for="select">เครื่องยนต์</label>
+                                        <asp:DropDownList ID="ddlCarEngine" runat="server" class="form-control">
+                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
+                                             <asp:ListItem Text="2.0cc 4 Door" Value="1" />
+                                             <asp:ListItem Text="2.0cc 4 Door" Value="2" />
+                                        </asp:DropDownList>
                                     </div>
                                 </div>
-                                <%--<input type="submit" name="ctl00$ContentPlaceHolder$btCal" value="ยืนยันข้อมูล" id="ContentPlaceHolder_btCal" class="btn btn-ar btn-primary"/>--%>
-                                <asp:Button ID="btnSearch"  runat="server" Text="ยืนยันข้อมูล" class="btn btn-ar btn-primary" OnClick="btnSearch_Click" />
+                                <asp:Button ID="btnSearch" runat="server" Text="ยืนยันข้อมูล" class="btn btn-ar btn-primary" OnClick="btnSearch_Click" />
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12 col-sm-6 margin-bottom-20">
                     </div>
@@ -276,12 +245,9 @@
 
 
             <div class="col-md-8">
-
                 <div class="row">
                     <div class="col-xs-12">
-
                         <a href="javascript:void(0)" id="btn_compare" class="button button-highlight button-rounded button-small padding-h-10 pull-right btn-compare" onclick="calCheckbox()">เปรียบเทียบเบี้ย</a>
-
                         <div class="modal fade" id="package_compare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
@@ -407,23 +373,13 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="owl-card owl-carousel owl-theme owl-responsive-1000 owl-loaded">
-
-
-
-
-
-
-
-
-
-
                             <div class="owl-stage-outer">
                                 <div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: 0s; width: 759.999px;">
                                     <div class="owl-item active" style="width: 243.333px; margin-right: 10px;">
                                         <div id="ContentPlaceHolder_card1" class="item">
                                             <div class="pricign-box animated fadeInUp animation-delay-7">
                                                 <div class="pricing-box-header">
-                                                    <h2>ถูกสุดๆ</h2>
+                                                    <h2>แนะนำ</h2>
                                                     <p id="ContentPlaceHolder_cardINSName1" class="hideOverflow">วิริยะประกันภัย</p>
                                                 </div>
                                                 <div class="pricing-box-price">
@@ -440,7 +396,7 @@
                                                 <div class="pricing-box-footer">
                                                     <div class="row">
                                                         <div class="col-xs-4">
-                                                            <input name="ctl00$ContentPlaceHolder$mc1_Compare" type="checkbox" id="ContentPlaceHolder_mc1_Compare" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งอู่ (S30)|อู่|48600|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|200,000|200,000|200,000|20161119212744_FY_144189|289|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AD%E0%B8%B9%E0%B9%88+%28S30%29&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_netpre=47432.54&amp;pack_pre=50956.12&amp;pack_offerprice=48600&amp;pack_offerdiscount=2356.12&amp;pack_id=1834&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=289" style="display: none;"><label for="ContentPlaceHolder_mc1_Compare"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
+                                                            <input name="ctl00$ContentPlaceHolder$mc1_Compare" type="checkbox" id="ContentPlaceHolder_mc1_Compare" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งอู่ (S30)|อู่|48600|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|200,000|200,000|200,000|20161119212744_FY_144189|289|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AD%E0%B8%B9%E0%B9%88+%28S30%29&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_netpre=47432.54&amp;pack_pre=50956.12&amp;pack_offerprice=48600&amp;pack_offerdiscount=2356.12&amp;pack_id=1834&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=289" style="display: none;"/><label for="ContentPlaceHolder_mc1_Compare"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
                                                         </div>
                                                         <div class="col-xs-8">
                                                             <a href="#" class="btn btn-ar btn-default mar-l-10" data-toggle="modal" data-target="#modalCard1">ดูรายละเอียด</a>
@@ -532,9 +488,9 @@
                             </div>
                             <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                 <div class="title-style1">
-                                    <img id="ContentPlaceHolder_mc1_INS" class="img-circle img-responsive icon-title pull-left" src="../images/ins/VBI.png">
+                                    <img id="ContentPlaceHolder_mc1_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png">
                                     <p style="margin: 10px 0 0 0"><span id="ContentPlaceHolder_mc1_INSName">วิริยะประกันภัย</span></p>
-                                    <h3 id="ContentPlaceHolder_mc1_PACKNAME" class="no-margin hideOverflow">VBI ป1 เก๋งอู่ (S30)</h3>
+                                    <h3 id="ContentPlaceHolder_mc1_PACKNAME" class="no-margin hideOverflow" style="color:hotpink">VBI ป1 เก๋งอู่ (S30)</h3>
                                     <div class="clearfix"></div>
                                 </div>
 
@@ -597,7 +553,7 @@
                             </div>
                             <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                 <div class="title-style1">
-                                    <img id="ContentPlaceHolder_mc2_INS" class="img-circle img-responsive icon-title pull-left" src="../images/ins/VBI.png">
+                                    <img id="ContentPlaceHolder_mc2_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png">
                                     <p style="margin: 10px 0 0 0"><span id="ContentPlaceHolder_mc2_INSName">วิริยะประกันภัย</span></p>
                                     <h3 id="ContentPlaceHolder_mc2_PACKNAME" class="no-margin hideOverflow">VBI ป1 เก๋งห้าง (AS6) STD</h3>
                                     <div class="clearfix"></div>
@@ -662,7 +618,7 @@
                             </div>
                             <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                 <div class="title-style1">
-                                    <img id="ContentPlaceHolder_mc3_INS" class="img-circle img-responsive icon-title pull-left" src="../images/ins/VBI.png">
+                                    <img id="ContentPlaceHolder_mc3_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png">
                                     <p style="margin: 10px 0 0 0"><span id="ContentPlaceHolder_mc3_INSName">วิริยะประกันภัย</span></p>
                                     <h3 id="ContentPlaceHolder_mc3_PACKNAME" class="no-margin hideOverflow">VBI ป1 เก๋งห้าง (AS6) STD</h3>
                                     <div class="clearfix"></div>
@@ -726,7 +682,7 @@
 
                             <a data-toggle="collapse" style="height: 50px;" data-parent="#accordion" href="#VBI" class="list-ins ">
                                 <div class="col-xs-2 col-md-1 no-padding">
-                                    <img id="ContentPlaceHolder_rptIns_Image2_0" class="img-responsive img-circle center-block" src="../images/ins/VBI.png" style="max-width: 30px; background-color: white; margin-top: 5px;">
+                                    <img id="ContentPlaceHolder_rptIns_Image2_0" class="img-responsive img-circle center-block" src="../logoCompany/VIB.jpg" style="max-width: 30px; background-color: white; margin-top: 5px;">
                                 </div>
                                 <div class="col-xs-10 col-md-6 hideOverflow no-padding">
                                     <span id="ContentPlaceHolder_rptIns_Label2_0">วิริยะประกันภัย</span>
@@ -777,7 +733,7 @@
                                                 </div>
                                                 <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                                     <div class="title-style1">
-                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_0_imgINSCode_0" class="img-circle img-responsive icon-title pull-left" src="../images/ins/VBI.png">
+                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_0_imgINSCode_0" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.jpg">
                                                         <p style="margin: 10px 0 0 0">
                                                             วิริยะประกันภัย
                                                         </p>
@@ -888,7 +844,7 @@
                                                 </div>
                                                 <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                                     <div class="title-style1">
-                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_0_imgINSCode_1" class="img-circle img-responsive icon-title pull-left" src="../images/ins/VBI.png">
+                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_0_imgINSCode_1" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.jpg">
                                                         <p style="margin: 10px 0 0 0">
                                                             วิริยะประกันภัย
                                                         </p>
@@ -981,7 +937,7 @@
 
                             <a data-toggle="collapse" style="height: 50px;" data-parent="#accordion" href="#SEI" class="list-ins collapsed">
                                 <div class="col-xs-2 col-md-1 no-padding">
-                                    <img id="ContentPlaceHolder_rptIns_Image2_1" class="img-responsive img-circle center-block" src="../images/ins/SEI.png" style="max-width: 30px; background-color: white; margin-top: 5px;">
+                                    <img id="ContentPlaceHolder_rptIns_Image2_1" class="img-responsive img-circle center-block" src="../logoCompany/SEI.jpg" style="max-width: 30px; background-color: white; margin-top: 5px;">
                                 </div>
                                 <div class="col-xs-10 col-md-6 hideOverflow no-padding">
                                     <span id="ContentPlaceHolder_rptIns_Label2_1">อาคเนย์ประกันภัย</span>
@@ -1032,7 +988,7 @@
                                                 </div>
                                                 <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                                     <div class="title-style1">
-                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_1_imgINSCode_0" class="img-circle img-responsive icon-title pull-left" src="../images/ins/SEI.png">
+                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_1_imgINSCode_0" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/SEI.jpg">
                                                         <p style="margin: 10px 0 0 0">
                                                             อาคเนย์ประกันภัย
                                                         </p>
@@ -1143,7 +1099,7 @@
                                                 </div>
                                                 <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                                     <div class="title-style1">
-                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_1_imgINSCode_1" class="img-circle img-responsive icon-title pull-left" src="../images/ins/SEI.png">
+                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_1_imgINSCode_1" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/SEI.jpg">
                                                         <p style="margin: 10px 0 0 0">
                                                             อาคเนย์ประกันภัย
                                                         </p>
