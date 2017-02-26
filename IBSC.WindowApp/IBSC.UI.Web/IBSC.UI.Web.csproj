@@ -62,6 +62,10 @@
     <Content Include="assets\css\style-blue.css" />
     <Content Include="assets\css\vendors.css" />
     <Content Include="assets\css\width-full.css" />
+    <Content Include="assets\extensions\jquery-labelauty-master\source\images\input-checked.png" />
+    <Content Include="assets\extensions\jquery-labelauty-master\source\images\input-unchecked.png" />
+    <Content Include="assets\extensions\jquery-labelauty-master\source\jquery-labelauty.css" />
+    <Content Include="assets\extensions\jquery-labelauty-master\source\jquery-labelauty.js" />
     <Content Include="assets\extensions\OwlCarousel2\css\owl.carousel.css" />
     <Content Include="assets\extensions\OwlCarousel2\css\owl.theme.default.css" />
     <Content Include="assets\extensions\OwlCarousel2\js\owl.carousel.js" />
@@ -111,9 +115,6 @@
     <Content Include="images\Ribbon.png" />
     <Content Include="images\slide_back.jpg" />
     <Content Include="Page\InsuranceCheck.aspx" />
-    <Content Include="Page\Main.aspx" />
-    <Content Include="Page\WebForm1.aspx" />
-    <Content Include="Page\WebForm2.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -130,27 +131,6 @@
     </Compile>
     <Compile Include="Page\InsuranceCheck.aspx.designer.cs">
       <DependentUpon>InsuranceCheck.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Page\Main.aspx.cs">
-      <DependentUpon>Main.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Page\Main.aspx.designer.cs">
-      <DependentUpon>Main.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Page\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Page\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Page\WebForm2.aspx.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Page\WebForm2.aspx.designer.cs">
-      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
