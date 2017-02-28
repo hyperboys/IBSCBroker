@@ -3,10 +3,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <!-- Syntaxhighlighter -->
+    <script src="../assets/js/syntaxhighlighter/shCore.js"></script>
+    <script src="../assets/js/syntaxhighlighter/shBrushXml.js"></script>
+    <script src="../assets/js/syntaxhighlighter/shBrushJScript.js"></script>
+    <script src="../assets/extensions/OwlCarousel2/js/owl.carousel.js"></script>
+    <script src="../assets/js/retina.min.js"></script>
+    <script src="../assets/js/colorbox.js"></script>
+    <script src="../assets/js/DropdownHover.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/extensions/jquery-sticky/jquery.sticky.js"></script>
+
+
+    <script type="text/javascript" src="../assets/js/package_list.js"></script>
+    <script type="text/javascript" src="../assets/extensions/jquery-labelauty-master/source/jquery-labelauty.js"></script>
     <script type="text/javascript">
         //Model Size
-        $(document).ready(ajustamodal);
-        $(window).resize(ajustamodal);
+        //$(document).ready(ajustamodal);
+        //$(window).resize(ajustamodal);
 
         $(document).ready(function () {
             $(":checkbox").labelauty({
@@ -36,10 +50,10 @@
             });
         });
 
-        function ajustamodal() {
-            var altura = $(window).height() - 190; //value corresponding to the modal heading + footer
-            $(".ativa-scroll").css({ "height": altura, "overflow-y": "auto" });
-        }
+        //function ajustamodal() {
+        //	var altura = $(window).height() - 190; //value corresponding to the modal heading + footer
+        //	$(".ativa-scroll").css({ "height": altura, "overflow-y": "auto" });
+        //}
 
         (function ($) {
             $(document).ready(function () {
@@ -133,7 +147,6 @@
                         document.getElementById('lbME' + count_int).innerHTML = ss[14];
                         document.getElementById('lbBB' + count_int).innerHTML = ss[15];
                         $("#linkBuy" + count_int).attr('href', ss[18]);
-                        //$("#linkBuy" + count_int).attr('href', 'http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?REF1=' + ss[16] + '&REF2=' + ss[17]);
                         count_int = count_int + 1;
                     }
                 }
@@ -193,34 +206,34 @@
                                 <div id="ContentPlaceHolder_UpdatePanel1">
                                     <div class="form-group">
                                         <label for="select">ปีรถ</label>
-                                         <asp:DropDownList ID="ddlCarYear" runat="server" class="form-control">
+                                        <asp:DropDownList ID="ddlCarYear" runat="server" class="form-control">
                                             <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                             <asp:ListItem Text="2017" Value="1" />
-                                             <asp:ListItem Text="2016" Value="2" />
+                                            <asp:ListItem Text="2017" Value="1" />
+                                            <asp:ListItem Text="2016" Value="2" />
                                         </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="select">ยี่ห้อรถ</label>
-                                         <asp:DropDownList ID="ddlCarName" runat="server" class="form-control">
+                                        <asp:DropDownList ID="ddlCarName" runat="server" class="form-control">
                                             <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                             <asp:ListItem Text="AUDI" Value="1" />
-                                             <asp:ListItem Text="BMW" Value="2" />
+                                            <asp:ListItem Text="AUDI" Value="1" />
+                                            <asp:ListItem Text="BMW" Value="2" />
                                         </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="select">รุ่นรถ</label>
                                         <asp:DropDownList ID="ddlCarModel" runat="server" class="form-control">
                                             <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                             <asp:ListItem Text="A4" Value="1" />
-                                             <asp:ListItem Text="Q3" Value="2" />
+                                            <asp:ListItem Text="A4" Value="1" />
+                                            <asp:ListItem Text="Q3" Value="2" />
                                         </asp:DropDownList>
                                     </div>
-                                     <div class="form-group">
+                                    <div class="form-group">
                                         <label for="select">เครื่องยนต์</label>
                                         <asp:DropDownList ID="ddlCarEngine" runat="server" class="form-control">
                                             <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                             <asp:ListItem Text="2.0cc 4 Door" Value="1" />
-                                             <asp:ListItem Text="2.0cc 4 Door" Value="2" />
+                                            <asp:ListItem Text="2.0cc 4 Door" Value="1" />
+                                            <asp:ListItem Text="2.0cc 4 Door" Value="2" />
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -247,7 +260,10 @@
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-xs-12">
-                        <a href="javascript:void(0)" id="btn_compare" class="button button-highlight button-rounded button-small padding-h-10 pull-right btn-compare" onclick="calCheckbox()">เปรียบเทียบเบี้ย</a>
+
+                        <div class="button-dropdown pull-left" data-buttons="dropdown">
+                        </div>
+                        <a href="javascript:void(0)" id="btn_compare" class="button button-highlight button-rounded button-small padding-h-10 pull-right btn-compare" onclick="calCheckbox()">เปรียบเทียบเบี้ย (0)</a>
                         <div class="modal fade" id="package_compare" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
@@ -360,6 +376,7 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
+                                        <asp:Button ID="btnPrint" runat="server" Text="พิมพ์ ใบเสนอราคา" class="btn btn-ar btn-primary" OnClick="btnPrint_Click" />
                                         <button type="button" class="btn btn-ar btn-sm btn-default" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
@@ -368,7 +385,7 @@
 
                     </div>
                 </div>
-                <hr class="margin-10">
+                <hr class="margin-10" />
 
                 <div class="row">
                     <div class="col-xs-12">
@@ -396,7 +413,7 @@
                                                 <div class="pricing-box-footer">
                                                     <div class="row">
                                                         <div class="col-xs-4">
-                                                            <input name="ctl00$ContentPlaceHolder$mc1_Compare" type="checkbox" id="ContentPlaceHolder_mc1_Compare" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งอู่ (S30)|อู่|48600|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|200,000|200,000|200,000|20161119212744_FY_144189|289|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AD%E0%B8%B9%E0%B9%88+%28S30%29&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_netpre=47432.54&amp;pack_pre=50956.12&amp;pack_offerprice=48600&amp;pack_offerdiscount=2356.12&amp;pack_id=1834&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=289" style="display: none;"/><label for="ContentPlaceHolder_mc1_Compare"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
+                                                            <input name="ctl00$ContentPlaceHolder$mc1_Compare" type="checkbox" id="ContentPlaceHolder_mc1_Compare" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งอู่ (S30)|อู่|48600|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|200,000|200,000|200,000|20161119212744_FY_144189|289|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AD%E0%B8%B9%E0%B9%88+%28S30%29&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_netpre=47432.54&amp;pack_pre=50956.12&amp;pack_offerprice=48600&amp;pack_offerdiscount=2356.12&amp;pack_id=1834&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=289" style="display: none;" /><label for="ContentPlaceHolder_mc1_Compare"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
                                                         </div>
                                                         <div class="col-xs-8">
                                                             <a href="#" class="btn btn-ar btn-default mar-l-10" data-toggle="modal" data-target="#modalCard1">ดูรายละเอียด</a>
@@ -427,7 +444,7 @@
                                                 <div class="pricing-box-footer">
                                                     <div class="row">
                                                         <div class="col-xs-4">
-                                                            <input name="ctl00$ContentPlaceHolder$mc2_Compare" type="checkbox" id="ContentPlaceHolder_mc2_Compare" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งห้าง (AS6) STD|ห้าง|53400|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|500,000|500,000|500,000|20161119212744_FY_144189|83|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87+%28AS6%29+STD&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_netpre=52095.54&amp;pack_pre=55965.86&amp;pack_offerprice=53400&amp;pack_offerdiscount=2565.86&amp;pack_id=957&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=83" style="display: none;"><label for="ContentPlaceHolder_mc2_Compare"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
+                                                            <input name="ctl00$ContentPlaceHolder$mc2_Compare" type="checkbox" id="ContentPlaceHolder_mc2_Compare" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งห้าง (AS6) STD|ห้าง|53400|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|500,000|500,000|500,000|20161119212744_FY_144189|83|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87+%28AS6%29+STD&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_netpre=52095.54&amp;pack_pre=55965.86&amp;pack_offerprice=53400&amp;pack_offerdiscount=2565.86&amp;pack_id=957&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=83" style="display: none;" /><label for="ContentPlaceHolder_mc2_Compare"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
                                                         </div>
                                                         <div class="col-xs-8"><a href="#" class="btn btn-ar btn-default" data-toggle="modal" data-target="#modalCard2">ดูรายละเอียด</a></div>
                                                     </div>
@@ -437,9 +454,9 @@
                                     </div>
                                     <div class="owl-item active" style="width: 243.333px; margin-right: 10px;">
                                         <div id="ContentPlaceHolder_card3" class="item">
-                                            <div class="pricign-box-p animated fadeInUp animation-delay-9">
+                                            <div class="pricign-box animated fadeInUp animation-delay-9">
                                                 <div class="pricing-box-header">
-                                                    <h2>&nbsp;</h2>
+                                                    <h2>แนะนำ</h2>
                                                     <p id="ContentPlaceHolder_cardINSName3" class="hideOverflow">วิริยะประกันภัย</p>
                                                 </div>
                                                 <div class="pricing-box-price">
@@ -456,7 +473,7 @@
                                                 <div class="pricing-box-footer">
                                                     <div class="row">
                                                         <div class="col-xs-4">
-                                                            <input name="ctl00$ContentPlaceHolder$mc3_Compare" type="checkbox" id="ContentPlaceHolder_mc3_Compare" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งห้าง (AS6) STD|ห้าง|53400|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|500,000|500,000|500,000|20161119212744_FY_144189|83|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87+%28AS6%29+STD&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_netpre=52095.54&amp;pack_pre=55965.86&amp;pack_offerprice=53400&amp;pack_offerdiscount=2565.86&amp;pack_id=957&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=83" style="display: none;"><label for="ContentPlaceHolder_mc3_Compare"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
+                                                            <input name="ctl00$ContentPlaceHolder$mc3_Compare" type="checkbox" id="ContentPlaceHolder_mc3_Compare" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งห้าง (AS6) STD|ห้าง|53400|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|500,000|500,000|500,000|20161119212744_FY_144189|83|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87+%28AS6%29+STD&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_netpre=52095.54&amp;pack_pre=55965.86&amp;pack_offerprice=53400&amp;pack_offerdiscount=2565.86&amp;pack_id=957&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=83" style="display: none;" /><label for="ContentPlaceHolder_mc3_Compare"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
                                                         </div>
                                                         <div class="col-xs-8">
                                                             <a href="#" class="btn btn-ar btn-default mar-l-10" data-toggle="modal" data-target="#modalCard3">ดูรายละเอียด</a>
@@ -488,9 +505,9 @@
                             </div>
                             <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                 <div class="title-style1">
-                                    <img id="ContentPlaceHolder_mc1_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png">
+                                    <img id="ContentPlaceHolder_mc1_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png"/>
                                     <p style="margin: 10px 0 0 0"><span id="ContentPlaceHolder_mc1_INSName">วิริยะประกันภัย</span></p>
-                                    <h3 id="ContentPlaceHolder_mc1_PACKNAME" class="no-margin hideOverflow" style="color:hotpink">VBI ป1 เก๋งอู่ (S30)</h3>
+                                    <h3 id="ContentPlaceHolder_mc1_PACKNAME" class="no-margin hideOverflow" style="color: hotpink">VBI ป1 เก๋งอู่ (S30)</h3>
                                     <div class="clearfix"></div>
                                 </div>
 
@@ -553,7 +570,7 @@
                             </div>
                             <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                 <div class="title-style1">
-                                    <img id="ContentPlaceHolder_mc2_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png">
+                                    <img id="ContentPlaceHolder_mc2_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png"/>
                                     <p style="margin: 10px 0 0 0"><span id="ContentPlaceHolder_mc2_INSName">วิริยะประกันภัย</span></p>
                                     <h3 id="ContentPlaceHolder_mc2_PACKNAME" class="no-margin hideOverflow">VBI ป1 เก๋งห้าง (AS6) STD</h3>
                                     <div class="clearfix"></div>
@@ -618,7 +635,7 @@
                             </div>
                             <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                 <div class="title-style1">
-                                    <img id="ContentPlaceHolder_mc3_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png">
+                                    <img id="ContentPlaceHolder_mc3_INS" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.png"/>
                                     <p style="margin: 10px 0 0 0"><span id="ContentPlaceHolder_mc3_INSName">วิริยะประกันภัย</span></p>
                                     <h3 id="ContentPlaceHolder_mc3_PACKNAME" class="no-margin hideOverflow">VBI ป1 เก๋งห้าง (AS6) STD</h3>
                                     <div class="clearfix"></div>
@@ -682,7 +699,7 @@
 
                             <a data-toggle="collapse" style="height: 50px;" data-parent="#accordion" href="#VBI" class="list-ins ">
                                 <div class="col-xs-2 col-md-1 no-padding">
-                                    <img id="ContentPlaceHolder_rptIns_Image2_0" class="img-responsive img-circle center-block" src="../logoCompany/VIB.jpg" style="max-width: 30px; background-color: white; margin-top: 5px;">
+                                    <img id="ContentPlaceHolder_rptIns_Image2_0" class="img-responsive img-circle center-block" src="../logoCompany/VIB.jpg" style="max-width: 30px; background-color: white; margin-top: 5px;"/>
                                 </div>
                                 <div class="col-xs-10 col-md-6 hideOverflow no-padding">
                                     <span id="ContentPlaceHolder_rptIns_Label2_0">วิริยะประกันภัย</span>
@@ -708,16 +725,16 @@
                                     <div class="list-group-item">
                                         <div class="row">
                                             <div class="col-xs-1 no-padding">
-                                                <input name="ctl00$ContentPlaceHolder$rptIns$ctl00$rptPackage$ctl00$ck" type="checkbox" id="ContentPlaceHolder_rptIns_rptPackage_0_ck_0" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งห้าง (AS6) STD|ห้าง|53400|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|500,000|500,000|500,000|20161119212744_FY_144189|83|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87+%28AS6%29+STD&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_netpre=52095.54&amp;pack_pre=55965.86&amp;pack_offerprice=53400&amp;pack_offerdiscount=2565.86&amp;pack_id=957&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=83" style="display: none;"><label for="ContentPlaceHolder_rptIns_rptPackage_0_ck_0"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
+                                                <input name="ctl00$ContentPlaceHolder$rptIns$ctl00$rptPackage$ctl00$ck" type="checkbox" id="ContentPlaceHolder_rptIns_rptPackage_0_ck_0" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งห้าง (AS6) STD|ห้าง|53400|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|500,000|500,000|500,000|20161119212744_FY_144189|83|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87+%28AS6%29+STD&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_netpre=52095.54&amp;pack_pre=55965.86&amp;pack_offerprice=53400&amp;pack_offerdiscount=2565.86&amp;pack_id=957&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=83" style="display: none;" /><label for="ContentPlaceHolder_rptIns_rptPackage_0_ck_0"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
                                             </div>
                                             <div class="col-xs-7 no-padding-right hideOverflow">
                                                 <span id="ContentPlaceHolder_rptIns_rptPackage_0_Label9_0" class="label label-success">ห้าง</span>&nbsp;
-																<span id="ContentPlaceHolder_rptIns_rptPackage_0_Label5_0">VBI ป1 เก๋งห้าง (AS6) STD</span><br>
+																<span id="ContentPlaceHolder_rptIns_rptPackage_0_Label5_0">VBI ป1 เก๋งห้าง (AS6) STD</span><br />
                                                 <span id="ContentPlaceHolder_rptIns_rptPackage_0_Label1_0" class="small">ทุน 2,200,000</span>&nbsp;
 																<span id="ContentPlaceHolder_rptIns_rptPackage_0_Label2_0" class="small text-danger"></span>
                                             </div>
                                             <div class="col-xs-4 no-padding-left text-right">
-                                                <s><span style="color: gray; font-size: 80%;">&nbsp;55,966&nbsp;</span></s><br>
+                                                <s><span style="color: gray; font-size: 80%;">&nbsp;55,966&nbsp;</span></s><br />
                                                 <a href="#" class="em-primary-inverse" data-toggle="modal" data-target="#2037-1"><i class="fa fa-shopping-cart"></i>&nbsp; 53,400</a>
                                             </div>
                                         </div>
@@ -733,7 +750,7 @@
                                                 </div>
                                                 <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                                     <div class="title-style1">
-                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_0_imgINSCode_0" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.jpg">
+                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_0_imgINSCode_0" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.jpg"/>
                                                         <p style="margin: 10px 0 0 0">
                                                             วิริยะประกันภัย
                                                         </p>
@@ -819,16 +836,16 @@
                                     <div class="list-group-item">
                                         <div class="row">
                                             <div class="col-xs-1 no-padding">
-                                                <input name="ctl00$ContentPlaceHolder$rptIns$ctl00$rptPackage$ctl01$ck" type="checkbox" id="ContentPlaceHolder_rptIns_rptPackage_0_ck_1" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งอู่ (S30)|อู่|48600|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|200,000|200,000|200,000|20161119212744_FY_144189|289|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AD%E0%B8%B9%E0%B9%88+%28S30%29&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_netpre=47432.54&amp;pack_pre=50956.12&amp;pack_offerprice=48600&amp;pack_offerdiscount=2356.12&amp;pack_id=1834&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=289" style="display: none;"><label for="ContentPlaceHolder_rptIns_rptPackage_0_ck_1"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
+                                                <input name="ctl00$ContentPlaceHolder$rptIns$ctl00$rptPackage$ctl01$ck" type="checkbox" id="ContentPlaceHolder_rptIns_rptPackage_0_ck_1" class="styled labelauty" value="VBI|วิริยะประกันภัย|VBI ป1 เก๋งอู่ (S30)|อู่|48600|1,000,000|10,000,000|5,000,000|2,200,000|2,200,000|-|2,200,000|7|200,000|200,000|200,000|20161119212744_FY_144189|289|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=VBI&amp;pack_name=VBI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AD%E0%B8%B9%E0%B9%88+%28S30%29&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_netpre=47432.54&amp;pack_pre=50956.12&amp;pack_offerprice=48600&amp;pack_offerdiscount=2356.12&amp;pack_id=1834&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=289" style="display: none;" /><label for="ContentPlaceHolder_rptIns_rptPackage_0_ck_1"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
                                             </div>
                                             <div class="col-xs-7 no-padding-right hideOverflow">
                                                 <span id="ContentPlaceHolder_rptIns_rptPackage_0_Label9_1" class="label label-warning">อู่</span>&nbsp;
-																<span id="ContentPlaceHolder_rptIns_rptPackage_0_Label5_1">VBI ป1 เก๋งอู่ (S30)</span><br>
+																<span id="ContentPlaceHolder_rptIns_rptPackage_0_Label5_1">VBI ป1 เก๋งอู่ (S30)</span><br />
                                                 <span id="ContentPlaceHolder_rptIns_rptPackage_0_Label1_1" class="small">ทุน 2,200,000</span>&nbsp;
 																<span id="ContentPlaceHolder_rptIns_rptPackage_0_Label2_1" class="small text-danger"></span>
                                             </div>
                                             <div class="col-xs-4 no-padding-left text-right">
-                                                <s><span style="color: gray; font-size: 80%;">&nbsp;50,956&nbsp;</span></s><br>
+                                                <s><span style="color: gray; font-size: 80%;">&nbsp;50,956&nbsp;</span></s><br />
                                                 <a href="#" class="em-primary-inverse" data-toggle="modal" data-target="#2037-2"><i class="fa fa-shopping-cart"></i>&nbsp; 48,600</a>
                                             </div>
                                         </div>
@@ -844,7 +861,7 @@
                                                 </div>
                                                 <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                                     <div class="title-style1">
-                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_0_imgINSCode_1" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.jpg">
+                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_0_imgINSCode_1" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/VIB.jpg"/>
                                                         <p style="margin: 10px 0 0 0">
                                                             วิริยะประกันภัย
                                                         </p>
@@ -937,7 +954,7 @@
 
                             <a data-toggle="collapse" style="height: 50px;" data-parent="#accordion" href="#SEI" class="list-ins collapsed">
                                 <div class="col-xs-2 col-md-1 no-padding">
-                                    <img id="ContentPlaceHolder_rptIns_Image2_1" class="img-responsive img-circle center-block" src="../logoCompany/SEI.jpg" style="max-width: 30px; background-color: white; margin-top: 5px;">
+                                    <img id="ContentPlaceHolder_rptIns_Image2_1" class="img-responsive img-circle center-block" src="../logoCompany/SEI.jpg" style="max-width: 30px; background-color: white; margin-top: 5px;"/>
                                 </div>
                                 <div class="col-xs-10 col-md-6 hideOverflow no-padding">
                                     <span id="ContentPlaceHolder_rptIns_Label2_1">อาคเนย์ประกันภัย</span>
@@ -963,16 +980,16 @@
                                     <div class="list-group-item">
                                         <div class="row">
                                             <div class="col-xs-1 no-padding">
-                                                <input name="ctl00$ContentPlaceHolder$rptIns$ctl01$rptPackage$ctl00$ck" type="checkbox" id="ContentPlaceHolder_rptIns_rptPackage_1_ck_0" class="styled labelauty" value="SEI|อาคเนย์ประกันภัย|SEI ป1 เก๋งห้าง|ห้าง|56000|1,000,000|10,000,000|2,500,000|2,200,000|2,200,000|-|2,200,000|5|100,000|100,000|300,000|20161119212744_FY_144189|84|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=SEI&amp;pack_name=SEI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_netpre=54630&amp;pack_pre=58688.43&amp;pack_offerprice=56000&amp;pack_offerdiscount=2688.43&amp;pack_id=490&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=84" style="display: none;"><label for="ContentPlaceHolder_rptIns_rptPackage_1_ck_0"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
+                                                <input name="ctl00$ContentPlaceHolder$rptIns$ctl01$rptPackage$ctl00$ck" type="checkbox" id="ContentPlaceHolder_rptIns_rptPackage_1_ck_0" class="styled labelauty" value="SEI|อาคเนย์ประกันภัย|SEI ป1 เก๋งห้าง|ห้าง|56000|1,000,000|10,000,000|2,500,000|2,200,000|2,200,000|-|2,200,000|5|100,000|100,000|300,000|20161119212744_FY_144189|84|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=SEI&amp;pack_name=SEI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AB%E0%B9%89%E0%B8%B2%E0%B8%87&amp;pack_netpre=54630&amp;pack_pre=58688.43&amp;pack_offerprice=56000&amp;pack_offerdiscount=2688.43&amp;pack_id=490&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=84" style="display: none;"/><label for="ContentPlaceHolder_rptIns_rptPackage_1_ck_0"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
                                             </div>
                                             <div class="col-xs-7 no-padding-right hideOverflow">
                                                 <span id="ContentPlaceHolder_rptIns_rptPackage_1_Label9_0" class="label label-success">ห้าง</span>&nbsp;
-																<span id="ContentPlaceHolder_rptIns_rptPackage_1_Label5_0">SEI ป1 เก๋งห้าง</span><br>
+																<span id="ContentPlaceHolder_rptIns_rptPackage_1_Label5_0">SEI ป1 เก๋งห้าง</span><br />
                                                 <span id="ContentPlaceHolder_rptIns_rptPackage_1_Label1_0" class="small">ทุน 2,200,000</span>&nbsp;
 																<span id="ContentPlaceHolder_rptIns_rptPackage_1_Label2_0" class="small text-danger"></span>
                                             </div>
                                             <div class="col-xs-4 no-padding-left text-right">
-                                                <s><span style="color: gray; font-size: 80%;">&nbsp;58,688&nbsp;</span></s><br>
+                                                <s><span style="color: gray; font-size: 80%;">&nbsp;58,688&nbsp;</span></s><br />
                                                 <a href="#" class="em-primary-inverse" data-toggle="modal" data-target="#2079-1"><i class="fa fa-shopping-cart"></i>&nbsp; 56,000</a>
                                             </div>
                                         </div>
@@ -988,7 +1005,7 @@
                                                 </div>
                                                 <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                                     <div class="title-style1">
-                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_1_imgINSCode_0" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/SEI.jpg">
+                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_1_imgINSCode_0" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/SEI.jpg"/>
                                                         <p style="margin: 10px 0 0 0">
                                                             อาคเนย์ประกันภัย
                                                         </p>
@@ -1074,16 +1091,16 @@
                                     <div class="list-group-item">
                                         <div class="row">
                                             <div class="col-xs-1 no-padding">
-                                                <input name="ctl00$ContentPlaceHolder$rptIns$ctl01$rptPackage$ctl01$ck" type="checkbox" id="ContentPlaceHolder_rptIns_rptPackage_1_ck_1" class="styled labelauty" value="SEI|อาคเนย์ประกันภัย|SEI ป1 เก๋งอู่|อู่|50200|1,000,000|10,000,000|2,500,000|2,200,000|2,200,000|-|2,200,000|5|100,000|100,000|200,000|20161119212744_FY_144189|290|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=SEI&amp;pack_name=SEI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_netpre=48977&amp;pack_pre=52615.11&amp;pack_offerprice=50200&amp;pack_offerdiscount=2415.11&amp;pack_id=488&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=290" style="display: none;"><label for="ContentPlaceHolder_rptIns_rptPackage_1_ck_1"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
+                                                <input name="ctl00$ContentPlaceHolder$rptIns$ctl01$rptPackage$ctl01$ck" type="checkbox" id="ContentPlaceHolder_rptIns_rptPackage_1_ck_1" class="styled labelauty" value="SEI|อาคเนย์ประกันภัย|SEI ป1 เก๋งอู่|อู่|50200|1,000,000|10,000,000|2,500,000|2,200,000|2,200,000|-|2,200,000|5|100,000|100,000|200,000|20161119212744_FY_144189|290|http://www.xn--42cl3c6a8fucc8cwa.com/motorBuy.php?inscode=SEI&amp;pack_name=SEI+%E0%B8%9B1+%E0%B9%80%E0%B8%81%E0%B9%8B%E0%B8%87%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_od=2200000&amp;pack_fix=%E0%B8%AD%E0%B8%B9%E0%B9%88&amp;pack_netpre=48977&amp;pack_pre=52615.11&amp;pack_offerprice=50200&amp;pack_offerdiscount=2415.11&amp;pack_id=488&amp;car_brand=AUDI&amp;car_model=A4&amp;car_cc=1800&amp;car_year=2016&amp;car_code=110&amp;car_id=617&amp;afp_name=ancbroker2015&amp;ref1=20161119212744_FY_144189&amp;ref2=290" style="display: none;"/><label for="ContentPlaceHolder_rptIns_rptPackage_1_ck_1"><span class="labelauty-unchecked-image"></span><span class="labelauty-checked-image"></span></label>
                                             </div>
                                             <div class="col-xs-7 no-padding-right hideOverflow">
                                                 <span id="ContentPlaceHolder_rptIns_rptPackage_1_Label9_1" class="label label-warning">อู่</span>&nbsp;
-																<span id="ContentPlaceHolder_rptIns_rptPackage_1_Label5_1">SEI ป1 เก๋งอู่</span><br>
+																<span id="ContentPlaceHolder_rptIns_rptPackage_1_Label5_1">SEI ป1 เก๋งอู่</span><br />
                                                 <span id="ContentPlaceHolder_rptIns_rptPackage_1_Label1_1" class="small">ทุน 2,200,000</span>&nbsp;
 																<span id="ContentPlaceHolder_rptIns_rptPackage_1_Label2_1" class="small text-danger"></span>
                                             </div>
                                             <div class="col-xs-4 no-padding-left text-right">
-                                                <s><span style="color: gray; font-size: 80%;">&nbsp;52,615&nbsp;</span></s><br>
+                                                <s><span style="color: gray; font-size: 80%;">&nbsp;52,615&nbsp;</span></s><br />
                                                 <a href="#" class="em-primary-inverse" data-toggle="modal" data-target="#2079-2"><i class="fa fa-shopping-cart"></i>&nbsp; 50,200</a>
                                             </div>
                                         </div>
@@ -1099,7 +1116,7 @@
                                                 </div>
                                                 <div class="modal-body ativa-scroll" style="height: 286px; overflow-y: auto;">
                                                     <div class="title-style1">
-                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_1_imgINSCode_1" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/SEI.jpg">
+                                                        <img id="ContentPlaceHolder_rptIns_rptPackage_1_imgINSCode_1" class="img-circle img-responsive icon-title pull-left" src="../logoCompany/SEI.jpg"/>
                                                         <p style="margin: 10px 0 0 0">
                                                             อาคเนย์ประกันภัย
                                                         </p>

@@ -18,5 +18,10 @@ namespace IBSC.UI.Web.Page
         {
 
         }
+
+        protected void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
