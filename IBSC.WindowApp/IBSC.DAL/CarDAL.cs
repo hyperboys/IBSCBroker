@@ -4,6 +4,7 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace IBSC.DAL
 {
     public class CarDAL : DBbase
     {
-        public CarData GetItem(string carCode,string carName,string carModel,string carEngine)
+        public CarData GetItem(string carCode, string carName, string carModel, string carEngine)
         {
             try
             {
@@ -87,12 +88,12 @@ namespace IBSC.DAL
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
                 sql.Append("INSERT INTO MA_CAR (CAR_CODE,CAR_ENGINE,CAR_MODEL,CAR_NAME,CAR_REMARK,CAR_STATUS,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER) VALUES (");
-                sql.Append(" '" + item.CAR_CODE + "',");
-                sql.Append(" '" + item.CAR_ENGINE + "',");
-                sql.Append(" '" + item.CAR_MODEL + "',");
-                sql.Append(" '" + item.CAR_NAME + "',");
+                sql.Append(" '" + item.CAR_CODE.ToUpper() + "',");
+                sql.Append(" '" + item.CAR_ENGINE.ToUpper() + "',");
+                sql.Append(" '" + item.CAR_MODEL.ToUpper() + "',");
+                sql.Append(" '" + item.CAR_NAME.ToUpper() + "',");
                 sql.Append(" '" + item.CAR_REMARK + "',");
-                sql.Append(" '" + item.CAR_STATUS + "',");
+                sql.Append(" '" + item.CAR_STATUS.ToUpper() + "',");
                 sql.Append(" '" + DateTime.Now + "',");
                 sql.Append(" '" + member.MEMBER_USER + "',");
                 sql.Append(" '" + DateTime.Now + "',");
@@ -101,13 +102,23 @@ namespace IBSC.DAL
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
             }
+            catch (SqlException exception)
+            {
+                if (exception.Number == 2601) // Cannot insert duplicate key row in object error
+                {
+                    // handle duplicate key error
+                    return;
+                }
+                else
+                    throw exception; // throw exception if this exception is unexpected
+            }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
 
-        public void Update(CarData oldItem,CarData newItem)
+        public void Update(CarData oldItem, CarData newItem)
         {
             try
             {
@@ -201,7 +212,7 @@ namespace IBSC.DAL
             }
         }
 
-        public DataTable GetComboBoxCarEngine(string carName,string carModel)
+        public DataTable GetComboBoxCarEngine(string carName, string carModel)
         {
             try
             {
