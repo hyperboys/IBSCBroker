@@ -125,12 +125,12 @@ namespace IBSC.DAL
                 MEDICAL_FEE_PEOPLE,DRIVER_INSURANCE_AMT,NET_PRICE,TOTAL_PRICE,PRICE_ROUND,CAPITAL_INSURANCE,INSURE_PRIORITY,EFFECTIVE_DATE,EXPIRE_DATE,CONFIDENTIAL_STATUS,
                 INSURE_CAR_STATUS,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER)  VALUES (");
 
-                string INSURE_CAR_CODE = DateTime.Now.ToString("yyyyMMdd") + "-" + item.COMPANY_CODE + "-" + item.PACKAGE_NAME;
+                string INSURE_CAR_CODE = DateTime.Now.ToString("yyyyMMdd") + "-" + item.COMPANY_CODE.ToUpper() + "-" + item.PACKAGE_NAME;
                 INSURE_CAR_CODE += "-" + item.CAR_ID + "-" + item.INSURE_CATEGORY;
                 INSURE_CAR_CODE += item.INSURE_TYPE_REPAIR == "ศูนย์" ? "C" : "G";
 
                 sql.Append(" '" + INSURE_CAR_CODE + "',");
-                sql.Append(" '" + item.COMPANY_CODE + "',");
+                sql.Append(" '" + item.COMPANY_CODE.ToUpper() + "',");
                 sql.Append(" '" + item.PACKAGE_NAME + "',");
                 sql.Append(" '" + item.CAR_ID + "',");
                 sql.Append(" '" + item.INSURE_CATEGORY + "',");

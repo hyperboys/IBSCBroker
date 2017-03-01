@@ -17,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace IBSC.WindowApp.Popup
@@ -26,8 +27,8 @@ namespace IBSC.WindowApp.Popup
     /// </summary>
     public partial class PopupImportExcel : Window
     {
-        List<TextError> items;
-        private static int ROWS = 100;
+        private static List<TextError> items;
+        //private static int ROWS = 100;
         private static CarDAL carDal;
         private static InsureCompanyDAL comDal;
         private static BackgroundWorker worker;
@@ -38,7 +39,7 @@ namespace IBSC.WindowApp.Popup
             {
                 InitializeComponent();
                 items = new List<TextError>();
-
+                SetTimer();
             }
             catch (Exception ex)
             {
@@ -131,7 +132,7 @@ namespace IBSC.WindowApp.Popup
                     }
                     else
                     {
-                        tmp.EXCEPTION = "รหัสบริษัทไม่มีในระบบ";
+                        tmp.EXCEPTION = "รหัสบริษัทไม่มีในระบบ" + "ในบรรทัดที่ :" + index;
                     }
 
                     tmp.CAR_CODE = item.CAR_CODE;
@@ -146,7 +147,7 @@ namespace IBSC.WindowApp.Popup
                     }
                     else
                     {
-                        tmp.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ : " + tmp.CAR_CODE + ", รถยนต์ยี่ห้อ : " + tmp.CAR_NAME + ", รุ่นรถยนต์ : " + tmp.CAR_MODEL + ", เครื่องยนต์ : " + tmp.CAR_ENGINE;
+                        tmp.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ : " + tmp.CAR_CODE + ", รถยนต์ยี่ห้อ : " + tmp.CAR_NAME + ", รุ่นรถยนต์ : " + tmp.CAR_MODEL + ", เครื่องยนต์ : " + tmp.CAR_ENGINE + "   ในบรรทัดที่ :" + index;
                     }
 
                     tmp.COMPANY_FULLNAME = item.COMPANY_FULLNAME;
@@ -181,8 +182,6 @@ namespace IBSC.WindowApp.Popup
                     if (tmp.EXCEPTION != "")
                     {
                         items.Add(new TextError() { Error = tmp.EXCEPTION });
-                        viewError.ItemsSource = items;
-                        viewError.Items.Refresh();
                     }
                     else
                     {
@@ -668,6 +667,32 @@ namespace IBSC.WindowApp.Popup
             {
                 throw ex;
             }
+        }
+
+        private void ReloadDataForReFresh()
+        {
+            try
+            {
+                viewError.ItemsSource = items;
+                viewError.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        protected void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            ReloadDataForReFresh();
+        }
+
+        private void SetTimer()
+        {
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
+            dispatcherTimer.Start();
         }
 
     }

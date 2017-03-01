@@ -100,7 +100,7 @@ namespace IBSC.DAL
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
                 sql.Append("INSERT INTO MA_INSURE_COMPANY (COMPANY_CODE,COMPANY_FULLNAME,COMPANY_PATH_PIC,COMPANY_REMARK,COMPANY_SHORTNAME,COMPANY_STATUS,CREATE_DATE,CREATE_USER,UPDATE_DATE,UPDATE_USER) VALUES (");
-                sql.Append(" '" + item.COMPANY_CODE + "',");
+                sql.Append(" '" + item.COMPANY_CODE.ToUpper() + "',");
                 sql.Append(" '" + item.COMPANY_FULLNAME + "',");
                 sql.Append(" '" + item.COMPANY_PATH_PIC + "',");
                 sql.Append(" '" + item.COMPANY_REMARK + "',");
@@ -127,15 +127,15 @@ namespace IBSC.DAL
                 MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
-                sql.Append("UPDATE MA_INSURE_COMPANY SET COMPANY_CODE = '" + item.COMPANY_CODE + "',");
+                sql.Append("UPDATE MA_INSURE_COMPANY SET COMPANY_CODE = '" + item.COMPANY_CODE.ToUpper() + "',");
                 sql.Append(" COMPANY_FULLNAME = '" + item.COMPANY_FULLNAME + "',");
                 sql.Append(" COMPANY_PATH_PIC = '" + item.COMPANY_PATH_PIC + "',");
                 sql.Append(" COMPANY_REMARK = '" + item.COMPANY_REMARK + "',");
                 sql.Append(" COMPANY_SHORTNAME = '" + item.COMPANY_SHORTNAME + "',");
-                sql.Append(" COMPANY_STATUS = '" + item.COMPANY_STATUS + "',");
+                sql.Append(" COMPANY_STATUS = '" + item.COMPANY_STATUS.ToUpper() + "',");
                 sql.Append(" UPDATE_DATE = '" + DateTime.Now + "',");
                 sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
-                sql.Append(" WHERE COMPANY_CODE = '" + item.COMPANY_CODE + "'");
+                sql.Append(" WHERE COMPANY_CODE = '" + item.COMPANY_CODE.ToUpper() + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
             }
