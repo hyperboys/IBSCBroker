@@ -44,7 +44,7 @@ namespace IBSC.WindowApp
                 mainWindow.Show();
                 this.Close();
 #else
-                Member member = new MemberDAL().GetMember(txtUser.Text, txtPass.Password);
+                MemberData member = new MemberDAL().GetMember(txtUser.Text, txtPass.Password);
                 if (member != null)
                 {
                     if (member.MEMBER_STATUS != "I")
