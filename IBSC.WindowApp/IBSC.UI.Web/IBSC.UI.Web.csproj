@@ -142,6 +142,7 @@
     <Content Include="assets\fonts\fontawesome-webfont.woff" />
     <Content Include="assets\fonts\ThaiSansNeue-Light.woff" />
     <Content Include="MasterPage\MainMaster.Master" />
+    <None Include="Properties\PublishProfiles\IBSC.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
