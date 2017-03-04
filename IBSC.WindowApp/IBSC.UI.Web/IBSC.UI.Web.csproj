@@ -153,6 +153,24 @@
   <ItemGroup>
     <Folder Include="images\ins\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\IBSC.Common\IBSC.Common.csproj">
+      <Project>{bb167141-e9b8-4d63-9e18-c6ec4bd9e7ae}</Project>
+      <Name>IBSC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBSC.DAL\IBSC.DAL.csproj">
+      <Project>{1aae857c-fe70-426d-968a-04411a7802e8}</Project>
+      <Name>IBSC.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBSC.Model\IBSC.Model.csproj">
+      <Project>{9365fd6f-b932-4e4f-8166-b2bda800e630}</Project>
+      <Name>IBSC.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\IBSC.Utility\IBSC.Utility.csproj">
+      <Project>{e55d470c-cb71-4c71-8e29-c5c0330b6879}</Project>
+      <Name>IBSC.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -166,7 +184,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>1542</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:4071/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
