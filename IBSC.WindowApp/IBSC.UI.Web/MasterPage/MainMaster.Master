@@ -4,29 +4,29 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" class="sb-init">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>ประกันภัยรถยนต์ ชั้น1 AUDI A4 1.8cc 4 Door ปี2016 ราคาถูกทุกบริษัทประกัน
     </title>
-    <link href="../images/icon/apple-touch-icon.png" rel="apple-touch-icon"/>
-    <link href="../images/icon/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76"/>
-    <link href="../images/icon/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120"/>
-    <link href="../images/icon/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152"/>
-    <link href="../images/icon/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180"/>
-    <link href="../images/icon/icon-hires.png" rel="icon" sizes="192x192"/>
-    <link href="../images/icon/icon-normal.png" rel="icon" sizes="128x128"/>
-    <link rel="shortcut icon" href="../images/favicon.ico"/>
+    <link href="../images/icon/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link href="../images/icon/apple-touch-icon-76x76.png" rel="apple-touch-icon" sizes="76x76" />
+    <link href="../images/icon/apple-touch-icon-120x120.png" rel="apple-touch-icon" sizes="120x120" />
+    <link href="../images/icon/apple-touch-icon-152x152.png" rel="apple-touch-icon" sizes="152x152" />
+    <link href="../images/icon/apple-touch-icon-180x180.png" rel="apple-touch-icon" sizes="180x180" />
+    <link href="../images/icon/icon-hires.png" rel="icon" sizes="192x192" />
+    <link href="../images/icon/icon-normal.png" rel="icon" sizes="128x128" />
+    <link rel="shortcut icon" href="../images/favicon.ico" />
 
     <!-- CSS -->
-    <link href="../assets/css/preload.css" rel="stylesheet"/>
-    <link href="../assets/css/vendors.css" rel="stylesheet"/>
-    <link href="../assets/css/style-blue.css" rel="stylesheet" title="default"/>
-    <link href="../assets/css/width-full.css" rel="stylesheet" title="default"/>
-    <link href="../assets/css/colorbox.css" rel="stylesheet"/>
-    <link href="../assets/extensions/OwlCarousel2/css/owl.carousel.css" rel="stylesheet"/>
-    <link href="../assets/extensions/OwlCarousel2/css/owl.theme.default.css" rel="stylesheet"/>
-    <link href="../css/custom.css" rel="stylesheet"/>
+    <link href="../assets/css/preload.css" rel="stylesheet" />
+    <link href="../assets/css/vendors.css" rel="stylesheet" />
+    <link href="../assets/css/style-blue.css" rel="stylesheet" title="default" />
+    <link href="../assets/css/width-full.css" rel="stylesheet" title="default" />
+    <link href="../assets/css/colorbox.css" rel="stylesheet" />
+    <link href="../assets/extensions/OwlCarousel2/css/owl.carousel.css" rel="stylesheet" />
+    <link href="../assets/extensions/OwlCarousel2/css/owl.theme.default.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -40,16 +40,14 @@
 
 
     <style type="text/css">
-        input[type="checkbox"] + label
-        {
+        input[type="checkbox"] + label {
             position: static !important;
         }
     </style>
     <link href="../assets/extensions/jquery-labelauty-master/source/jquery-labelauty.css" rel="stylesheet" />
 
     <style>
-        .ribbon
-        {
+        .ribbon {
             position: fixed;
             top: 0;
             right: 0;
@@ -57,7 +55,11 @@
         }
     </style>
     <meta name="description" content="รายการประกันภัยรถยนต์ ชั้น1 AUDI A4 1.8cc 4 Door ปี2016 ทุกบริษัทประกันราคาพิเศษ คุ้มครองครอบคลุมทุกความเสี่ยง ทั้งชน รถหาย ไฟไหม้ เหมาะกับผู้ที่ใช้รถเป็นประจำและหมดกังวลทุกการขับขี่" />
-    <style id="holderjs-style" type="text/css"></style>
+    <style id="holderjs-style" type="text/css">
+        .auto-style1 {
+            font-size: medium;
+        }
+    </style>
 
     <script src="../assets/js/syntaxhighlighter/shCore.js"></script>
     <script src="../assets/js/syntaxhighlighter/shBrushXml.js"></script>
@@ -133,7 +135,6 @@
                 <div class="header-full-title">
                     <h5 class="animated fadeInRight">
                         <a id="HyperLink8" href="#">iBSC <span><font color="#FF00FF">broker</font></span></a></h5>
-                    <p class="animated fadeInRight">โบรกเกอร์ประกันภัยออนไลน์</p>
                 </div>
                 <div class="pull-right text-right">
 
@@ -144,7 +145,7 @@
                         <a href="#" class="social-icon-ar sm circle google-plus"><i class="fa fa-google-plus"></i></a>
                         <a href="#" class="social-icon-ar sm circle pinterest"><i class="fa fa-pinterest"></i></a>
                         <a href="#" class="social-icon-ar sm circle instagram"><i class="fa fa-instagram"></i></a>
-                    </div>
+                        </div>
                     <div class="header-contact">
                         <a class="btn-social header-contact"><i class="fa fa-phone"></i>02-571-4949</a><%--|<a id="HyperLink11" class="btn-social header-contact" href="http://ancbroker.com/2014/member/"><i class="fa fa-lock"></i>เข้าสู่ระบบ</a>|<a id="HyperLink12" class="btn-social header-contact" href="%E0%B8%AA%E0%B8%A1%E0%B8%B2%E0%B8%8A%E0%B8%B4%E0%B8%81"><i class="fa fa-user"></i>สมัครสมาชิก</a>--%>
                     </div>

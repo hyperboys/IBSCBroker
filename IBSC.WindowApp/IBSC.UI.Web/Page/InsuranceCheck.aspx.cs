@@ -35,7 +35,7 @@ namespace IBSC.UI.Web.Page
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-
+            headCar.Visible = true;
         }
 
         protected void btnPrint_Click(object sender, EventArgs e)
@@ -48,12 +48,17 @@ namespace IBSC.UI.Web.Page
             try
             {
                 DataTable dt = insureCarDal.GetComboBoxCarName(ddlCarYear.Text);
+                
                 ddlCarName.Items.Clear();
-                foreach (DataRow row in dt.Rows)
+                ddlCarName.Items.Add(new ListItem("กรุณาเลือก","กรุณาเลือก"));
+                if (dt != null)
                 {
-                    ddlCarName.Items.Add(new ListItem(row[0].ToString(), row[0].ToString()));
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        ddlCarName.Items.Add(new ListItem(row[0].ToString(), row[0].ToString()));
+                    }
+                    ddlCarName.DataBind();
                 }
-                ddlCarName.DataBind();
             }
             catch (Exception ex)
             {

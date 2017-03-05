@@ -312,5 +312,49 @@ namespace IBSC.DAL
                 throw ex;
             }
         }
+
+        public DataTable GetComboBoxCarYear()
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT DISTINCT CAR_YEAR FROM MA_INSURE_CAR WHERE INSURE_CAR_STATUS = 'A'";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dataTable = new DataTable();
+                ds.Tables.Add(dataTable);
+                ds.EnforceConstraints = false;
+                dataTable.Load(reader);
+                reader.Close();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public DataTable GetComboBoxCarName(string carYear)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = "SELECT DISTINCT CAR_NAME FROM MA_INSURE_CAR I INNER JOIN MA_CAR C ON I.CAR_ID = C.CAR_ID WHERE INSURE_CAR_STATUS = 'A' AND CAR_YEAR ='" + carYear + "'";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                DataSet ds = new DataSet();
+                DataTable dataTable = new DataTable();
+                ds.Tables.Add(dataTable);
+                ds.EnforceConstraints = false;
+                dataTable.Load(reader);
+                reader.Close();
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

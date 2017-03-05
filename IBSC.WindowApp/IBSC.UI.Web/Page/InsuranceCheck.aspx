@@ -1,8 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MainMaster.Master" AutoEventWireup="true" CodeBehind="InsuranceCheck.aspx.cs" Inherits="IBSC.UI.Web.Page.InsuranceCheck" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage/MainMaster.Master"
+    AutoEventWireup="true" CodeBehind="InsuranceCheck.aspx.cs" Inherits="IBSC.UI.Web.Page.InsuranceCheck" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Syntaxhighlighter -->
     <script src="../assets/js/syntaxhighlighter/shCore.js"></script>
     <script src="../assets/js/syntaxhighlighter/shBrushXml.js"></script>
@@ -18,10 +17,6 @@
     <script type="text/javascript" src="../assets/js/package_list.js"></script>
     <script type="text/javascript" src="../assets/extensions/jquery-labelauty-master/source/jquery-labelauty.js"></script>
     <script type="text/javascript">
-        //Model Size
-        //$(document).ready(ajustamodal);
-        //$(window).resize(ajustamodal);
-
         $(document).ready(function () {
             $(":checkbox").labelauty({
                 label: false,
@@ -49,11 +44,6 @@
                 prevText: '<i class="fa fa-angle-left"></i>'
             });
         });
-
-        //function ajustamodal() {
-        //	var altura = $(window).height() - 190; //value corresponding to the modal heading + footer
-        //	$(".ativa-scroll").css({ "height": altura, "overflow-y": "auto" });
-        //}
 
         (function ($) {
             $(document).ready(function () {
@@ -161,12 +151,10 @@
             }
         }
     </script>
-
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-    </asp:ScriptManager>
-
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <div class="row">
+        <div id="headCar" class="row" runat="server" visible="false">
             <div class="col-md-6 topic padding-top-20">
                 <img id="ContentPlaceHolder_imgBrand" class="img-circle img-responsive pull-left" src="../logoCar/AUDI.png" />
                 <h1 class="no-margin hideOverflow">
@@ -186,59 +174,45 @@
             </div>
         </div>
         <hr class="no-margin-top" />
-
         <div class="row">
             <div class="col-md-4">
-                <%-- <div class="btn-group btn-group-justified margin-bottom-10">
-                    <a id="ContentPlaceHolder_linkCarType1" class="btn btn-primary">ชั้น1</a>
-                </div>--%>
                 <div class="panel-group">
                     <div class="panel panel-default">
                         <div class="panel-heading panel-heading-link">
                             <a data-toggle="collapse" data-parent="#accordioncc3" href="#cal_ins" id="cal_panel" class="" aria-expanded="true">ค้นหาประกันภัยรถยนต์</a>
                         </div>
-                        <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
-                            <ContentTemplate>
-                                <div id="cal_ins" class="panel-collapse collapse in" aria-expanded="true">
-                                    <div id="ContentPlaceHolder_Panel1" class="panel-body" onkeypress="javascript:return WebForm_FireDefaultButton(event, 'ContentPlaceHolder_btCal')">
-
-                                        <script type="text/javascript">
-                                            //<![CDATA[
-                                            Sys.WebForms.PageRequestManager._initialize('ctl00$ContentPlaceHolder$ScriptManager1', 'form1', ['tctl00$ContentPlaceHolder$UpdatePanel1', 'ContentPlaceHolder_UpdatePanel1'], [], [], 90, 'ctl00');
-                                            //]]>
-                                        </script>
-
-                                        <div id="ContentPlaceHolder_UpdatePanel1">
-                                            <div class="form-group">
-                                                <label for="select">ปีรถ</label>
-                                                <asp:DropDownList ID="ddlCarYear" runat="server" class="form-control" OnSelectedIndexChanged="ddlCarYear_SelectedIndexChanged" AutoPostBack="True">
-                                                    <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                                </asp:DropDownList>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="select">ยี่ห้อรถ</label>
-                                                <asp:DropDownList ID="ddlCarName" runat="server" class="form-control">
-                                                    <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                                </asp:DropDownList>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="select">รุ่นรถ</label>
-                                                <asp:DropDownList ID="ddlCarModel" runat="server" class="form-control">
-                                                    <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                                </asp:DropDownList>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="select">เครื่องยนต์</label>
-                                                <asp:DropDownList ID="ddlCarEngine" runat="server" class="form-control">
-                                                    <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                                </asp:DropDownList>
-                                            </div>
-                                        </div>
-                                        <asp:Button ID="btnSearch" runat="server" Text="ยืนยันข้อมูล" class="btn btn-ar btn-primary" OnClick="btnSearch_Click" />
+                        <div id="cal_ins" class="panel-collapse collapse in" aria-expanded="true">
+                            <div class="panel-body">
+                                <div>
+                                    <div class="form-group">
+                                        <label for="select">ปีรถ</label>
+                                        <asp:DropDownList ID="ddlCarYear" runat="server" class="form-control" AutoPostBack="true" OnSelectedIndexChanged="ddlCarYear_SelectedIndexChanged">
+                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="select">ยี่ห้อรถ</label>
+                                        <asp:DropDownList ID="ddlCarName" runat="server" class="form-control">
+                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="select">รุ่นรถ</label>
+                                        <asp:DropDownList ID="ddlCarModel" runat="server" class="form-control">
+                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
+                                        </asp:DropDownList>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="select">เครื่องยนต์</label>
+                                        <asp:DropDownList ID="ddlCarEngine" runat="server" class="form-control">
+                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
+                                        </asp:DropDownList>
                                     </div>
                                 </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+
+                                <asp:Button ID="btnSearch" runat="server" Text="ยืนยันข้อมูล" class="btn btn-ar btn-primary" OnClick="btnSearch_Click" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -1196,22 +1170,12 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
-
-    <div id="back-top" style="display: none;">
-        <a href="#header"><i class="fa fa-chevron-up"></i></a>
-    </div>
-
-
 </asp:Content>

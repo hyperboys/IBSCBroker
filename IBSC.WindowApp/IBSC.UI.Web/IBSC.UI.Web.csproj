@@ -166,10 +166,6 @@
       <Project>{9365fd6f-b932-4e4f-8166-b2bda800e630}</Project>
       <Name>IBSC.Model</Name>
     </ProjectReference>
-    <ProjectReference Include="..\IBSC.Utility\IBSC.Utility.csproj">
-      <Project>{e55d470c-cb71-4c71-8e29-c5c0330b6879}</Project>
-      <Name>IBSC.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
