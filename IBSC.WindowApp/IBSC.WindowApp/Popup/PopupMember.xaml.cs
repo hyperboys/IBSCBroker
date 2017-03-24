@@ -53,7 +53,7 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
-                if (txtName.Text == "") 
+                if (txtName.Text == "")
                 {
                     MessageBox.Show("กรุณากรอก ชื่อ");
                     return;
@@ -118,6 +118,24 @@ namespace IBSC.WindowApp.Popup
                         this.Close();
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
+        private void btnReset_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                MemberDAL dal = new MemberDAL();
+                member = (MemberData)DataCommon.Get("MEMBER_EDIT");
+                member.MEMBER_PASSWORD = member.MEMBER_USER;
+                dal.UpdateMember(member);
+                DataCommon.Remove("MEMBER_EDIT");
+                MessageBox.Show("บันทึกข้อมูลสำเร็จ");
+                this.Close();
             }
             catch (Exception ex)
             {

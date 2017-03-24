@@ -36,7 +36,7 @@ namespace IBSC.WindowApp.Popup
                     txtCompantFullName.Text = item.COMPANY_FULLNAME;
                     //txtPicPath.Text = item.COMPANY_PATH_PIC;
                     txtRemark.Text = item.COMPANY_REMARK;
-                    //txtShortName.Text = item.COMPANY_SHORTNAME;
+                    txtShotName.Text = item.COMPANY_SHORTNAME;
                     cbbStatus.SelectedIndex = item.COMPANY_STATUS == "A" ? 0 : 1;
                 }
                 else
@@ -73,11 +73,11 @@ namespace IBSC.WindowApp.Popup
                         item = (InsureCompanyData)DataCommon.Get("COMPANY_EDIT");
                         item.COMPANY_CODE = txtCompantCode.Text;
                         item.COMPANY_FULLNAME = txtCompantFullName.Text;
-                        item.COMPANY_PATH_PIC = "";
+                        //item.COMPANY_PATH_PIC = "";
                         item.COMPANY_REMARK = txtRemark.Text;
-                        item.COMPANY_SHORTNAME = "";
+                        item.COMPANY_SHORTNAME = txtShotName.Text;
                         item.COMPANY_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
-
+                        
                         dal.Update(item);
                         DataCommon.Remove("COMPANY_EDIT");
                         complete = true;
@@ -89,9 +89,9 @@ namespace IBSC.WindowApp.Popup
                             item = new InsureCompanyData();
                             item.COMPANY_CODE = txtCompantCode.Text;
                             item.COMPANY_FULLNAME = txtCompantFullName.Text;
-                            item.COMPANY_PATH_PIC = "";
+                            //item.COMPANY_PATH_PIC = "";
                             item.COMPANY_REMARK = txtRemark.Text;
-                            item.COMPANY_SHORTNAME = "";
+                            item.COMPANY_SHORTNAME = txtShotName.Text;
                             item.COMPANY_STATUS = cbbStatus.Text == "ใช้งาน" ? "A" : "I";
                             new InsureCompanyDAL().Insert(item);
                             complete = true;

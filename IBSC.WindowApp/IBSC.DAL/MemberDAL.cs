@@ -22,10 +22,12 @@ namespace IBSC.DAL
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    DBbase.DisConnect();
                     return true;
                 }
                 else
                 {
+                    DBbase.DisConnect();
                     return false;
                 }
             }
@@ -53,6 +55,7 @@ namespace IBSC.DAL
                     member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
                     member.ROLE_CODE = reader.GetString("ROLE_CODE");
                     reader.Close();
+                    DBbase.DisConnect();
                     return member;
                 }
                 else
@@ -84,10 +87,12 @@ namespace IBSC.DAL
                     member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
                     member.ROLE_CODE = reader.GetString("ROLE_CODE");
                     reader.Close();
+                    DBbase.DisConnect();
                     return member;
                 }
                 else
                 {
+                    DBbase.DisConnect();
                     return null;
                 }
             }
@@ -121,6 +126,7 @@ namespace IBSC.DAL
 
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+                DBbase.DisConnect();
             }
             catch (Exception ex)
             {
@@ -146,6 +152,7 @@ namespace IBSC.DAL
                 sql.Append(" WHERE MEMBER_USER = '" + item.MEMBER_USER + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+                DBbase.DisConnect();
             }
             catch (Exception ex)
             {
@@ -167,6 +174,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)

@@ -6,7 +6,7 @@
         <Label Content="รหัสบริษัท" HorizontalAlignment="Left" Margin="34,35,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label Content="ชื่อเต็มบริษัท" HorizontalAlignment="Left" Margin="18,66,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox Name="txtCompantCode" HorizontalAlignment="Left" Height="23" Margin="100,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="147" IsEnabled="False" FontSize="14"/>
-        <TextBox Name="txtCompantFullName" HorizontalAlignment="Left" Height="23" Margin="100,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="443" FontSize="14"/>
+        <TextBox Name="txtCompantFullName" HorizontalAlignment="Left" Height="23" Margin="100,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="271" FontSize="14"/>
         <Button Name="btnSave" Content="บันทึก" HorizontalAlignment="Left" Margin="462,196,0,0" VerticalAlignment="Top" Width="81" Height="35" Click="btnSave_Click" FontSize="14"/>
         <Label Content="สถานะ" HorizontalAlignment="Left" Margin="53,192,0,0" VerticalAlignment="Top" FlowDirection="RightToLeft" FontSize="14"/>
         <ComboBox x:Name="cbbStatus" HorizontalAlignment="Left" Margin="100,196,0,0" VerticalAlignment="Top" Width="118" FontSize="14">
@@ -15,6 +15,8 @@
         </ComboBox>
         <Label Content="หมายเหตุ" HorizontalAlignment="Left" Margin="34,102,0,0" VerticalAlignment="Top" FontSize="14"/>
         <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Height="79" Margin="100,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="443" HorizontalScrollBarVisibility="Visible" FontSize="14"/>
+        <Label Content="ชื่อย่อ" HorizontalAlignment="Left" Margin="376,66,0,0" VerticalAlignment="Top" FontSize="14"/>
+        <TextBox x:Name="txtShotName" HorizontalAlignment="Left" Height="23" Margin="422,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontSize="14"/>
 
     </Grid>
 </Window>

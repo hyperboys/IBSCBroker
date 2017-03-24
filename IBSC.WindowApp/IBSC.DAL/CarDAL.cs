@@ -33,10 +33,12 @@ namespace IBSC.DAL
                     item.CAR_REMARK = reader.GetString("CAR_REMARK");
                     item.CAR_STATUS = reader.GetString("CAR_STATUS");
                     reader.Close();
+                    DBbase.DisConnect();
                     return item;
                 }
                 else
                 {
+                    DBbase.DisConnect();
                     return null;
                 }
             }
@@ -66,10 +68,47 @@ namespace IBSC.DAL
                     item.CAR_REMARK = reader.GetString("CAR_REMARK");
                     item.CAR_STATUS = reader.GetString("CAR_STATUS");
                     reader.Close();
+                    DBbase.DisConnect();
                     return item;
                 }
                 else
                 {
+                    DBbase.DisConnect();
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public CarData GetItemForExcel(string carCode, string carName, string carModel)
+        {
+            try
+            {
+                DBbase.Connect();
+                string sql = @"SELECT CAR_ID,CAR_CODE,CAR_NAME,CAR_MODEL,CAR_ENGINE,CAR_REMARK,CAR_STATUS FROM MA_CAR WHERE
+                CAR_CODE = '" + carCode + "' AND CAR_NAME = '" + carName + "' AND CAR_MODEL = '" + carModel + "' ";
+                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
+                MySqlDataReader reader = cmd.ExecuteReader();
+                if (reader.Read())
+                {
+                    CarData item = new CarData();
+                    item.CAR_ID = Convert.ToInt32(reader.GetString("CAR_ID"));
+                    item.CAR_CODE = reader.GetString("CAR_CODE");
+                    item.CAR_NAME = reader.GetString("CAR_NAME");
+                    item.CAR_MODEL = reader.GetString("CAR_MODEL");
+                    item.CAR_ENGINE = reader.GetString("CAR_ENGINE");
+                    item.CAR_REMARK = reader.GetString("CAR_REMARK");
+                    item.CAR_STATUS = reader.GetString("CAR_STATUS");
+                    reader.Close();
+                    DBbase.DisConnect();
+                    return item;
+                }
+                else
+                {
+                    DBbase.DisConnect();
                     return null;
                 }
             }
@@ -98,9 +137,10 @@ namespace IBSC.DAL
                 sql.Append(" '" + member.MEMBER_USER + "',");
                 sql.Append(" '" + DateTime.Now + "',");
                 sql.Append(" '" + member.MEMBER_USER + "')");
-               
+
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+                DBbase.DisConnect();
             }
             catch (SqlException exception)
             {
@@ -139,6 +179,7 @@ namespace IBSC.DAL
                 sql.Append(" AND CAR_NAME = '" + oldItem.CAR_NAME + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+                DBbase.DisConnect();
             }
             catch (Exception ex)
             {
@@ -160,6 +201,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)
@@ -182,6 +224,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)
@@ -204,6 +247,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)
@@ -226,6 +270,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)

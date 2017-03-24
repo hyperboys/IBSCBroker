@@ -1,6 +1,7 @@
 ﻿using IBSC.Common;
 using IBSC.DAL;
 using IBSC.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +40,10 @@ namespace IBSC.WindowApp.Popup
             {
                 InitializeComponent();
                 items = new List<TextError>();
-                SetTimer();
+                //SetTimer();
+
+                btnSelect.IsEnabled = true;
+
             }
             catch (Exception ex)
             {
@@ -83,9 +87,11 @@ namespace IBSC.WindowApp.Popup
                 insureDal = new InsureCarDAL();
                 List<InsureCarData> listItem = ReadExcel(txtPath.Text);
                 DataCommon.Set("ListInsureCarData", listItem);
-                progressBar.Maximum = listItem.Count();
-                Process();
+                //progressBar.Maximum = listItem.Count();
+                //Process();
+                ProcessDatabase();
                 btnClose.IsEnabled = true;
+                btnSelect.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -140,14 +146,14 @@ namespace IBSC.WindowApp.Popup
                     tmp.CAR_MODEL = item.CAR_MODEL;
                     tmp.CAR_NAME = item.CAR_NAME;
                     tmp.CAR_YEAR = item.CAR_YEAR;
-                    CarData tmpCar = carDal.GetItem(tmp.CAR_CODE, tmp.CAR_NAME, tmp.CAR_MODEL, tmp.CAR_ENGINE);
+                    CarData tmpCar = carDal.GetItemForExcel(tmp.CAR_CODE, tmp.CAR_NAME, tmp.CAR_MODEL);
                     if (tmpCar != null)
                     {
                         tmp.CAR_ID = tmpCar.CAR_ID;
                     }
                     else
                     {
-                        tmp.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ : " + tmp.CAR_CODE + ", รถยนต์ยี่ห้อ : " + tmp.CAR_NAME + ", รุ่นรถยนต์ : " + tmp.CAR_MODEL + ", เครื่องยนต์ : " + tmp.CAR_ENGINE + "   ในบรรทัดที่ :" + index;
+                        tmp.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ : " + tmp.CAR_CODE + ", รถยนต์ยี่ห้อ : " + tmp.CAR_NAME + ", รุ่นรถยนต์ : " + tmp.CAR_MODEL ;
                     }
 
                     tmp.COMPANY_FULLNAME = item.COMPANY_FULLNAME;
@@ -189,13 +195,13 @@ namespace IBSC.WindowApp.Popup
                         {
                             insureDal.UpdateOnExcel(tmp);
                         }
-                        else 
+                        else
                         {
                             insureDal.Insert(tmp);
                         }
                     }
                     index++;
-                    Thread.Sleep(100);
+                    Thread.Sleep(300);
                 }
             }
             catch (Exception ex)
@@ -203,6 +209,107 @@ namespace IBSC.WindowApp.Popup
                 MessageBox.Show(ex.ToString());
             }
 
+        }
+
+        private void ProcessDatabase()
+        {
+            try
+            {
+                int index = 3;
+                List<InsureCarData> listItem = (List<InsureCarData>)DataCommon.Get("ListInsureCarData");
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                List<InsureCarData> listInsert = new List<InsureCarData>();
+                List<InsureCarData> listUpdate = new List<InsureCarData>();
+                foreach (InsureCarData item in listItem)
+                {
+                    InsureCarData tmp = new InsureCarData();
+
+                    tmp.ASSET_TIME = item.ASSET_TIME;
+                    tmp.CAPITAL_INSURANCE = item.CAPITAL_INSURANCE;
+
+                    if (comDal.CheckItem(item.COMPANY_CODE))
+                    {
+                        tmp.COMPANY_CODE = item.COMPANY_CODE;
+                    }
+                    else
+                    {
+                        tmp.EXCEPTION = "รหัสบริษัทไม่มีในระบบ" + "ในบรรทัดที่ :" + index;
+                        item.EXCEPTION_INDEX = index;
+                    }
+
+                    tmp.CAR_CODE = item.CAR_CODE;
+                    tmp.CAR_ENGINE = item.CAR_ENGINE;
+                    tmp.CAR_MODEL = item.CAR_MODEL;
+                    tmp.CAR_NAME = item.CAR_NAME;
+                    tmp.CAR_YEAR = item.CAR_YEAR;
+                    CarData tmpCar = carDal.GetItemForExcel(tmp.CAR_CODE, tmp.CAR_NAME, tmp.CAR_MODEL);
+                    if (tmpCar != null)
+                    {
+                        tmp.CAR_ID = tmpCar.CAR_ID;
+                    }
+                    else
+                    {
+                        tmp.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ : " + tmp.CAR_CODE + ", รถยนต์ยี่ห้อ : " + tmp.CAR_NAME + "   ในบรรทัดที่ :" + index;
+                        item.EXCEPTION_INDEX = index;
+                    }
+
+                    tmp.COMPANY_FULLNAME = item.COMPANY_FULLNAME;
+                    tmp.CONFIDENTIAL_STATUS = item.CONFIDENTIAL_STATUS;
+                    tmp.CREATE_DATE = item.CREATE_DATE;
+                    tmp.CREATE_USER = item.CREATE_USER;
+                    tmp.DAMAGE_TO_VEHICLE = item.DAMAGE_TO_VEHICLE;
+                    tmp.DRIVER_INSURANCE_AMT = item.DRIVER_INSURANCE_AMT;
+                    tmp.EFFECTIVE_DATE = item.EFFECTIVE_DATE;
+                    tmp.EXPIRE_DATE = item.EXPIRE_DATE;
+                    tmp.FIRST_DAMAGE_PRICE = item.FIRST_DAMAGE_PRICE;
+                    tmp.INSURE_CAR_CODE = item.INSURE_CAR_CODE;
+                    tmp.INSURE_CAR_STATUS = item.INSURE_CAR_STATUS;
+                    tmp.INSURE_CATEGORY = item.INSURE_CATEGORY;
+                    tmp.INSURE_PRIORITY = item.INSURE_PRIORITY;
+                    tmp.INSURE_TYPE_REPAIR = item.INSURE_TYPE_REPAIR;
+                    tmp.LIVE_COVERAGE_PEOPLE = item.LIVE_COVERAGE_PEOPLE;
+                    tmp.LIVE_COVERAGE_TIME = item.LIVE_COVERAGE_TIME;
+                    tmp.MEDICAL_FEE_AMT = item.MEDICAL_FEE_AMT;
+                    tmp.MEDICAL_FEE_PEOPLE = item.MEDICAL_FEE_PEOPLE;
+                    tmp.MISSING_FIRE_CAR = item.MISSING_FIRE_CAR;
+                    tmp.NET_PRICE = item.NET_PRICE;
+                    tmp.PACKAGE_NAME = item.PACKAGE_NAME;
+                    tmp.PERSONAL_ACCIDENT_AMT = item.PERSONAL_ACCIDENT_AMT;
+                    tmp.PERSONAL_ACCIDENT_PEOPLE = item.PERSONAL_ACCIDENT_PEOPLE;
+                    tmp.PRICE_ROUND = item.PRICE_ROUND;
+                    tmp.TOTAL_PRICE = item.TOTAL_PRICE;
+                    tmp.UPDATE_DATE = item.UPDATE_DATE;
+                    tmp.UPDATE_USER = item.UPDATE_USER;
+                    tmp.INSURE_CAR_STATUS = "A";
+
+                    if (tmp.EXCEPTION != "")
+                    {
+                        items.Add(new TextError() { Error = tmp.EXCEPTION });
+                    }
+                    else
+                    {
+                        if (insureDal.CheckItem(tmp))
+                        {
+                            listUpdate.Add(tmp);
+                        }
+                        else
+                        {
+                            listInsert.Add(tmp);
+                        }
+                    }
+                    index++;
+                }
+
+                if (listInsert.Count > 0)
+                {
+                    insureDal.InsertList(listInsert);
+                }
+                ReloadDataForReFresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
         #region getROWS
@@ -322,6 +429,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.COMPANY_CODE] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลรหัสบริษัทในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -332,6 +440,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.EFFECTIVE_DATE] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลวันที่มีผลในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -342,6 +451,7 @@ namespace IBSC.WindowApp.Popup
                                 else
                                 {
                                     item.EXCEPTION = "ไม่มีข้อมูลวันที่มีผลผิดในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                    item.EXCEPTION_INDEX = row;
                                 }
                             }
 
@@ -349,6 +459,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.EXPIRE_DATE] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลวันที่สิ้นสุดในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -359,6 +470,7 @@ namespace IBSC.WindowApp.Popup
                                 else
                                 {
                                     item.EXCEPTION = "ไม่มีข้อมูลวันที่มีผลผิดในบรรทัดที่ " + row + "ของ Sheet :" + xlWorkSheet.Name;
+                                    item.EXCEPTION_INDEX = row;
                                 }
                             }
 
@@ -378,6 +490,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.PACKAGE_NAME] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลชื่อ Package ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -388,6 +501,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.CAR_CODE] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -398,6 +512,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.CAR_NAME] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลยี่ห้อรถยนต์ ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -408,6 +523,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.CAR_MODEL] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลรุ่นรถยนต์ ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -418,6 +534,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.CAR_ENGINE] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลเครื่องยนต์ ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -428,6 +545,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.CAR_YEAR] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลปีรถยนต์ ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -438,6 +556,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.INSURE_CATEGORY] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลประเภทประกันรถยนต์ ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -448,6 +567,7 @@ namespace IBSC.WindowApp.Popup
                             if (Convert.ToString((range.Cells[row, EXCEL_DATA.INSURE_TYPE_REPAIR] as Excel.Range).Text) == "")
                             {
                                 item.EXCEPTION = "ไม่มีข้อมูลประเภทการซ่อม ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
                             else
                             {
@@ -464,6 +584,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล เบี้ยสุทธิ ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //TOTAL_PRICE   
@@ -476,6 +597,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล เบี้ยรวม ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //PRICE_ROUND    
@@ -488,6 +610,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล เบี้ยกลม ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //CAPITAL_INSURANCE    
@@ -500,6 +623,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล ทุนประกันภัย ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //CONFIDENTIAL_STATUS      
@@ -522,6 +646,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล ชีวิต ร่างกาย หรืออนามัย /คน ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //LIVE_COVERAGE_TIME    
@@ -534,6 +659,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล ชีวิต ร่างกาย หรืออนามัย /ครั้ง ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //ASSET_TIME    
@@ -546,6 +672,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล ทรัพย์สิน/ครั้ง ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //DAMAGE_TO_VEHICLE    
@@ -558,6 +685,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล ความเสียหายต่อรถยนต์ ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //MISSING_FIRE_CAR    
@@ -570,6 +698,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล รถยนต์สูญหาย/ไฟไหม้ ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //FIRST_DAMAGE_PRICE    
@@ -582,6 +711,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล ค่าความเสียหายส่วนแรก ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //PERSONAL_ACCIDENT_AMT    
@@ -594,6 +724,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล อุบัติเหตุส่วนบุคคล ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //PERSONAL_ACCIDENT_PEOPLE    
@@ -606,6 +737,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล จำนวนคน/อุบัติเหตุส่วนบุคคล ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //MEDICAL_FEE_AMT    
@@ -618,6 +750,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล ค่ารักษาพยาบาล ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //MEDICAL_FEE_PEOPLE    
@@ -630,6 +763,7 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.EXCEPTION = "ข้อมูล จำนวนคน/ค่ารักษาพยาบาล ไม่ได้เป็นตัวเลข ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
+                                item.EXCEPTION_INDEX = row;
                             }
 
                             //DRIVER_INSURANCE_AMT    
@@ -646,10 +780,7 @@ namespace IBSC.WindowApp.Popup
 
                             if (item.EXCEPTION != "")
                             {
-                                items.Add(new TextError() { Error = item.EXCEPTION });
-
-                                viewError.ItemsSource = items;
-                                viewError.Items.Refresh();
+                                items.Add(new TextError() { Error = item.EXCEPTION, Index = item.EXCEPTION_INDEX.ToString() });
                             }
                             else
                             {
@@ -658,6 +789,9 @@ namespace IBSC.WindowApp.Popup
                         }
                     }
                 }
+
+                //viewError.ItemsSource = items;
+                //viewError.Items.Refresh();
 
                 xlWorkBook.Close(0);
                 xlApp.Quit();
@@ -695,10 +829,38 @@ namespace IBSC.WindowApp.Popup
             dispatcherTimer.Start();
         }
 
+        private void btnSelect_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                StringBuilder textDate = new StringBuilder();
+                string path = string.Empty;
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                do
+                {
+                    saveFileDialog.ShowDialog();
+
+                    path = saveFileDialog.FileName;
+
+                } while (path == string.Empty);
+
+                foreach (TextError item in items)
+                {
+                    textDate.AppendLine(item.Error);
+                }
+                System.IO.File.WriteAllText(path + ".txt", textDate.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+
     }
 
     public class TextError
     {
         public string Error { get; set; }
+        public string Index { get; set; }
     }
 }

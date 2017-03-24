@@ -272,5 +272,18 @@ namespace IBSC.Model
                 }
             }
         }
+
+        private int exception_index = 0;
+        public int EXCEPTION_INDEX
+        {
+            get { return exception_index; }
+            set
+            {
+                if (exception_index == 0)
+                {
+                    exception_index = value;
+                }
+            }
+        }
     }
 }

@@ -30,10 +30,12 @@ namespace IBSC.DAL
                     item.COMPANY_SHORTNAME = reader.GetString("COMPANY_SHORTNAME");
                     item.COMPANY_STATUS = reader.GetString("COMPANY_STATUS");
                     reader.Close();
+                    DBbase.DisConnect();
                     return item;
                 }
                 else
                 {
+                    DBbase.DisConnect();
                     return null;
                 }
             }
@@ -53,10 +55,12 @@ namespace IBSC.DAL
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
+                    DBbase.DisConnect();
                     return true;
                 }
                 else
                 {
+                    DBbase.DisConnect();
                     return false;
                 }
             }
@@ -78,10 +82,12 @@ namespace IBSC.DAL
                 {
                     string stringReturn = reader.GetString("COMPANY_CODE");
                     reader.Close();
+                    DBbase.DisConnect();
                     return stringReturn;
                 }
                 else
                 {
+                    DBbase.DisConnect();
                     return null;
                 }
             }
@@ -113,6 +119,7 @@ namespace IBSC.DAL
                
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+                DBbase.DisConnect();
             }
             catch (Exception ex)
             {
@@ -138,6 +145,7 @@ namespace IBSC.DAL
                 sql.Append(" WHERE COMPANY_CODE = '" + item.COMPANY_CODE.ToUpper() + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+                DBbase.DisConnect();
             }
             catch (Exception ex)
             {
@@ -159,6 +167,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)
@@ -181,6 +190,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)

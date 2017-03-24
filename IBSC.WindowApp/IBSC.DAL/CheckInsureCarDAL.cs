@@ -39,6 +39,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)
@@ -75,6 +76,7 @@ namespace IBSC.DAL
                 ds.EnforceConstraints = false;
                 dataTable.Load(reader);
                 reader.Close();
+                DBbase.DisConnect();
                 return dataTable;
             }
             catch (Exception ex)
@@ -96,11 +98,13 @@ namespace IBSC.DAL
                 {
                     stringReturn = reader.GetString("SELECT_INSURANCE_STATUS");
                     reader.Close();
+                    DBbase.DisConnect();
                     return stringReturn;
                 }
                 else
                 {
                     reader.Close();
+                    DBbase.DisConnect();
                     return stringReturn;
                 }
             }
@@ -123,11 +127,13 @@ namespace IBSC.DAL
                 {
                     stringReturn = reader.GetString("SELECT_INSURANCE_STATUS");
                     reader.Close();
+                    DBbase.DisConnect();
                     return stringReturn;
                 }
                 else
                 {
                     reader.Close();
+                    DBbase.DisConnect();
                     return stringReturn;
                 }
             }
@@ -163,10 +169,12 @@ namespace IBSC.DAL
                     item.REMARK = reader.GetString("REMARK");
                     item.CREATE_DATE = Convert.ToDateTime(reader.GetString("CREATE_DATE"));
                     reader.Close();
+                    DBbase.DisConnect();
                     return item;
                 }
                 else
                 {
+                    DBbase.DisConnect();
                     return null;
                 }
             }
@@ -203,10 +211,12 @@ namespace IBSC.DAL
                     item.REMARK = reader.GetString("REMARK");
                     item.CREATE_DATE = Convert.ToDateTime(reader.GetString("CREATE_DATE"));
                     reader.Close();
+                    DBbase.DisConnect();
                     return item;
                 }
                 else
                 {
+                    DBbase.DisConnect();
                     return null;
                 }
             }
@@ -231,6 +241,7 @@ namespace IBSC.DAL
                 sql.Append(" WHERE SELECT_INSURANCE_CODE = '" + code + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+                DBbase.DisConnect();
             }
             catch (Exception ex)
             {
@@ -254,6 +265,7 @@ namespace IBSC.DAL
                 sql.Append(" WHERE SELECT_INSURANCE_CODE = '" + item.SELECT_INSURANCE_CODE + "'");
                 MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
+                DBbase.DisConnect();
             }
             catch (Exception ex)
             {
