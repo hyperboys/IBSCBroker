@@ -156,7 +156,7 @@
     <div class="container">
         <div id="headCar" class="row" runat="server" visible="false">
             <div class="col-md-6 topic padding-top-20">
-                <img id="ContentPlaceHolder_imgBrand" class="img-circle img-responsive pull-left" src="../logoCar/AUDI.png" />
+                <img id="imageCar" runat="server" class="img-circle img-responsive pull-left" src="../logoCar/AUDI.png" />
                 <h1 class="no-margin hideOverflow">
                     <asp:Label ID="lblCarName" runat="server" Text="CarName CarModel CarEngine ปีCarYear" Style="font-size: xx-large; color: hotpink;"></asp:Label></h1>
                 ประกันภัยรถยนต์ ชั้น1
@@ -192,13 +192,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="select">ยี่ห้อรถ</label>
-                                        <asp:DropDownList ID="ddlCarName" runat="server" class="form-control">
+                                        <asp:DropDownList ID="ddlCarName" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlCarName_SelectedIndexChanged">
                                             <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
                                         </asp:DropDownList>
                                     </div>
                                     <div class="form-group">
                                         <label for="select">รุ่นรถ</label>
-                                        <asp:DropDownList ID="ddlCarModel" runat="server" class="form-control">
+                                        <asp:DropDownList ID="ddlCarModel" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlCarModel_SelectedIndexChanged">
                                             <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
                                         </asp:DropDownList>
                                     </div>
@@ -665,7 +665,7 @@
                 </div>
 
 
-                <div class="panel-group margin-top-10" id="accordion">
+                <div class="panel-group margin-top-10" runat="server" id="accordion">
 
                     <div class="panel panel-default">
                         <div class="panel-heading panel-heading-link">
@@ -688,7 +688,6 @@
                             </a>
 
                         </div>
-
 
                         <div id="VBI" class="panel-collapse collapse in">
                             <div class="panel-body no-padding">
@@ -943,7 +942,6 @@
                             </a>
 
                         </div>
-
 
                         <div id="SEI" class="panel-collapse collapse ">
                             <div class="panel-body no-padding">

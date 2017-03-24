@@ -22,6 +22,15 @@ namespace IBSC.UI.Web.Page {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl headCar;
         
         /// <summary>
+        /// imageCar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlImage imageCar;
+        
+        /// <summary>
         /// lblCarName control.
         /// </summary>
         /// <remarks>
@@ -92,5 +101,14 @@ namespace IBSC.UI.Web.Page {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnPrint;
+        
+        /// <summary>
+        /// accordion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl accordion;
     }
 }

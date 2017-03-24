@@ -116,6 +116,7 @@
     <Content Include="images\Ribbon.png" />
     <Content Include="images\slide_back.jpg" />
     <Content Include="logoCar\AUDI.png" />
+    <Content Include="logoCar\HONDA.jpg" />
     <Content Include="logoCompany\SEI.jpg" />
     <Content Include="logoCompany\VIB.jpg" />
     <Content Include="Page\InsuranceCheck.aspx" />
