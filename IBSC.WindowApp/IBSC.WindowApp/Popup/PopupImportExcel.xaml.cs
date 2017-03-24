@@ -219,7 +219,7 @@ namespace IBSC.WindowApp.Popup
                 List<InsureCarData> listItem = (List<InsureCarData>)DataCommon.Get("ListInsureCarData");
                 MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 List<InsureCarData> listInsert = new List<InsureCarData>();
-                List<InsureCarData> listUpdate = new List<InsureCarData>();
+
                 foreach (InsureCarData item in listItem)
                 {
                     InsureCarData tmp = new InsureCarData();
@@ -249,7 +249,7 @@ namespace IBSC.WindowApp.Popup
                     }
                     else
                     {
-                        tmp.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ : " + tmp.CAR_CODE + ", รถยนต์ยี่ห้อ : " + tmp.CAR_NAME + "   ในบรรทัดที่ :" + index;
+                        tmp.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ : " + tmp.CAR_CODE + ", รถยนต์ยี่ห้อ : " + tmp.CAR_NAME + ", รุ่นรถยนต์ : " + tmp.CAR_MODEL + "   ในบรรทัดที่ :" + index;
                         item.EXCEPTION_INDEX = index;
                     }
 
@@ -284,13 +284,13 @@ namespace IBSC.WindowApp.Popup
 
                     if (tmp.EXCEPTION != "")
                     {
-                        items.Add(new TextError() { Error = tmp.EXCEPTION });
+                        items.Add(new TextError() { Error = tmp.EXCEPTION, Index = tmp.EXCEPTION_INDEX.ToString() });
                     }
                     else
                     {
                         if (insureDal.CheckItem(tmp))
                         {
-                            listUpdate.Add(tmp);
+                            insureDal.UpdateOnExcel(tmp);
                         }
                         else
                         {
