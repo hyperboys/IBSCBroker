@@ -41,9 +41,6 @@ namespace IBSC.WindowApp.Popup
                 InitializeComponent();
                 items = new List<TextError>();
                 //SetTimer();
-
-                btnSelect.IsEnabled = true;
-
             }
             catch (Exception ex)
             {
