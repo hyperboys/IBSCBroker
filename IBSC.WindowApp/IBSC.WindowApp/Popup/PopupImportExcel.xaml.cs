@@ -8,8 +8,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,7 +16,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.Windows.Threading;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace IBSC.WindowApp.Popup
@@ -29,10 +26,8 @@ namespace IBSC.WindowApp.Popup
     public partial class PopupImportExcel : Window
     {
         private static List<TextError> items;
-        //private static int ROWS = 100;
         private static CarDAL carDal;
         private static InsureCompanyDAL comDal;
-        private static BackgroundWorker worker;
         private static InsureCarDAL insureDal;
         public PopupImportExcel()
         {
@@ -40,7 +35,6 @@ namespace IBSC.WindowApp.Popup
             {
                 InitializeComponent();
                 items = new List<TextError>();
-                //SetTimer();
             }
             catch (Exception ex)
             {
@@ -53,17 +47,9 @@ namespace IBSC.WindowApp.Popup
             try
             {
                 Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-                // Set filter for file extension and default file extension 
-                //dlg.DefaultExt = ".png";
-                //dlg.Filter = "JPEG Files (*.jpeg)|*.jpeg|PNG Files (*.png)|*.png|JPG Files (*.jpg)|*.jpg|GIF Files (*.gif)|*.gif";
-
-                // Display OpenFileDialog by calling ShowDialog method 
                 Nullable<bool> result = dlg.ShowDialog();
-                // Get the selected file name and display in a TextBox 
                 if (result == true)
                 {
-                    // Open document 
                     string filename = dlg.FileName;
                     txtPath.Text = filename;
                     btnStart.IsEnabled = true;
@@ -79,133 +65,22 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
+                WaitProcess wp = new WaitProcess();
+                wp.ShowDialog();
                 carDal = new CarDAL();
                 comDal = new InsureCompanyDAL();
                 insureDal = new InsureCarDAL();
                 List<InsureCarData> listItem = ReadExcel(txtPath.Text);
                 DataCommon.Set("ListInsureCarData", listItem);
-                //progressBar.Maximum = listItem.Count();
-                //Process();
                 ProcessDatabase();
                 btnClose.IsEnabled = true;
                 btnSelect.IsEnabled = true;
+                wp.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        /// <summary>
-        /// Background Worker
-        /// </summary>
-        private void Process()
-        {
-            worker = new BackgroundWorker();
-            worker.WorkerReportsProgress = true;
-            worker.DoWork += worker_DoWork;
-            worker.ProgressChanged += worker_ProgressChanged;
-
-            worker.RunWorkerAsync();
-        }
-
-        /// <summary>
-        /// Insert & Update Database
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        void worker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            try
-            {
-                int index = 1;
-                List<InsureCarData> listItem = (List<InsureCarData>)DataCommon.Get("ListInsureCarData");
-                foreach (InsureCarData item in listItem)
-                {
-
-                    (sender as BackgroundWorker).ReportProgress(index);
-                    MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
-                    InsureCarData tmp = new InsureCarData();
-                    tmp.ASSET_TIME = item.ASSET_TIME;
-                    tmp.CAPITAL_INSURANCE = item.CAPITAL_INSURANCE;
-
-                    if (comDal.CheckItem(item.COMPANY_CODE))
-                    {
-                        tmp.COMPANY_CODE = item.COMPANY_CODE;
-                    }
-                    else
-                    {
-                        tmp.EXCEPTION = "รหัสบริษัทไม่มีในระบบ" + "ในบรรทัดที่ :" + index;
-                    }
-
-                    tmp.CAR_CODE = item.CAR_CODE;
-                    tmp.CAR_ENGINE = item.CAR_ENGINE;
-                    tmp.CAR_MODEL = item.CAR_MODEL;
-                    tmp.CAR_NAME = item.CAR_NAME;
-                    tmp.CAR_YEAR = item.CAR_YEAR;
-                    CarData tmpCar = carDal.GetItemForExcel(tmp.CAR_CODE, tmp.CAR_NAME, tmp.CAR_MODEL);
-                    if (tmpCar != null)
-                    {
-                        tmp.CAR_ID = tmpCar.CAR_ID;
-                    }
-                    else
-                    {
-                        tmp.EXCEPTION = "ไม่มีข้อมูลรหัสรถยนต์ : " + tmp.CAR_CODE + ", รถยนต์ยี่ห้อ : " + tmp.CAR_NAME + ", รุ่นรถยนต์ : " + tmp.CAR_MODEL ;
-                    }
-
-                    tmp.COMPANY_FULLNAME = item.COMPANY_FULLNAME;
-                    tmp.CONFIDENTIAL_STATUS = item.CONFIDENTIAL_STATUS;
-                    tmp.CREATE_DATE = item.CREATE_DATE;
-                    tmp.CREATE_USER = item.CREATE_USER;
-                    tmp.DAMAGE_TO_VEHICLE = item.DAMAGE_TO_VEHICLE;
-                    tmp.DRIVER_INSURANCE_AMT = item.DRIVER_INSURANCE_AMT;
-                    tmp.EFFECTIVE_DATE = item.EFFECTIVE_DATE;
-                    tmp.EXPIRE_DATE = item.EXPIRE_DATE;
-                    tmp.FIRST_DAMAGE_PRICE = item.FIRST_DAMAGE_PRICE;
-                    tmp.INSURE_CAR_CODE = item.INSURE_CAR_CODE;
-                    tmp.INSURE_CAR_STATUS = item.INSURE_CAR_STATUS;
-                    tmp.INSURE_CATEGORY = item.INSURE_CATEGORY;
-                    tmp.INSURE_PRIORITY = item.INSURE_PRIORITY;
-                    tmp.INSURE_TYPE_REPAIR = item.INSURE_TYPE_REPAIR;
-                    tmp.LIVE_COVERAGE_PEOPLE = item.LIVE_COVERAGE_PEOPLE;
-                    tmp.LIVE_COVERAGE_TIME = item.LIVE_COVERAGE_TIME;
-                    tmp.MEDICAL_FEE_AMT = item.MEDICAL_FEE_AMT;
-                    tmp.MEDICAL_FEE_PEOPLE = item.MEDICAL_FEE_PEOPLE;
-                    tmp.MISSING_FIRE_CAR = item.MISSING_FIRE_CAR;
-                    tmp.NET_PRICE = item.NET_PRICE;
-                    tmp.PACKAGE_NAME = item.PACKAGE_NAME;
-                    tmp.PERSONAL_ACCIDENT_AMT = item.PERSONAL_ACCIDENT_AMT;
-                    tmp.PERSONAL_ACCIDENT_PEOPLE = item.PERSONAL_ACCIDENT_PEOPLE;
-                    tmp.PRICE_ROUND = item.PRICE_ROUND;
-                    tmp.TOTAL_PRICE = item.TOTAL_PRICE;
-                    tmp.UPDATE_DATE = item.UPDATE_DATE;
-                    tmp.UPDATE_USER = item.UPDATE_USER;
-                    tmp.INSURE_CAR_STATUS = "A";
-
-                    if (tmp.EXCEPTION != "")
-                    {
-                        items.Add(new TextError() { Error = tmp.EXCEPTION });
-                    }
-                    else
-                    {
-                        if (insureDal.CheckItem(tmp))
-                        {
-                            insureDal.UpdateOnExcel(tmp);
-                        }
-                        else
-                        {
-                            insureDal.Insert(tmp);
-                        }
-                    }
-                    index++;
-                    Thread.Sleep(300);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-
         }
 
         private void ProcessDatabase()
@@ -307,56 +182,6 @@ namespace IBSC.WindowApp.Popup
             {
                 MessageBox.Show(ex.ToString());
             }
-        }
-
-        #region getROWS
-        public int getROWS(string pathExcel)
-        {
-            try
-            {
-                Excel.Application xlApp;
-                Excel.Workbook xlWorkBook;
-                Excel.Range range;
-                int rows = 0;
-                bool start = false;
-                xlApp = new Excel.Application();
-                xlWorkBook = xlApp.Workbooks.Open(pathExcel, 0, true, 5, "", "", true, Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
-                foreach (Excel.Worksheet xlWorkSheet in xlWorkBook.Worksheets)
-                {
-                    range = xlWorkSheet.UsedRange;
-                    for (int row = 1; row <= range.Rows.Count; row++)
-                    {
-
-                        if (Convert.ToString(range.Cells[row, EXCEL_DATA.COMPANY_CODE].Value) == "#S")
-                        {
-                            start = true;
-                            continue;
-                        }
-                        else if (Convert.ToString((range.Cells[row, EXCEL_DATA.COMPANY_CODE] as Excel.Range).Text) == "#E")
-                        {
-                            start = false;
-                            break;
-                        }
-                        if (start)
-                        {
-                            rows++;
-                        }
-                    }
-                }
-                xlWorkBook.Close(0);
-                xlApp.Quit();
-                return rows;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        #endregion
-
-        void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            progressBar.Value = e.ProgressPercentage;
         }
 
         private void txtPath_TextChanged(object sender, TextChangedEventArgs e)
@@ -525,17 +350,6 @@ namespace IBSC.WindowApp.Popup
                             else
                             {
                                 item.CAR_MODEL = Convert.ToString((range.Cells[row, EXCEL_DATA.CAR_MODEL] as Excel.Range).Text).ToUpper();
-                            }
-
-                            //CAR_ENGINE     
-                            if (Convert.ToString((range.Cells[row, EXCEL_DATA.CAR_ENGINE] as Excel.Range).Text) == "")
-                            {
-                                item.EXCEPTION = "ไม่มีข้อมูลเครื่องยนต์ ในบรรทัดที่ " + row + " ของ Sheet :" + xlWorkSheet.Name;
-                                item.EXCEPTION_INDEX = row;
-                            }
-                            else
-                            {
-                                item.CAR_ENGINE = Convert.ToString((range.Cells[row, EXCEL_DATA.CAR_ENGINE] as Excel.Range).Text).ToUpper();
                             }
 
                             //CAR_YEAR     
@@ -787,9 +601,6 @@ namespace IBSC.WindowApp.Popup
                     }
                 }
 
-                //viewError.ItemsSource = items;
-                //viewError.Items.Refresh();
-
                 xlWorkBook.Close(0);
                 xlApp.Quit();
                 return listInsureCarData;
@@ -813,19 +624,6 @@ namespace IBSC.WindowApp.Popup
             }
         }
 
-        protected void dispatcherTimer_Tick(object sender, EventArgs e)
-        {
-            ReloadDataForReFresh();
-        }
-
-        private void SetTimer()
-        {
-            DispatcherTimer dispatcherTimer = new DispatcherTimer();
-            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 2);
-            dispatcherTimer.Start();
-        }
-
         private void btnSelect_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -836,7 +634,6 @@ namespace IBSC.WindowApp.Popup
                 do
                 {
                     saveFileDialog.ShowDialog();
-
                     path = saveFileDialog.FileName;
 
                 } while (path == string.Empty);
@@ -852,7 +649,6 @@ namespace IBSC.WindowApp.Popup
                 MessageBox.Show(ex.ToString());
             }
         }
-
     }
 
     public class TextError

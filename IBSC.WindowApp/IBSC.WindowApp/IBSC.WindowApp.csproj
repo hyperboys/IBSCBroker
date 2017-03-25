@@ -127,6 +127,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Popup\WaitProcess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindow.xaml.cs">
@@ -170,6 +174,9 @@
     </Compile>
     <Compile Include="Popup\PopupMember.xaml.cs">
       <DependentUpon>PopupMember.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\WaitProcess.xaml.cs">
+      <DependentUpon>WaitProcess.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
