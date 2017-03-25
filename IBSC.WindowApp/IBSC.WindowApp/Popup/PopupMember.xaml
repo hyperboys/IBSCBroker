@@ -22,7 +22,7 @@
             <ComboBoxItem Content="ไม่ใช้งาน"/>
         </ComboBox>
         <Label Content="***กรณีเพิ่ม User ระบบจะนำ username ไปเป็น Password ด้วย" HorizontalAlignment="Left" Margin="55,204,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#FFFF0202" ForceCursor="True"/>
-        <Button x:Name="btnReset" Content="Reset" HorizontalAlignment="Left" Margin="311,164,0,0" VerticalAlignment="Top" Width="81" Height="35" FontSize="14" Click="btnReset_Click"/>
+        <Button x:Name="btnReset" Content="Reset" HorizontalAlignment="Left" Margin="311,164,0,0" VerticalAlignment="Top" Width="81" Height="35" FontSize="14" Visibility="Hidden" Click="btnReset_Click"/>
 
     </Grid>
 </Window>

@@ -29,6 +29,11 @@ namespace IBSC.WindowApp.Popup
             try
             {
                 InitializeComponent();
+                MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
+                if (member.ROLE_CODE.ToUpper() == "ADMIN") 
+                {
+                    btnReset.Visibility = Visibility.Visible;
+                }
                 if (DataCommon.Exists("MEMBER_EDIT"))
                 {
                     member = (MemberData)DataCommon.Get("MEMBER_EDIT");
@@ -41,6 +46,7 @@ namespace IBSC.WindowApp.Popup
                 else
                 {
                     txtUser.IsEnabled = true;
+                    btnReset.Visibility = Visibility.Hidden;
                 }
             }
             catch (Exception ex)
