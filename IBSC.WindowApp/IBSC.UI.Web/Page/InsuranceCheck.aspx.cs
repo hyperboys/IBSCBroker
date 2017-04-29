@@ -37,7 +37,7 @@ namespace IBSC.UI.Web.Page
         {
             try
             {
-                DataTable dt = insureCarDal.GetAllCondition(ddlCarYear.Text, ddlCarName.Text, ddlCarModel.Text, ddlCarEngine.Text);
+                DataTable dt = insureCarDal.GetAllCondition(ddlCarYear.Text, ddlCarName.Text, ddlCarModel.Text);
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     string tmpCar = dt.Rows[0]["CAR_NAME"].ToString() + " " + dt.Rows[0]["CAR_MODEL"].ToString()
@@ -46,35 +46,35 @@ namespace IBSC.UI.Web.Page
                     lblCarNameDesc.Text = tmpCar;
                     imageCar.Src = @"../logoCar/" + dt.Rows[0]["CAR_IMAGE"].ToString();
 
-                    //string tmpInsureCompany = "";
-                    //int countRow = 1;
-                    //foreach (DataRow row in dt.Rows)
-                    //{
-                    //    if (tmpInsureCompany == "")
-                    //    {
-                    //        tmpInsureCompany = row["COMPANY_FULLNAME"].ToString();
+                    string tmpInsureCompany = "";
+                    int countRow = 1;
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        if (tmpInsureCompany == "")
+                        {
+                            tmpInsureCompany = row["COMPANY_FULLNAME"].ToString();
 
-                    //        accordion.InnerHtml += @" <div class=""panel panel-default"">";
-                    //        accordion.InnerHtml += @"<div class=""panel-heading panel-heading-link"">";
-                    //        accordion.InnerHtml += @"<a data-toggle=""collapse"" style=""height: 50px;"" data-parent=""#accordion"" href=""#" + row["INSURE_CODE"].ToString() + @" class=""list-ins collapsed"">";
-                    //        accordion.InnerHtml += @" <div class=""col-xs-2 col-md-1 no-padding"">";
-                    //        accordion.InnerHtml += @" <img class=""img-responsive img-circle center-block"" src=""../logoCompany/VIB.jpg"" style=""max-width: 30px; background-color: white; margin-top: 5px;"" />";
-                    //        accordion.InnerHtml += @"</div>";
-                    //        accordion.InnerHtml += @"<div class=""col-xs-10 col-md-6 hideOverflow no-padding"">";
-                    //        accordion.InnerHtml += @"<span id=""ContentPlaceHolder_rptIns_Label2_0"">วิริยะประกันภัย</span>";
-                    //        accordion.InnerHtml += @"</div>";
-                    //    }
-                    //    else if (tmpInsureCompany == row["COMPANY_FULLNAME"].ToString())
-                    //    {
+                            accordion.InnerHtml += @" <div class=""panel panel-default"">";
+                            accordion.InnerHtml += @"<div class=""panel-heading panel-heading-link"">";
+                            accordion.InnerHtml += @"<a data-toggle=""collapse"" style=""height: 50px;"" data-parent=""#accordion"" href=""#" + row["INSURE_CODE"].ToString() + @" class=""list-ins collapsed"">";
+                            accordion.InnerHtml += @" <div class=""col-xs-2 col-md-1 no-padding"">";
+                            accordion.InnerHtml += @" <img class=""img-responsive img-circle center-block"" src=""../logoCompany/VIB.jpg"" style=""max-width: 30px; background-color: white; margin-top: 5px;"" />";
+                            accordion.InnerHtml += @"</div>";
+                            accordion.InnerHtml += @"<div class=""col-xs-10 col-md-6 hideOverflow no-padding"">";
+                            accordion.InnerHtml += @"<span id=""ContentPlaceHolder_rptIns_Label2_0"">วิริยะประกันภัย</span>";
+                            accordion.InnerHtml += @"</div>";
+                        }
+                        else if (tmpInsureCompany == row["COMPANY_FULLNAME"].ToString())
+                        {
 
-                    //    }
-                    //    else
-                    //    {
-                    //        accordion.InnerHtml += @"</div>";
+                        }
+                        else
+                        {
+                            accordion.InnerHtml += @"</div>";
 
-                    //        tmpInsureCompany = row["COMPANY_FULLNAME"].ToString();
-                    //    }
-                    //}
+                            tmpInsureCompany = row["COMPANY_FULLNAME"].ToString();
+                        }
+                    }
 
 
                     headCar.Visible = true;
@@ -104,8 +104,6 @@ namespace IBSC.UI.Web.Page
                 ddlCarName.Items.Add(new ListItem("กรุณาเลือก", "กรุณาเลือก"));
                 ddlCarModel.Items.Add(new ListItem("กรุณาเลือก", "กรุณาเลือก"));
 
-                ddlCarEngine.Items.Clear();
-                ddlCarEngine.Items.Add(new ListItem("กรุณาเลือก", "กรุณาเลือก"));
                 if (dt != null)
                 {
                     foreach (DataRow row in dt.Rows)
@@ -129,8 +127,6 @@ namespace IBSC.UI.Web.Page
 
                 ddlCarModel.Items.Clear();
                 ddlCarModel.Items.Add(new ListItem("กรุณาเลือก", "กรุณาเลือก"));
-                ddlCarEngine.Items.Clear();
-                ddlCarEngine.Items.Add(new ListItem("กรุณาเลือก", "กรุณาเลือก"));
                 if (dt != null)
                 {
                     foreach (DataRow row in dt.Rows)
@@ -138,29 +134,6 @@ namespace IBSC.UI.Web.Page
                         ddlCarModel.Items.Add(new ListItem(row[0].ToString(), row[0].ToString()));
                     }
                     ddlCarModel.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        protected void ddlCarModel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                DataTable dt = insureCarDal.GetComboBoxCarEngine(ddlCarYear.Text, ddlCarName.Text, ddlCarModel.Text);
-
-                ddlCarEngine.Items.Clear();
-                ddlCarEngine.Items.Add(new ListItem("กรุณาเลือก", "กรุณาเลือก"));
-                if (dt != null)
-                {
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        ddlCarEngine.Items.Add(new ListItem(row[0].ToString(), row[0].ToString()));
-                    }
-                    ddlCarEngine.DataBind();
                 }
             }
             catch (Exception ex)

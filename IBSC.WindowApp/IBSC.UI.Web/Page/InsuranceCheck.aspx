@@ -198,13 +198,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="select">รุ่นรถ</label>
-                                        <asp:DropDownList ID="ddlCarModel" runat="server" class="form-control" AutoPostBack="True" OnSelectedIndexChanged="ddlCarModel_SelectedIndexChanged">
-                                            <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
-                                        </asp:DropDownList>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="select">เครื่องยนต์</label>
-                                        <asp:DropDownList ID="ddlCarEngine" runat="server" class="form-control">
+                                        <asp:DropDownList ID="ddlCarModel" runat="server" class="form-control">
                                             <asp:ListItem Selected="True" Text="กรุณาเลือก" Value="0" />
                                         </asp:DropDownList>
                                     </div>
@@ -666,8 +660,7 @@
 
 
                 <div class="panel-group margin-top-10" runat="server" id="accordion">
-
-                    <div class="panel panel-default">
+<%--                    <div class="panel panel-default">
                         <div class="panel-heading panel-heading-link">
 
                             <a data-toggle="collapse" style="height: 50px;" data-parent="#accordion" href="#VBI" class="list-ins ">
@@ -922,6 +915,7 @@
                     </div>
 
                     <div class="panel panel-default">
+
                         <div class="panel-heading panel-heading-link">
 
                             <a data-toggle="collapse" style="height: 50px;" data-parent="#accordion" href="#SEI" class="list-ins collapsed">
@@ -1171,7 +1165,10 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
+--%>
+
                 </div>
             </div>
         </div>

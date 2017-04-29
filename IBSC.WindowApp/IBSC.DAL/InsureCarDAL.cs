@@ -44,7 +44,7 @@ namespace IBSC.DAL
             }
         }
 
-        public DataTable GetAllCondition(string carYear, string carName, string carModel, string carEngine)
+        public DataTable GetAllCondition(string carYear, string carName, string carModel)
         {
             try
             {
@@ -59,8 +59,8 @@ namespace IBSC.DAL
                  A.CONFIDENTIAL_STATUS, A.CREATE_DATE, A.CREATE_USER, A.UPDATE_DATE,
                  A.UPDATE_USER, A.INSURE_CAR_STATUS, C.CAR_CODE,C.CAR_NAME,C.CAR_MODEL,C.CAR_ENGINE,C.CAR_IMAGE ,I.COMPANY_FULLNAME, I.COMPANY_CODE, I.COMPANY_PATH_PIC 
                 FROM MA_INSURE_CAR A INNER JOIN MA_CAR C ON A.CAR_ID = C.CAR_ID INNER JOIN MA_INSURE_COMPANY I ON A.COMPANY_CODE = I.COMPANY_CODE
-               WHERE A.INSURE_CAR_STATUS = 'A' AND A.CAR_YEAR ='" + carYear + "' AND C.CAR_NAME = '" + carName + "' AND C.CAR_MODEL = '" + carModel + "' AND C.CAR_ENGINE = '" + carEngine + "' AND A.INSURE_PRIORITY = 999"
-                                                                  + " ORDER BY I.COMPANY_CODE ";
+               WHERE A.INSURE_CAR_STATUS = 'A' AND A.CAR_YEAR ='" + carYear + "' AND C.CAR_NAME = '" + carName + "' AND C.CAR_MODEL = '" + carModel + "' "
+                + " ORDER BY I.COMPANY_CODE ";
 
                 MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
                 MySqlDataReader reader = cmd.ExecuteReader();
