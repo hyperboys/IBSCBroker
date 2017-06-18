@@ -65,8 +65,8 @@ namespace IBSC.WindowApp.Popup
         {
             try
             {
-                WaitProcess wp = new WaitProcess();
-                wp.ShowDialog();
+                //WaitProcess wp = new WaitProcess();
+                //wp.ShowDialog();
                 carDal = new CarDAL();
                 comDal = new InsureCompanyDAL();
                 insureDal = new InsureCarDAL();
@@ -75,7 +75,7 @@ namespace IBSC.WindowApp.Popup
                 ProcessDatabase();
                 btnClose.IsEnabled = true;
                 btnSelect.IsEnabled = true;
-                wp.Close();
+                //wp.Close();
             }
             catch (Exception ex)
             {

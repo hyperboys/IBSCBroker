@@ -1,9 +1,9 @@
 ﻿using IBSC.Common;
 using IBSC.Model;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,8 +18,8 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = "SELECT * FROM MA_MEMBER WHERE MEMBER_USER = '" + user + "' AND MEMBER_PASSWORD = '" + pass + "'";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     DBbase.DisConnect();
@@ -43,17 +43,17 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS,ROLE_CODE FROM MA_MEMBER WHERE MEMBER_USER = '" + user + "'";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     MemberData member = new MemberData();
-                    member.MEMBER_NAME = reader.GetString("MEMBER_NAME");
-                    member.MEMBER_SURENAME = reader.GetString("MEMBER_SURENAME");
-                    member.MEMBER_USER = reader.GetString("MEMBER_USER");
-                    member.MEMBER_PASSWORD = reader.GetString("MEMBER_PASSWORD");
-                    member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
-                    member.ROLE_CODE = reader.GetString("ROLE_CODE");
+                    member.MEMBER_NAME = reader["MEMBER_NAME"].ToString();
+                    member.MEMBER_SURENAME = reader["MEMBER_SURENAME"].ToString();
+                    member.MEMBER_USER = reader["MEMBER_USER"].ToString();
+                    member.MEMBER_PASSWORD = reader["MEMBER_PASSWORD"].ToString();
+                    member.MEMBER_STATUS = reader["MEMBER_STATUS"].ToString();
+                    member.ROLE_CODE = reader["ROLE_CODE"].ToString();
                     reader.Close();
                     DBbase.DisConnect();
                     return member;
@@ -75,17 +75,17 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_PASSWORD,MEMBER_STATUS,ROLE_CODE FROM MA_MEMBER WHERE MEMBER_USER = '" + user + "' AND MEMBER_PASSWORD = '" + pass + "'";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     MemberData member = new MemberData();
-                    member.MEMBER_NAME = reader.GetString("MEMBER_NAME");
-                    member.MEMBER_SURENAME = reader.GetString("MEMBER_SURENAME");
-                    member.MEMBER_USER = reader.GetString("MEMBER_USER");
-                    member.MEMBER_PASSWORD = reader.GetString("MEMBER_PASSWORD");
-                    member.MEMBER_STATUS = reader.GetString("MEMBER_STATUS");
-                    member.ROLE_CODE = reader.GetString("ROLE_CODE");
+                    member.MEMBER_NAME = reader["MEMBER_NAME"].ToString();
+                    member.MEMBER_SURENAME = reader["MEMBER_SURENAME"].ToString();
+                    member.MEMBER_USER = reader["MEMBER_USER"].ToString();
+                    member.MEMBER_PASSWORD = reader["MEMBER_PASSWORD"].ToString();
+                    member.MEMBER_STATUS = reader["MEMBER_STATUS"].ToString();
+                    member.ROLE_CODE = reader["ROLE_CODE"].ToString();
                     reader.Close();
                     DBbase.DisConnect();
                     return member;
@@ -116,7 +116,7 @@ namespace IBSC.DAL
                 sql.Append(" '" + item.MEMBER_NAME + "',");
                 sql.Append(" '" + item.MEMBER_SURENAME + "',");
                 sql.Append(" '" + item.MEMBER_STATUS + "',");
-                sql.Append(" '" + item.ROLE_CODE + "',");
+                sql.Append(" '" + item.ROLE_CODE.ToLower() + "',");
 
                 sql.Append(" '" + DateTime.Now + "',");
                 sql.Append(" '" + member.MEMBER_USER + "',");
@@ -124,7 +124,7 @@ namespace IBSC.DAL
                 sql.Append(" '" + member.MEMBER_USER + "')");
                
 
-                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                SqlCommand cmd = new SqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
                 DBbase.DisConnect();
             }
@@ -150,7 +150,7 @@ namespace IBSC.DAL
                 sql.Append(" UPDATE_DATE = '" + DateTime.Now + "',");
                 sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
                 sql.Append(" WHERE MEMBER_USER = '" + item.MEMBER_USER + "'");
-                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                SqlCommand cmd = new SqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
                 DBbase.DisConnect();
             }
@@ -166,8 +166,8 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = "SELECT MEMBER_NAME,MEMBER_SURENAME,MEMBER_USER,MEMBER_STATUS,ROLE_CODE FROM MA_MEMBER ORDER BY MEMBER_USER";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();
                 DataTable dataTable = new DataTable();
                 ds.Tables.Add(dataTable);

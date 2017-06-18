@@ -8,22 +8,22 @@ namespace IBSC.Model
 {
     public static class EXCEL_DATA
     {
-        public static int COMPANY_CODE = 1;
-        public static int EFFECTIVE_DATE = 2;
-        public static int EXPIRE_DATE = 3;
-        public static int INSURE_PRIORITY = 4;
+        public static int COMPANY_CODE = 2;
+        public static int EFFECTIVE_DATE = 3;
+        public static int EXPIRE_DATE = 4;
+        public static int INSURE_PRIORITY = 1;
         public static int PACKAGE_NAME = 5;
         public static int CAR_CODE = 6;
-        public static int CAR_NAME = 7;
-        public static int CAR_MODEL = 8;
-        public static int CAR_ENGINE = 9;
+        public static int CAR_NAME = 8;
+        public static int CAR_MODEL = 9;
+        public static int CAR_ENGINE = 10;
         public static int CAR_YEAR = 10;
         public static int INSURE_CATEGORY = 11;
         public static int INSURE_TYPE_REPAIR = 12;
-        public static int NET_PRICE = 13;
-        public static int TOTAL_PRICE = 14;
-        public static int PRICE_ROUND = 15;
-        public static int CAPITAL_INSURANCE = 16;
+        public static int NET_PRICE = 14;
+        public static int TOTAL_PRICE = 15;
+        public static int PRICE_ROUND = 16;
+        public static int CAPITAL_INSURANCE = 13;
         public static int CONFIDENTIAL_STATUS = 17;
         public static int LIVE_COVERAGE_PEOPLE = 18;
         public static int LIVE_COVERAGE_TIME = 19;

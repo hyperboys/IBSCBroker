@@ -1,9 +1,9 @@
 ﻿using IBSC.Common;
 using IBSC.Model;
-using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,8 +27,8 @@ namespace IBSC.DAL
                  A.CONFIDENTIAL_STATUS, A.CREATE_DATE, A.CREATE_USER, A.UPDATE_DATE,
                  A.UPDATE_USER, A.INSURE_CAR_STATUS, C.CAR_CODE,C.CAR_NAME,C.CAR_MODEL,C.CAR_ENGINE,C.CAR_IMAGE ,I.COMPANY_FULLNAME
                 FROM MA_INSURE_CAR A INNER JOIN MA_CAR C ON A.CAR_ID = C.CAR_ID INNER JOIN MA_INSURE_COMPANY I ON A.COMPANY_CODE = I.COMPANY_CODE";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();
                 DataTable dataTable = new DataTable();
                 ds.Tables.Add(dataTable);
@@ -62,8 +62,8 @@ namespace IBSC.DAL
                WHERE A.INSURE_CAR_STATUS = 'A' AND A.CAR_YEAR ='" + carYear + "' AND C.CAR_NAME = '" + carName + "' AND C.CAR_MODEL = '" + carModel + "' "
                 + " ORDER BY I.COMPANY_CODE ";
 
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();
                 DataTable dataTable = new DataTable();
                 ds.Tables.Add(dataTable);
@@ -96,44 +96,44 @@ namespace IBSC.DAL
                 FROM MA_INSURE_CAR A INNER JOIN MA_CAR C ON A.CAR_ID = C.CAR_ID INNER JOIN MA_INSURE_COMPANY I ON A.COMPANY_CODE = I.COMPANY_CODE
                 WHERE INSURE_CAR_CODE = '" + code + "'";
 
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     InsureCarData item = new InsureCarData();
-                    item.ASSET_TIME = Convert.ToDecimal(reader.GetString("ASSET_TIME"));
-                    item.CAPITAL_INSURANCE = Convert.ToDecimal(reader.GetString("CAPITAL_INSURANCE"));
-                    item.CAR_ID = Convert.ToInt32(reader.GetString("CAR_ID"));
-                    item.CAR_CODE = reader.GetString("CAR_CODE");
-                    item.CAR_MODEL = reader.GetString("CAR_MODEL");
-                    item.CAR_NAME = reader.GetString("CAR_NAME");
-                    item.CAR_ENGINE = reader.GetString("CAR_ENGINE");
-                    item.CAR_YEAR = reader.GetString("CAR_YEAR");
-                    item.COMPANY_CODE = reader.GetString("COMPANY_CODE");
-                    item.COMPANY_FULLNAME = reader.GetString("COMPANY_FULLNAME");
-                    item.CONFIDENTIAL_STATUS = reader.GetString("CONFIDENTIAL_STATUS");
-                    item.DAMAGE_TO_VEHICLE = Convert.ToDecimal(reader.GetString("DAMAGE_TO_VEHICLE"));
-                    item.DRIVER_INSURANCE_AMT = Convert.ToDecimal(reader.GetString("DRIVER_INSURANCE_AMT"));
-                    item.EFFECTIVE_DATE = Convert.ToDateTime(reader.GetString("EFFECTIVE_DATE"));
-                    item.EXPIRE_DATE = Convert.ToDateTime(reader.GetString("EXPIRE_DATE"));
-                    item.FIRST_DAMAGE_PRICE = Convert.ToDecimal(reader.GetString("FIRST_DAMAGE_PRICE"));
-                    item.INSURE_CAR_CODE = reader.GetString("INSURE_CAR_CODE");
-                    item.INSURE_CAR_STATUS = reader.GetString("INSURE_CAR_STATUS");
-                    item.INSURE_CATEGORY = reader.GetString("INSURE_CATEGORY");
-                    item.INSURE_TYPE_REPAIR = reader.GetString("INSURE_TYPE_REPAIR");
-                    item.LIVE_COVERAGE_PEOPLE = Convert.ToDecimal(reader.GetString("LIVE_COVERAGE_PEOPLE"));
-                    item.LIVE_COVERAGE_TIME = Convert.ToDecimal(reader.GetString("LIVE_COVERAGE_TIME"));
-                    item.MEDICAL_FEE_AMT = Convert.ToDecimal(reader.GetString("MEDICAL_FEE_AMT"));
-                    item.MEDICAL_FEE_PEOPLE = Convert.ToInt32(reader.GetString("MEDICAL_FEE_PEOPLE"));
-                    item.MISSING_FIRE_CAR = Convert.ToDecimal(reader.GetString("MISSING_FIRE_CAR"));
-                    item.NET_PRICE = Convert.ToDecimal(reader.GetString("NET_PRICE"));
-                    item.PACKAGE_NAME = reader.GetString("PACKAGE_NAME");
-                    item.PERSONAL_ACCIDENT_AMT = Convert.ToDecimal(reader.GetString("PERSONAL_ACCIDENT_AMT"));
-                    item.PERSONAL_ACCIDENT_PEOPLE = Convert.ToInt32(reader.GetString("PERSONAL_ACCIDENT_PEOPLE"));
-                    item.PRICE_ROUND = Convert.ToDecimal(reader.GetString("PRICE_ROUND"));
-                    item.TOTAL_PRICE = Convert.ToDecimal(reader.GetString("TOTAL_PRICE"));
-                    item.COMPANY_CODE = reader.GetString("COMPANY_CODE");
-                    item.INSURE_PRIORITY = Convert.ToInt32(reader.GetString("INSURE_PRIORITY"));
+                    item.ASSET_TIME = Convert.ToDecimal(reader["ASSET_TIME"].ToString());
+                    item.CAPITAL_INSURANCE = Convert.ToDecimal(reader["CAPITAL_INSURANCE"].ToString());
+                    item.CAR_ID = Convert.ToInt32(reader["CAR_ID"].ToString());
+                    item.CAR_CODE = reader["CAR_CODE"].ToString();
+                    item.CAR_MODEL = reader["CAR_MODEL"].ToString();
+                    item.CAR_NAME = reader["CAR_NAME"].ToString();
+                    item.CAR_ENGINE = reader["CAR_ENGINE"].ToString();
+                    item.CAR_YEAR = reader["CAR_YEAR"].ToString();
+                    item.COMPANY_CODE = reader["COMPANY_CODE"].ToString();
+                    item.COMPANY_FULLNAME = reader["COMPANY_FULLNAME"].ToString();
+                    item.CONFIDENTIAL_STATUS = reader["CONFIDENTIAL_STATUS"].ToString();
+                    item.DAMAGE_TO_VEHICLE = Convert.ToDecimal(reader["DAMAGE_TO_VEHICLE"].ToString());
+                    item.DRIVER_INSURANCE_AMT = Convert.ToDecimal(reader["DRIVER_INSURANCE_AMT"].ToString());
+                    item.EFFECTIVE_DATE = Convert.ToDateTime(reader["EFFECTIVE_DATE"].ToString());
+                    item.EXPIRE_DATE = Convert.ToDateTime(reader["EXPIRE_DATE"].ToString());
+                    item.FIRST_DAMAGE_PRICE = Convert.ToDecimal(reader["FIRST_DAMAGE_PRICE"].ToString());
+                    item.INSURE_CAR_CODE = reader["INSURE_CAR_CODE"].ToString();
+                    item.INSURE_CAR_STATUS = reader["INSURE_CAR_STATUS"].ToString();
+                    item.INSURE_CATEGORY = reader["INSURE_CATEGORY"].ToString();
+                    item.INSURE_TYPE_REPAIR = reader["INSURE_TYPE_REPAIR"].ToString();
+                    item.LIVE_COVERAGE_PEOPLE = Convert.ToDecimal(reader["LIVE_COVERAGE_PEOPLE"].ToString());
+                    item.LIVE_COVERAGE_TIME = Convert.ToDecimal(reader["LIVE_COVERAGE_TIME"].ToString());
+                    item.MEDICAL_FEE_AMT = Convert.ToDecimal(reader["MEDICAL_FEE_AMT"].ToString());
+                    item.MEDICAL_FEE_PEOPLE = Convert.ToInt32(reader["MEDICAL_FEE_PEOPLE"].ToString());
+                    item.MISSING_FIRE_CAR = Convert.ToDecimal(reader["MISSING_FIRE_CAR"].ToString());
+                    item.NET_PRICE = Convert.ToDecimal(reader["NET_PRICE"].ToString());
+                    item.PACKAGE_NAME = reader["PACKAGE_NAME"].ToString();
+                    item.PERSONAL_ACCIDENT_AMT = Convert.ToDecimal(reader["PERSONAL_ACCIDENT_AMT"].ToString());
+                    item.PERSONAL_ACCIDENT_PEOPLE = Convert.ToInt32(reader["PERSONAL_ACCIDENT_PEOPLE"].ToString());
+                    item.PRICE_ROUND = Convert.ToDecimal(reader["PRICE_ROUND"].ToString());
+                    item.TOTAL_PRICE = Convert.ToDecimal(reader["TOTAL_PRICE"].ToString());
+                    item.COMPANY_CODE = reader["COMPANY_CODE"].ToString();
+                    item.INSURE_PRIORITY = Convert.ToInt32(reader["INSURE_PRIORITY"].ToString());
                     reader.Close();
                     DBbase.DisConnect();
                     return item;
@@ -204,7 +204,7 @@ namespace IBSC.DAL
                 sql.Append(" '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
                 sql.Append(" '" + member.MEMBER_USER + "')");
 
-                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                SqlCommand cmd = new SqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
                 DBbase.DisConnect();
             }
@@ -221,7 +221,7 @@ namespace IBSC.DAL
                 MemberData member = (MemberData)DataCommon.Get("DATA.MEMBER");
                 int row = 1;
 
-                MySqlCommand cmd;
+                SqlCommand cmd;
                 string query = "";
 
                 StringBuilder sql;
@@ -279,10 +279,10 @@ namespace IBSC.DAL
                     try
                     {
                         query = sql.ToString();
-                        cmd = new MySqlCommand(query.Remove(query.Length - 1), DBbase.con);
+                        cmd = new SqlCommand(query.Remove(query.Length - 1), DBbase.con);
                         cmd.ExecuteNonQuery();
                     }
-                    catch (MySqlException exception)
+                    catch (SqlException exception)
                     {
                         if (exception.Number == 1062) // Cannot insert duplicate key row in object error
                         {
@@ -343,7 +343,7 @@ namespace IBSC.DAL
                 sql.Append(" UPDATE_DATE = '" + ConvertCommon.ConvertDateTime(DateTime.Now) + "',");
                 sql.Append(" UPDATE_USER = '" + member.MEMBER_USER + "'");
                 sql.Append(" WHERE INSURE_CAR_CODE = '" + oldItem.INSURE_CAR_CODE + "'");
-                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                SqlCommand cmd = new SqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
                 DBbase.DisConnect();
             }
@@ -396,7 +396,7 @@ namespace IBSC.DAL
                 sql.Append(" AND 	INSURE_CATEGORY = '" + newItem.INSURE_CATEGORY + "'");
                 sql.Append(" AND 	INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "'");
                 sql.Append(" AND 	CAR_YEAR = '" + newItem.CAR_YEAR + "'");
-                MySqlCommand cmd = new MySqlCommand(sql.ToString(), DBbase.con);
+                SqlCommand cmd = new SqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
                 DBbase.DisConnect();
             }
@@ -424,8 +424,8 @@ namespace IBSC.DAL
                 WHERE I.COMPANY_CODE = '" + item.COMPANY_CODE + "' AND A.PACKAGE_NAME = '" + item.PACKAGE_NAME + "' AND A.CAR_ID = '" + item.CAR_ID
                                         + "' AND A.INSURE_CATEGORY = '" + item.INSURE_CATEGORY + "' AND A.INSURE_TYPE_REPAIR = '" + item.INSURE_TYPE_REPAIR + "' AND A.CAR_YEAR = '" + item.CAR_YEAR + "'";
 
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.Read())
                 {
                     DBbase.DisConnect();
@@ -449,8 +449,8 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = "SELECT DISTINCT CAR_YEAR FROM MA_INSURE_CAR WHERE INSURE_CAR_STATUS = 'A'";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();
                 DataTable dataTable = new DataTable();
                 ds.Tables.Add(dataTable);
@@ -472,8 +472,8 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = "SELECT DISTINCT C.CAR_NAME FROM MA_INSURE_CAR I INNER JOIN MA_CAR C ON I.CAR_ID = C.CAR_ID WHERE INSURE_CAR_STATUS = 'A' AND CAR_YEAR ='" + carYear + "'";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();
                 DataTable dataTable = new DataTable();
                 ds.Tables.Add(dataTable);
@@ -495,8 +495,8 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = "SELECT DISTINCT C.CAR_MODEL FROM MA_INSURE_CAR I INNER JOIN MA_CAR C ON I.CAR_ID = C.CAR_ID WHERE INSURE_CAR_STATUS = 'A' AND CAR_YEAR ='" + carYear + "' AND CAR_NAME = '" + carName + "'";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();
                 DataTable dataTable = new DataTable();
                 ds.Tables.Add(dataTable);
@@ -518,8 +518,8 @@ namespace IBSC.DAL
             {
                 DBbase.Connect();
                 string sql = "SELECT DISTINCT C.CAR_ENGINE FROM MA_INSURE_CAR I INNER JOIN MA_CAR C ON I.CAR_ID = C.CAR_ID WHERE INSURE_CAR_STATUS = 'A' AND CAR_YEAR ='" + carYear + "' AND CAR_NAME = '" + carName + "' AND CAR_MODEL = '" + carModel + "'";
-                MySqlCommand cmd = new MySqlCommand(sql, DBbase.con);
-                MySqlDataReader reader = cmd.ExecuteReader();
+                SqlCommand cmd = new SqlCommand(sql, DBbase.con);
+                SqlDataReader reader = cmd.ExecuteReader();
                 DataSet ds = new DataSet();
                 DataTable dataTable = new DataTable();
                 ds.Tables.Add(dataTable);
