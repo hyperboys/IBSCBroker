@@ -264,7 +264,7 @@ namespace IBSC.Model
         public string EXCEPTION
         {
             get { return exception; }
-            set 
+            set
             {
                 if (exception == "")
                 {
@@ -282,6 +282,19 @@ namespace IBSC.Model
                 if (exception_index == 0)
                 {
                     exception_index = value;
+                }
+            }
+        }
+
+        private int index_excel = 0;
+        public int INDEX_EXCEL
+        {
+            get { return index_excel; }
+            set
+            {
+                if (index_excel == 0)
+                {
+                    index_excel = value;
                 }
             }
         }

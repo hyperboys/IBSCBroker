@@ -75,7 +75,7 @@ namespace IBSC.WindowApp.Panel
                 var results = (from myRow in listItem.AsEnumerable()
                                where myRow.Field<string>("COMPANY_CODE").ToUpper().Contains(txtCompanyCode.Text.ToUpper())
                                && myRow.Field<string>("COMPANY_FULLNAME").ToUpper().Contains(txtCompanyName.Text.ToUpper())
-                               && myRow.Field<string>("COMPANY_STATUS").ToUpper() == (cbbStatus.Text == "ใช้งาน" ? "A" : "I")
+                               && myRow.Field<string>("COMPANY_STATUS").ToUpper().Contains(cbbStatus.Text == "ใช้งาน" ? "A" : "I")
                                select myRow);
                 if (results.Count() > 0)
                 {

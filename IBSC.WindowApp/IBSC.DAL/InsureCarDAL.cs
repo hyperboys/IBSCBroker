@@ -208,6 +208,15 @@ namespace IBSC.DAL
                 cmd.ExecuteNonQuery();
                 DBbase.DisConnect();
             }
+            catch (SqlException exception)
+            {
+                if (exception.Number == 1062) // Cannot insert duplicate key row in object error
+                {
+
+                }
+                else
+                    throw exception; // throw exception if this exception is unexpected
+            }
             catch (Exception ex)
             {
                 throw ex;
@@ -361,12 +370,12 @@ namespace IBSC.DAL
                 DBbase.Connect();
                 StringBuilder sql = new StringBuilder();
 
-                sql.Append("UPDATE MA_INSURE_CAR ");
-                sql.Append("SET COMPANY_CODE = '" + newItem.COMPANY_CODE + "',");
+                sql.Append("UPDATE MA_INSURE_CAR SET ");
+                sql.Append(" COMPANY_CODE = '" + newItem.COMPANY_CODE + "',");
                 sql.Append(" PACKAGE_NAME = '" + newItem.PACKAGE_NAME + "',");
                 sql.Append(" CAR_ID = '" + newItem.CAR_ID + "',");
                 sql.Append(" INSURE_CATEGORY = '" + newItem.INSURE_CATEGORY + "',");
-                sql.Append(" INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "',");
+                //sql.Append(" INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "',");
                 sql.Append(" CAR_YEAR = '" + newItem.CAR_YEAR + "',");
                 sql.Append(" LIVE_COVERAGE_PEOPLE = '" + newItem.LIVE_COVERAGE_PEOPLE + "',");
                 sql.Append(" LIVE_COVERAGE_TIME = '" + newItem.LIVE_COVERAGE_TIME + "',");
@@ -396,6 +405,7 @@ namespace IBSC.DAL
                 sql.Append(" AND 	INSURE_CATEGORY = '" + newItem.INSURE_CATEGORY + "'");
                 sql.Append(" AND 	INSURE_TYPE_REPAIR = '" + newItem.INSURE_TYPE_REPAIR + "'");
                 sql.Append(" AND 	CAR_YEAR = '" + newItem.CAR_YEAR + "'");
+                sql.Append(" AND DAMAGE_TO_VEHICLE = '" + newItem.DAMAGE_TO_VEHICLE + "'");
                 SqlCommand cmd = new SqlCommand(sql.ToString(), DBbase.con);
                 cmd.ExecuteNonQuery();
                 DBbase.DisConnect();
@@ -422,7 +432,9 @@ namespace IBSC.DAL
                  A.UPDATE_USER, A.INSURE_CAR_STATUS, C.CAR_CODE,C.CAR_NAME,C.CAR_MODEL,C.CAR_ENGINE ,I.COMPANY_FULLNAME
                 FROM MA_INSURE_CAR A INNER JOIN MA_CAR C ON A.CAR_ID = C.CAR_ID INNER JOIN MA_INSURE_COMPANY I ON A.COMPANY_CODE = I.COMPANY_CODE
                 WHERE I.COMPANY_CODE = '" + item.COMPANY_CODE + "' AND A.PACKAGE_NAME = '" + item.PACKAGE_NAME + "' AND A.CAR_ID = '" + item.CAR_ID
-                                        + "' AND A.INSURE_CATEGORY = '" + item.INSURE_CATEGORY + "' AND A.INSURE_TYPE_REPAIR = '" + item.INSURE_TYPE_REPAIR + "' AND A.CAR_YEAR = '" + item.CAR_YEAR + "'";
+                                        + "' AND A.INSURE_CATEGORY = '" + item.INSURE_CATEGORY + "' AND A.INSURE_TYPE_REPAIR = '"
+                                        + item.INSURE_TYPE_REPAIR + "' AND A.CAR_YEAR = '" + item.CAR_YEAR + "'"
+                                        + "AND A.CAPITAL_INSURANCE = '" + item.CAPITAL_INSURANCE + "'";
 
                 SqlCommand cmd = new SqlCommand(sql, DBbase.con);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -485,7 +497,7 @@ namespace IBSC.DAL
             }
             catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
 
@@ -508,7 +520,7 @@ namespace IBSC.DAL
             }
             catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
 
@@ -531,7 +543,7 @@ namespace IBSC.DAL
             }
             catch (Exception ex)
             {
-                return null;
+                throw ex;
             }
         }
     }

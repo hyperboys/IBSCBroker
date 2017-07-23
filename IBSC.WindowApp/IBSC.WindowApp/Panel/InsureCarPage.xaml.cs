@@ -84,7 +84,7 @@ namespace IBSC.WindowApp.Panel
                                && myRow.Field<string>("CAR_NAME").Contains(cbbCarName.Text)
                                && myRow.Field<string>("CAR_MODEL").Contains(cbbCarModel.Text)
                                && myRow.Field<string>("CAR_ENGINE").Contains(cbbCarEngine.Text)
-                               && myRow.Field<string>("INSURE_CAR_STATUS").ToUpper() == (cbbStatus.Text == "ใช้งาน" ? "A" : "I")
+                               && myRow.Field<string>("INSURE_CAR_STATUS").ToUpper().Contains(cbbStatus.Text == "ใช้งาน" ? "A" : "I")
                                select myRow);
                 if (results.Count() > 0)
                 {
