@@ -643,7 +643,7 @@ namespace IBSC.WindowApp.Popup
                 {
                     textDate.AppendLine(item.Error);
                 }
-                System.IO.File.WriteAllText(path + ".txt", textDate.ToString());
+                System.IO.File.WriteAllText(path , textDate.ToString());
             }
             catch (Exception ex)
             {
